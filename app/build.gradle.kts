@@ -50,6 +50,9 @@ dependencies {
     //splash screen
     implementation(libs.splash.screen)
 
+    //data store
+    implementation(libs.datastore.core)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
