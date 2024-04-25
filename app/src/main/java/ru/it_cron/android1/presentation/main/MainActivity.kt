@@ -5,16 +5,23 @@ import androidx.activity.enableEdgeToEdge
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.androidx.AppNavigator
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.it_cron.android1.R
+import ru.it_cron.android1.domain.model.AvailableState
+import ru.it_cron.android1.presentation.error.ErrorFragment
 import ru.it_cron.android1.presentation.home.HomeFragment
 import ru.it_cron.android1.presentation.onboarding.AppIntro
 
-class MainActivity : FragmentActivity() {
+class MainActivity : FragmentActivity(), ErrorFragment.OnFinishedListener {
 
     private val navHolder: NavigatorHolder by inject()
     private val viewModel: MainViewModel by viewModel<MainViewModel>()
@@ -23,12 +30,8 @@ class MainActivity : FragmentActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Android1)
         super.onCreate(savedInstanceState)
-        installSplashScreen().apply {
-            setKeepOnScreenCondition {
-                changeIsLoading()
-            }
-        }
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main_container)) { v, insets ->
@@ -36,7 +39,13 @@ class MainActivity : FragmentActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        setupFragment()
+        installSplashScreen().apply {
+            setKeepOnScreenCondition {
+                changeIsLoading()
+            }
+        }
+        viewModel.checkAvailable()
+        launchStartFragment()
     }
 
     override fun onResumeFragments() {
@@ -49,13 +58,38 @@ class MainActivity : FragmentActivity() {
         super.onPause()
     }
 
+    override fun onFinish() {
+        setupFragment()
+    }
+    private fun launchStartFragment() {
+        lifecycleScope.launch {
+            viewModel.isAvailable
+                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect {state ->
+                    when (state) {
+                        is AvailableState.Success -> {
+                            setupFragment()
+                        }
+                        is AvailableState.Error -> {
+                            launchFragment(ErrorFragment.newInstance())
+                        }
+                        AvailableState.Initial -> {
+                        }
+                    }
+                }
+        }
+    }
     private fun setupFragment() {
         viewModel.isCompleted.observe(this) { completed ->
             val fragment = if (completed) HomeFragment.newInstance() else AppIntro.newInstance()
-            supportFragmentManager.beginTransaction()
-                .add(R.id.main_container, fragment)
-                .commit()
+            launchFragment(fragment)
         }
+    }
+
+    private fun launchFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.main_container, fragment)
+            .commit()
     }
 
     private fun changeIsLoading(): Boolean {

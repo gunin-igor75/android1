@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="splash_screen_icon_size">75dp</dimen>
+    <dimen name="splash_screen_icon_size_api_31">75dp</dimen>
+    <dimen name="splash_screen_icon_size_api_24">144dp</dimen>
 </resources>

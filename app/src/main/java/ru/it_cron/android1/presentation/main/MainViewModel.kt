@@ -14,7 +14,7 @@ import ru.it_cron.android1.domain.usecases.ReadOnBoardingStateUseCase
 
 class MainViewModel(
     private val readOnBoardingStateUseCase: ReadOnBoardingStateUseCase,
-    private val checkAvailableUseCase: CheckAvailableUseCase
+    private val checkAvailableUseCase: CheckAvailableUseCase,
 ) : ViewModel() {
 
     init {
@@ -27,7 +27,8 @@ class MainViewModel(
     private var _isCompleted = MutableLiveData<Boolean>()
     val isCompleted: LiveData<Boolean> = _isCompleted
 
-    private var _isAvailable: MutableStateFlow<AvailableState> = MutableStateFlow(AvailableState.Initial)
+    private var _isAvailable: MutableStateFlow<AvailableState> =
+        MutableStateFlow(AvailableState.Initial)
     val isAvailable: StateFlow<AvailableState> = _isAvailable.asStateFlow()
 
     fun checkAvailable() {
