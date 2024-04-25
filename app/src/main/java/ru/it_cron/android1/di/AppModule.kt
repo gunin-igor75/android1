@@ -10,6 +10,9 @@ val appModule = module {
         OnBoardingViewModel(saveOnBoardingStateUseCase = get())
     }
     viewModel<MainViewModel> {
-        MainViewModel(readOnBoardingStateUseCase = get())
+        MainViewModel(
+            readOnBoardingStateUseCase = get(),
+            checkAvailableUseCase = get()
+        )
     }
 }
