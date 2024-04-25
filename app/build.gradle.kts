@@ -46,12 +46,23 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.lifecycle.viewmodel)
 
     //splash screen
     implementation(libs.splash.screen)
 
     //data store
     implementation(libs.datastore.core)
+
+    //koin
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+
+    //cicerone
+    implementation(libs.cicerone.core)
+
+    //livedata
+    implementation(libs.liveData.core)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

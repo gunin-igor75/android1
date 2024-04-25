@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">android1</string>
+    <string name="bt_next">Далее</string>
+    <string name="image_onboarding_description">Image onboarding</string>
+    <string name="onboarding_first">ПРОЕКТНЫЙ\nПОДХОД</string>
+    <string name="onboarding_second">ПРОДУКТОВЫЙ\nПОДХОД</string>
+    <string name="onboarding_third">\nКЕЙСЫ</string>
+    <string name="onboarding_first_descr">Качественно организовываем\nдеятельность для заимодействия\nнаших сотрудников и Заказчика</string>
+    <string name="onboarding_second_descr">Оказываем услуги\nи выдаём тот результат, который\nнеобходим Заказчику и рынку</string>
+    <string name="onboarding_third_descr">Понравился продукт? Хотите его\nобсудить? Мы с радостью\nответим на все ваши вопросы :)</string>
+    <string name="bt_begin">Начало</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

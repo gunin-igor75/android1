@@ -1,9 +1,7 @@
 package ru.it_cron.android1.data.repository
 
 import android.content.Context
-import androidx.datastore.core.DataStore
 import androidx.datastore.core.IOException
-import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.emptyPreferences
@@ -15,21 +13,21 @@ import ru.it_cron.android1.domain.repository.OnBoardingRepository
 
 private const val PREF_NAME = "onboarding_pref"
 private const val KEY_NAME = "onboarding_key"
-val Context.datastore: DataStore<Preferences> by preferencesDataStore(PREF_NAME)
+private val Context.datastore by preferencesDataStore(PREF_NAME)
 
 class OnBoardingRepositoryImpl(
     context: Context,
 ) : OnBoardingRepository {
 
     private object PreferenceKey {
-        val onBoardingKey = booleanPreferencesKey(KEY_NAME)
+        val KEY = booleanPreferencesKey(KEY_NAME)
     }
 
     private val dataStore = context.datastore
 
     override suspend fun saveOnBoardingState(completed: Boolean) {
         dataStore.edit { preferences ->
-            preferences[PreferenceKey.onBoardingKey] = completed
+            preferences[PreferenceKey.KEY] = completed
         }
     }
 
@@ -43,7 +41,7 @@ class OnBoardingRepositoryImpl(
                 }
             }
             .map { preferences ->
-                val onBoardingState = preferences[PreferenceKey.onBoardingKey]?: false
+                val onBoardingState = preferences[PreferenceKey.KEY]?: false
                 onBoardingState
             }
     }
