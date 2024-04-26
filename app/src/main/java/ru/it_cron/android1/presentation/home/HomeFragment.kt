@@ -1,5 +1,6 @@
 package ru.it_cron.android1.presentation.home
 
+
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +11,8 @@ import com.github.terrakok.cicerone.Router
 import org.koin.android.ext.android.inject
 import ru.it_cron.android1.databinding.FragmentHomeBinding
 import ru.it_cron.android1.navigation.Screens
+import ru.it_cron.android1.presentation.utils.CustomAnimated.Companion.animatedColor
+
 
 class HomeFragment : Fragment() {
 
@@ -45,7 +48,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun launchFooterContent() {
-        with(binding){
+        with(binding) {
             tvEmail.setOnClickListener {
                 launchIntent.launchEmail()
             }
@@ -62,21 +65,31 @@ class HomeFragment : Fragment() {
     }
 
     private fun launchBodyContent() {
-        with(binding.inBodyContent){
+        with(binding.inBodyContent) {
             tvCases.setOnClickListener {
-                router.navigateTo(Screens.openCasesFragment())
+                animatedColor(tvCases) {
+                    router.navigateTo(Screens.openCasesFragment())
+                }
             }
             tvCompany.setOnClickListener {
-                router.navigateTo(Screens.openCompanyFragment())
+                animatedColor(tvCompany) {
+                    router.navigateTo(Screens.openCompanyFragment())
+                }
             }
             tvServices.setOnClickListener {
-                router.navigateTo(Screens.openServicesFragment())
+                animatedColor(tvServices) {
+                    router.navigateTo(Screens.openServicesFragment())
+                }
             }
             tvContacts.setOnClickListener {
-                router.navigateTo(Screens.openContactsFragment())
+                animatedColor(tvContacts) {
+                    router.navigateTo(Screens.openContactsFragment())
+                }
             }
             tvLogin.setOnClickListener {
-                router.navigateTo(Screens.openLoginFragment())
+                animatedColor(tvLogin) {
+                    router.navigateTo(Screens.openLoginFragment())
+                }
             }
         }
     }
