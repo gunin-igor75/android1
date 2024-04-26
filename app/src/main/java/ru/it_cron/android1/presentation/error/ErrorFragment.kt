@@ -18,7 +18,7 @@ class ErrorFragment : Fragment() {
     private val binding: ErrorPageBinding
         get() = _binding ?: throw IllegalStateException("ErrorPageBinding is null")
 
-        private lateinit var onFinishedListener: OnFinishedListener
+    private lateinit var onFinishedListener: OnFinishedListener
 
 
     override fun onAttach(context: Context) {
@@ -29,6 +29,7 @@ class ErrorFragment : Fragment() {
             throw IllegalStateException("Activity must implement OnFinishedListener")
         }
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -40,19 +41,20 @@ class ErrorFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.root.setOnClickListener {
-            onFinishedListener.onFinish()
+            onFinishedListener.onFinishErrorFragment()
         }
         viewLifecycleOwner.lifecycleScope.launch {
             delay(1000)
-            onFinishedListener.onFinish()
+            onFinishedListener.onFinishErrorFragment()
         }
     }
+
     companion object {
         @JvmStatic
         fun newInstance() = ErrorFragment()
     }
 
-    interface OnFinishedListener{
-        fun onFinish()
+    interface OnFinishedListener {
+        fun onFinishErrorFragment()
     }
 }

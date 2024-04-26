@@ -1,6 +1,10 @@
 package ru.it_cron.android1.presentation.main
 
+import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
@@ -21,7 +25,8 @@ import ru.it_cron.android1.presentation.error.ErrorFragment
 import ru.it_cron.android1.presentation.home.HomeFragment
 import ru.it_cron.android1.presentation.onboarding.AppIntro
 
-class MainActivity : FragmentActivity(), ErrorFragment.OnFinishedListener {
+class MainActivity : FragmentActivity(), ErrorFragment.OnFinishedListener,
+    HomeFragment.LaunchIntent {
 
     private val navHolder: NavigatorHolder by inject()
     private val viewModel: MainViewModel by viewModel<MainViewModel>()
@@ -58,27 +63,47 @@ class MainActivity : FragmentActivity(), ErrorFragment.OnFinishedListener {
         super.onPause()
     }
 
-    override fun onFinish() {
+    override fun onFinishErrorFragment() {
         setupFragment()
     }
+
+    override fun launchFacebook() {
+        sendRequest(URL_FACEBOOK, PN_FACEBOOK)
+    }
+
+    override fun launchInstagram() {
+        sendRequest(URL_INSTAGRAM, PN_INSTAGRAM)
+    }
+
+    override fun launchTelegram() {
+        sendRequest(URL_TELEGRAM, PN_TELEGRAM)
+    }
+
+    override fun launchEmail() {
+        sendEmail(URL_EMAIL)
+    }
+
     private fun launchStartFragment() {
         lifecycleScope.launch {
             viewModel.isAvailable
                 .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-                .collect {state ->
+                .collect { state ->
                     when (state) {
                         is AvailableState.Success -> {
                             setupFragment()
                         }
+
                         is AvailableState.Error -> {
                             launchFragment(ErrorFragment.newInstance())
                         }
+
                         AvailableState.Initial -> {
                         }
                     }
                 }
         }
     }
+
     private fun setupFragment() {
         viewModel.isCompleted.observe(this) { completed ->
             val fragment = if (completed) HomeFragment.newInstance() else AppIntro.newInstance()
@@ -98,5 +123,61 @@ class MainActivity : FragmentActivity(), ErrorFragment.OnFinishedListener {
             isLoading = it
         }
         return isLoading
+    }
+
+    private fun sendRequest(url: String, packageName: String) {
+        try {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+                intent.setPackage(packageName)
+            }
+            startActivity(intent)
+        } catch (e: Exception) {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+                addCategory(Intent.CATEGORY_BROWSABLE)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                    flags =
+                        Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_REQUIRE_NON_BROWSER
+                }
+            }
+            startActivity(intent)
+        }
+    }
+    private fun sendEmail(addresses: String) {
+        try {
+            val intent = Intent(Intent.ACTION_SENDTO).apply {
+                data = Uri.parse(URL_GMAIL)
+                putExtra(Intent.EXTRA_EMAIL, addresses)
+            }
+            startActivity(intent)
+            Log.d(TAG, addresses)
+        } catch (e: Exception) {
+            val uriBuilder = Uri.parse(URL_PLAY_MARKET)
+                .buildUpon()
+                .appendQueryParameter(KEY_ID, PN_GMAIL)
+                .appendQueryParameter(KEY_LAUNCH, VALUE_TRUE)
+
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                data = uriBuilder.build()
+                setPackage(PN_PLAY_MARKET)
+            }
+            startActivity(intent)
+        }
+    }
+    companion object {
+        private const val TAG = "MainActivity"
+        private const val PN_TELEGRAM = "org.telegram.messenger"
+        private const val PN_FACEBOOK = "com.facebook.katana"
+        private const val PN_INSTAGRAM = "com.instagram.android"
+        private const val PN_GMAIL = "com.google.android.gm"
+        private const val URL_TELEGRAM = "https://t.me/+NnhpGqJYWAU2MDIy"
+        private const val URL_FACEBOOK = "https://www.facebook.com/it.cron.ru/"
+        private const val URL_INSTAGRAM = "https://www.instagram.com/itcron/?hl=ru"
+        private const val URL_EMAIL = "hello@it-cron.ru"
+        private const val PN_PLAY_MARKET = "com.android.vending"
+        private const val URL_PLAY_MARKET = "market://launch"
+        private const val URL_GMAIL = "mailto:"
+        private const val KEY_ID = "id"
+        private const val KEY_LAUNCH = "launch"
+        private const val VALUE_TRUE = "true"
     }
 }
