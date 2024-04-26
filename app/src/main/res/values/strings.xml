@@ -11,6 +11,19 @@
     <string name="bt_begin">Начало</string>
     <string name="error_description">Image error page</string>
     <string name="not_internet">Нет интернет\nсоединения</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="description_image_squares">Image squares</string>
+    <string name="description_image_logo_cron">Image logo cron</string>
+    <string name="description_image_it_cron_text">Image it cron text</string>
+    <string name="home_header">Проектно-продуктовый подход\nк оказанию IT-услуг</string>
+    <string name="cases">Кейсы</string>
+    <string name="company">Компания</string>
+    <string name="services">Услуги</string>
+    <string name="contacts">Контакты</string>
+    <string name="personal_account">Личный кабинет</string>
+    <string name="email_text">hello@it-cron.ru</string>
+    <string name="send_request">Оставить\nзаявку</string>
+    <string name="description_icon_facebook">Icon facebook</string>
+    <string name="description_icon_instagram">Icon instagram</string>
+    <string name="description_icon_telegram">Icon telegram</string>
 </resources>
