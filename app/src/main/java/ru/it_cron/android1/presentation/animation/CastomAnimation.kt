@@ -1,4 +1,4 @@
-package ru.it_cron.android1.presentation.utils
+package ru.it_cron.android1.presentation.animation
 
 import android.animation.Animator
 import android.animation.ObjectAnimator

@@ -99,7 +99,7 @@
         android:id="@+id/bt_send_request"
         android:layout_width="160dp"
         android:layout_height="160dp"
-        android:background="@drawable/circle_bg_orange"
+        android:background="@drawable/button_trans"
         android:text="@string/send_request"
         android:textAllCaps="false"
         android:textColor="@color/white"
