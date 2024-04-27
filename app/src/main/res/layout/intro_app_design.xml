@@ -16,25 +16,22 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/onboarding_first" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_first"
+        style="@style/IntroTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/orange"
-        android:textSize="32sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/tv_second"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline"
         app:layout_constraintVertical_chainStyle="packed"
         tools:text="@string/onboarding_first" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_second"
+        style="@style/IntroBody"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_first"

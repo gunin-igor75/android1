@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="16dp">
@@ -22,16 +23,15 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.65" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_intro"
+        style="@style/IntroButton"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/circle_bg_black"
-        android:text="@string/bt_next"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/guideline1"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/bt_next" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
