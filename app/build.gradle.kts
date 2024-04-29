@@ -72,6 +72,10 @@ dependencies {
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.gsonConverter)
 
+    //intuit
+    implementation(libs.intuit.spd)
+    implementation(libs.intuit.ssp)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

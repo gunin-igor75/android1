@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="HomeBodyTitle">
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">32sp</item>
         <item name="fontFamily">@font/gotham_pro_reg</item>
     </style>
 
@@ -33,13 +33,12 @@
 
     <style name="HomeHeaderBody">
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">12sp</item>
         <item name="fontFamily">@font/geometria_medium</item>
     </style>
 
     <style name="HomeHeaderFooter">
         <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">22sp</item>
+
         <item name="fontFamily">@font/geometria_medium</item>
     </style>
 
@@ -48,5 +47,10 @@
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="fontFamily">@font/gotham_pro_bol</item>
+    </style>
+
+    <style name="IconSocial">
+        <item name="android:layout_weight">@dimen/_48sdp</item>
+        <item name="android:layout_height">@dimen/_48sdp</item>
     </style>
 </resources>

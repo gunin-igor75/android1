@@ -4,27 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="@dimen/_10sdp"
     tools:context=".presentation.home.HomeFragment">
 
     <ImageView
         android:id="@+id/iv_square"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_106sdp"
+        android:layout_height="@dimen/_24sdp"
         android:contentDescription="@string/description_image_squares"
-        android:src="@drawable/im_squares_1"
+        android:src="@drawable/im_squares"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iv_logo"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/_118sdp"
+        android:layout_height="@dimen/_118sdp"
         android:contentDescription="@string/description_image_logo_cron"
-        android:src="@drawable/ic_logo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/guideline_im_v"
+        android:src="@drawable/logo_home"
         app:layout_constraintBottom_toTopOf="@id/guideline1_im_h"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_square" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -46,19 +45,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.26" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.13" />
+        app:layout_constraintGuide_percent="0.126" />
 
     <ImageView
         android:id="@+id/iv_cron_text"
-        android:layout_width="164dp"
-        android:layout_height="28dp"
+        android:layout_width="@dimen/_164sdp"
+        android:layout_height="@dimen/_28sdp"
         android:contentDescription="@string/description_image_it_cron_text"
         android:src="@drawable/im_it_cron_text_1"
         app:layout_constraintStart_toEndOf="@id/guideline1"
@@ -69,7 +68,8 @@
         style="@style/HomeHeaderBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:textSize="@dimen/_12ssp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:text="@string/home_header"
         app:layout_constraintStart_toEndOf="@id/guideline1"
         app:layout_constraintTop_toBottomOf="@id/iv_cron_text" />
@@ -93,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.88" />
+        app:layout_constraintGuide_percent="0.9" />
 
     <ScrollView
         android:id="@+id/sv_body"
@@ -113,17 +113,17 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_send_request"
         style="@style/HomeButton"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_width="@dimen/_108sdp"
+        android:layout_height="@dimen/_108sdp"
         android:background="@drawable/button_trans"
         android:text="@string/send_request"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline4" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_email"
         style="@style/HomeHeaderFooter"
+        android:textSize="@dimen/_16ssp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/email_text"
@@ -132,8 +132,8 @@
 
     <ImageView
         android:id="@+id/iv_facebook"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
         android:contentDescription="@string/description_icon_facebook"
         android:src="@drawable/ic_facebook_black"
         app:layout_constraintBottom_toBottomOf="@id/bt_send_request"
@@ -141,9 +141,9 @@
 
     <ImageView
         android:id="@+id/iv_instagram"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_12sdp"
         android:contentDescription="@string/description_icon_instagram"
         android:src="@drawable/ic_instagram_black"
         app:layout_constraintBottom_toBottomOf="@id/bt_send_request"
@@ -151,9 +151,9 @@
 
     <ImageView
         android:id="@+id/iv_telegram"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginStart="@dimen/_12sdp"
         android:contentDescription="@string/description_icon_telegram"
         android:src="@drawable/ic_telegram_black"
         app:layout_constraintBottom_toBottomOf="@id/bt_send_request"
