@@ -21,7 +21,7 @@
         android:layout_width="@dimen/_118sdp"
         android:layout_height="@dimen/_118sdp"
         android:contentDescription="@string/description_image_logo_cron"
-        android:src="@drawable/logo_home"
+        android:src="@drawable/im_logo_header"
         app:layout_constraintBottom_toTopOf="@id/guideline1_im_h"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_square" />
@@ -59,7 +59,7 @@
         android:layout_width="@dimen/_164sdp"
         android:layout_height="@dimen/_28sdp"
         android:contentDescription="@string/description_image_it_cron_text"
-        android:src="@drawable/im_it_cron_text_1"
+        android:src="@drawable/im_logo_text_header"
         app:layout_constraintStart_toEndOf="@id/guideline1"
         app:layout_constraintTop_toTopOf="@id/guideline2" />
 
@@ -115,7 +115,7 @@
         style="@style/HomeButton"
         android:layout_width="@dimen/_108sdp"
         android:layout_height="@dimen/_108sdp"
-        android:background="@drawable/button_trans"
+        android:background="@drawable/button_transition"
         android:text="@string/send_request"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

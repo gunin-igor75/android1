@@ -4,6 +4,6 @@
     <item
         android:width="144dp"
         android:height="144dp"
-        android:drawable="@drawable/im_logo_cron"
+        android:drawable="@drawable/im_logo_splash"
         android:gravity="center" />
 </layer-list>

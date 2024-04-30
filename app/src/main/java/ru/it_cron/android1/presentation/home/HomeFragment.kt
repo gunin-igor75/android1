@@ -73,7 +73,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun changeColorButton(button: Button) {
-        val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.button_trans)
+        val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.button_transition)
         val transition = drawable as TransitionDrawable
         button.background = transition
         transition.startTransition(TIME_DELAY)
