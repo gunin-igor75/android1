@@ -12,12 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_h_4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
+        android:id="@+id/guideline_h_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -29,12 +29,12 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/circle_bg_black"
-        app:layout_constraintBottom_toBottomOf="@id/guideline1"
+        app:layout_constraintBottom_toBottomOf="@id/guideline_h_3"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="@string/bt_next" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline1"
+        android:id="@+id/guideline_h_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

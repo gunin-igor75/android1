@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment
 import com.github.terrakok.cicerone.Router
 import org.koin.android.ext.android.inject
 import ru.it_cron.android1.R
+import ru.it_cron.android1.databinding.BodyHomeContentBinding
+import ru.it_cron.android1.databinding.FooterHomeContentBinding
 import ru.it_cron.android1.databinding.FragmentHomeBinding
 import ru.it_cron.android1.navigation.Screens
 import ru.it_cron.android1.presentation.animation.CustomAnimated.Companion.animatedColor
@@ -52,7 +54,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun launchFooterContent() {
-        with(binding) {
+        val footerBinding = FooterHomeContentBinding.bind(binding.root)
+        with(footerBinding) {
             tvEmail.setOnClickListener {
                 launchIntent.launchEmail()
             }
@@ -81,7 +84,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun launchBodyContent() {
-        with(binding.inBodyContent) {
+        val bodyBinding = BodyHomeContentBinding.bind(binding.root)
+        with(bodyBinding) {
             tvCases.setOnClickListener {
                 animatedColor(tvCases) {
                     router.navigateTo(Screens.openCasesFragment())
@@ -112,6 +116,7 @@ class HomeFragment : Fragment() {
 
     companion object {
         private const val TIME_DELAY = 300
+
         @JvmStatic
         fun newInstance() = HomeFragment()
     }
