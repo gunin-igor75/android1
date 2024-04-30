@@ -18,7 +18,7 @@
             style="@style/HomeButton"
             android:layout_width="@dimen/_108sdp"
             android:layout_height="@dimen/_108sdp"
-            android:background="@drawable/button_transition"
+            android:background="@drawable/circle_bg_orange"
             android:text="@string/send_request"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

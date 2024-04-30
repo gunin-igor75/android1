@@ -39,6 +39,32 @@ class CustomAnimated {
             animator.addListener(listener)
             animator.start()
         }
+
+        fun animatedAlpha(
+            textView: TextView,
+            action: () -> Unit,
+        ) {
+            val animator = ObjectAnimator.ofFloat(
+                textView,
+                "alpha",
+                1f,
+                0.3f
+            ).apply {
+                duration = TIME_DELAY
+                interpolator = LinearInterpolator()
+            }
+            val listener = object : Animator.AnimatorListener {
+                override fun onAnimationStart(animation: Animator) {}
+                override fun onAnimationEnd(animation: Animator) {
+                    action()
+                }
+
+                override fun onAnimationCancel(animation: Animator) {}
+                override fun onAnimationRepeat(animation: Animator) {}
+            }
+            animator.addListener(listener)
+            animator.start()
+        }
     }
 }
 

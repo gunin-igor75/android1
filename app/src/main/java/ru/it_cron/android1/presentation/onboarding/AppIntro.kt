@@ -1,7 +1,6 @@
 package ru.it_cron.android1.presentation.onboarding
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.it_cron.android1.R
 import ru.it_cron.android1.databinding.IntroAppContentBinding
 import ru.it_cron.android1.navigation.Screens
+import ru.it_cron.android1.presentation.animation.CustomAnimated
 
 class AppIntro : Fragment() {
 
@@ -46,10 +46,18 @@ class AppIntro : Fragment() {
             val current = binding.vpIntro.currentItem
             if (current == STEP - 1) {
                 viewModel.saveOnBoardingState(true)
-                Log.d("MainActivity", "button click")
-                router.replaceScreen(Screens.openHomeFragment())
+                CustomAnimated.animatedAlpha(
+                    textView = binding.btIntro
+                ){
+                    router.replaceScreen(Screens.openHomeFragment())
+                }
             } else {
-                binding.vpIntro.currentItem = current + 1
+                CustomAnimated.animatedAlpha(
+                    textView = binding.btIntro
+                ){
+                    binding.vpIntro.currentItem = current + 1
+                    binding.btIntro.alpha = 1f
+                }
             }
         }
     }
