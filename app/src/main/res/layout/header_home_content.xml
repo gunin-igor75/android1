@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <ImageView
+        android:id="@+id/iv_square"
+        android:layout_width="@dimen/_106sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:contentDescription="@string/description_image_squares"
+        android:src="@drawable/im_squares"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_logo"
+        android:layout_width="@dimen/_118sdp"
+        android:layout_height="@dimen/_118sdp"
+        android:contentDescription="@string/description_image_logo_cron"
+        android:src="@drawable/im_logo_header"
+        app:layout_constraintBottom_toTopOf="@id/guideline_h_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_square" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.44" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.26" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_h_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.126" />
+
+    <ImageView
+        android:id="@+id/iv_cron_text"
+        android:layout_width="@dimen/_164sdp"
+        android:layout_height="@dimen/_28sdp"
+        android:contentDescription="@string/description_image_it_cron_text"
+        android:src="@drawable/im_logo_text_header"
+        app:layout_constraintStart_toEndOf="@id/guideline_h_3"
+        app:layout_constraintTop_toTopOf="@id/guideline_h_4" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_home_header"
+        style="@style/HomeHeaderBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_12ssp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/home_header"
+        app:layout_constraintStart_toEndOf="@id/guideline_h_3"
+        app:layout_constraintTop_toBottomOf="@id/iv_cron_text" />
+
+</merge>

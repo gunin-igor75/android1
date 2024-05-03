@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_cases"
+        style="@style/HomeBodyTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_30ssp"
+        android:text="@string/cases"
+        app:layout_constraintBottom_toTopOf="@id/tv_company"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_company"
+        style="@style/HomeBodyTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_30ssp"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:text="@string/company"
+        app:layout_constraintBottom_toTopOf="@id/tv_services"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_cases" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_services"
+        style="@style/HomeBodyTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_30ssp"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:text="@string/services"
+        app:layout_constraintBottom_toTopOf="@id/tv_contacts"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_company" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_contacts"
+        style="@style/HomeBodyTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_30ssp"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:text="@string/contacts"
+        app:layout_constraintBottom_toTopOf="@id/tv_login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_services" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_login"
+        style="@style/HomeBodyTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_30ssp"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:text="@string/personal_account"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_contacts" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
