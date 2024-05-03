@@ -17,7 +17,7 @@ class AccessRepositoryImpl(
             try {
                 val response = apiService.checkAvailableCabinet()
                 if (response.error == null) {
-                    AvailableState.Success(response.dataDto.isCabinetAvailable)
+                    AvailableState.Success(response.dataAvailableDto.isCabinetAvailable)
                 } else {
                     AvailableState.Error(response.error)
                 }

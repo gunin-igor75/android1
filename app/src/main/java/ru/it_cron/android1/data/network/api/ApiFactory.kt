@@ -10,8 +10,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiFactory {
 
     private const val BASE_URL = "https://services.it-cron.ru/api/"
+    private const val HEADER_LANGUAGE = "Accept-Language"
+    private const val HEADER_LANGUAGE_VALUE = "ru"
 
     private val okHttpClient = getOrHttpBuilder()
+        .addInterceptor(setHeader())
         .addInterceptor(loginInterceptor())
         .build()
 
@@ -36,6 +39,16 @@ object ApiFactory {
     private fun loginInterceptor(): Interceptor {
         return HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
+        }
+    }
+
+    private fun setHeader(): Interceptor {
+        return Interceptor {chain ->
+            val newBuilder = chain.request()
+                .newBuilder()
+                .addHeader(HEADER_LANGUAGE, HEADER_LANGUAGE_VALUE)
+                .build()
+            return@Interceptor chain.proceed(newBuilder)
         }
     }
 }
