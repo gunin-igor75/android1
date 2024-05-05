@@ -4,6 +4,7 @@ sealed interface StateApp<T> {
 
     class Initial<T> : StateApp<T>
 
+    class Loading<T>: StateApp<T>
     class ErrorInternet<T> : StateApp<T>
 
     data class Error<T>(

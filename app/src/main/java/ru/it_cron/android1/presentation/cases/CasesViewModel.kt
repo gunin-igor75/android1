@@ -24,6 +24,7 @@ class CasesViewModel(
 
     private fun getCases() {
         viewModelScope.launch {
+            _cases.value = StateApp.Loading()
             val result = getCasesUseCase()
             _cases.value = result
         }

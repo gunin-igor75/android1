@@ -1,5 +1,6 @@
 package ru.it_cron.android1.data.repository
 
+import android.util.Log
 import androidx.datastore.core.IOException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -24,12 +25,17 @@ class CasesRepositoryImpl(
                     value = result
                 )
             } catch (e: IOException) {
+                Log.d(TAG, "Error ${e.message.toString()}")
                 StateApp.ErrorInternet()
             } catch (e: HttpException) {
+                Log.d(TAG, "Error ${e.message.toString()}")
                 StateApp.Error(
                     error = e.message.toString()
                 )
             }
         }
+    }
+    private companion object{
+        const val TAG = "CasesRepositoryImpl"
     }
 }

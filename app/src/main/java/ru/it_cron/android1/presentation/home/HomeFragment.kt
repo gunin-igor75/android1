@@ -1,7 +1,8 @@
 package ru.it_cron.android1.presentation.home
 
 
-import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,8 +24,6 @@ class HomeFragment : Fragment() {
     private val binding: FragmentHomeBinding
         get() = _binding ?: throw IllegalStateException("FragmentHomeBinding is null")
 
-    private lateinit var launchIntent: LaunchIntent
-
     private val router: Router by inject()
 
     override fun onCreateView(
@@ -33,15 +32,6 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is LaunchIntent) {
-            launchIntent = context
-        } else {
-            throw IllegalStateException("Activity must implement LaunchIntent")
-        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,16 +44,16 @@ class HomeFragment : Fragment() {
         val footerBinding = FooterHomeContentBinding.bind(binding.root)
         with(footerBinding) {
             tvEmail.setOnClickListener {
-                launchIntent.launchEmail()
+                sendEmail(URL_EMAIL)
             }
             ivFacebook.setOnClickListener {
-                launchIntent.launchFacebook()
+                sendRequest(URL_FACEBOOK, PN_FACEBOOK)
             }
             ivInstagram.setOnClickListener {
-                launchIntent.launchInstagram()
+                sendRequest(URL_INSTAGRAM, PN_INSTAGRAM)
             }
             ivTelegram.setOnClickListener {
-                launchIntent.launchTelegram()
+                sendRequest(URL_TELEGRAM, PN_TELEGRAM)
             }
             btSendRequest.setOnClickListener {
                 CustomAnimated.animatedAlpha(
@@ -107,15 +97,57 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun sendRequest(url: String, packageName: String) {
+        try {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            intent.setPackage(packageName)
+            startActivity(intent)
+        } catch (e: Exception) {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+                addCategory(Intent.CATEGORY_BROWSABLE)
+            }
+            startActivity(intent)
+        }
+    }
+    private fun sendEmail(addresses: String) {
+        try {
+            val intent = Intent(Intent.ACTION_SENDTO).apply {
+                data = Uri.parse(URL_GMAIL)
+                putExtra(Intent.EXTRA_EMAIL, addresses)
+            }
+            startActivity(intent)
+        } catch (e: Exception) {
+            val uriBuilder = Uri.parse(URL_PLAY_MARKET)
+                .buildUpon()
+                .appendQueryParameter(KEY_ID, PN_GMAIL)
+                .appendQueryParameter(KEY_LAUNCH, VALUE_TRUE)
+
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                data = uriBuilder.build()
+                setPackage(PN_PLAY_MARKET)
+            }
+            startActivity(intent)
+        }
+    }
+
     companion object {
         @JvmStatic
         fun newInstance() = HomeFragment()
-    }
 
-    interface LaunchIntent {
-        fun launchFacebook()
-        fun launchInstagram()
-        fun launchTelegram()
-        fun launchEmail()
+        private const val PN_TELEGRAM = "org.telegram.messenger"
+        private const val PN_FACEBOOK = "com.facebook.katana"
+        private const val PN_INSTAGRAM = "com.instagram.android"
+        private const val PN_GMAIL = "com.google.android.gm"
+        private const val URL_TELEGRAM = "https://t.me/+NnhpGqJYWAU2MDIy"
+        private const val URL_FACEBOOK = "https://www.facebook.com/it.cron.ru/"
+        private const val URL_INSTAGRAM = "https://www.instagram.com/itcron/?hl=ru"
+        private const val URL_EMAIL = "hello@it-cron.ru"
+        private const val PN_PLAY_MARKET = "com.android.vending"
+        private const val URL_PLAY_MARKET = "market://launch"
+        private const val URL_GMAIL = "mailto:"
+        private const val KEY_ID = "id"
+        private const val KEY_LAUNCH = "launch"
+        private const val VALUE_TRUE = "true"
     }
 }
+

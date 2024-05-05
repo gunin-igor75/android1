@@ -34,6 +34,6 @@ class AccessRepositoryImpl(
     }
 
     private companion object{
-        const val TAG = "AccessRepository"
+        const val TAG = "AccessRepositoryImpl"
     }
 }
