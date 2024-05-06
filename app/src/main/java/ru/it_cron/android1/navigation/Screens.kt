@@ -1,7 +1,7 @@
 package ru.it_cron.android1.navigation
 
 import com.github.terrakok.cicerone.androidx.FragmentScreen
-import ru.it_cron.android1.CaseFragment
+import ru.it_cron.android1.presentation.case_screen.CaseFragment
 import ru.it_cron.android1.presentation.cases.CasesFragment
 import ru.it_cron.android1.presentation.company.CompanyFragment
 import ru.it_cron.android1.presentation.contacts.ContactsFragment
