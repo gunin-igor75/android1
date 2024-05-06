@@ -1,6 +1,7 @@
 package ru.it_cron.android1.navigation
 
 import com.github.terrakok.cicerone.androidx.FragmentScreen
+import ru.it_cron.android1.CaseFragment
 import ru.it_cron.android1.presentation.cases.CasesFragment
 import ru.it_cron.android1.presentation.company.CompanyFragment
 import ru.it_cron.android1.presentation.contacts.ContactsFragment
@@ -36,5 +37,8 @@ object Screens {
     }
     fun openLoginFragment() = FragmentScreen{
         LoginFragment.newInstance()
+    }
+    fun openCaseFragment(caseId: String) = FragmentScreen {
+        CaseFragment.newInstance(caseId)
     }
 }

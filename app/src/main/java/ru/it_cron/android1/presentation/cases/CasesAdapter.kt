@@ -16,7 +16,7 @@ class CasesAdapter(
     private val context: Context
 ): ListAdapter<Case, CaseViewHolder>(CaseItemDiffCallback) {
 
-    private val caseOnClickListener: CaseOnClickListener? = null
+    var caseOnClickListener: CaseOnClickListener? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CaseViewHolder {
         val  view = CaseItemBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -55,6 +55,6 @@ class CasesAdapter(
     }
 
     interface CaseOnClickListener{
-        fun onClickCase(id: String)
+        fun onClickCase(caseId: String)
     }
 }

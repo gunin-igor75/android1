@@ -16,6 +16,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.it_cron.android1.databinding.FragmentCasesBinding
 import ru.it_cron.android1.domain.model.StateApp
 import ru.it_cron.android1.navigation.Screens
+import ru.it_cron.android1.presentation.cases.CasesAdapter.CaseOnClickListener
 
 class CasesFragment : Fragment() {
     private var _binding: FragmentCasesBinding? = null
@@ -42,8 +43,8 @@ class CasesFragment : Fragment() {
         setupToolBarApp()
         setupRecyclerView()
         observeViewModel()
+        onClickAdapter()
     }
-
 
     private fun setupToolBarApp() {
         val toolBar = binding.tbCases
@@ -85,6 +86,14 @@ class CasesFragment : Fragment() {
                         }
                     }
                 }
+        }
+    }
+
+    private fun onClickAdapter() {
+        casesAdapter.caseOnClickListener = object : CaseOnClickListener {
+            override fun onClickCase(caseId: String) {
+                router.navigateTo(Screens.openCaseFragment(caseId))
+            }
         }
     }
 

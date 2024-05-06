@@ -23,18 +23,22 @@
         android:layout_marginTop="16dp"
         android:contentDescription="@string/error_description"
         android:src="@drawable/im_error_page"
+        app:layout_constraintBottom_toTopOf="@+id/appCompatTextView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_close" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView4"
         style="@style/ErrorPageTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
         android:text="@string/not_internet"
         android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_image_error" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_image_error" />
 </androidx.constraintlayout.widget.ConstraintLayout>
