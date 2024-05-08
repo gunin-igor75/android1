@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.it_cron.android1.databinding.FragmentCasesBinding
-import ru.it_cron.android1.domain.model.StateApp
+import ru.it_cron.android1.domain.model.StateScreen
 import ru.it_cron.android1.navigation.Screens
 import ru.it_cron.android1.presentation.cases.CasesAdapter.CaseOnClickListener
 
@@ -71,21 +71,21 @@ class CasesFragment : Fragment() {
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle)
                 .collect { state ->
                     when (state) {
-                        is StateApp.Initial -> {}
-                        is StateApp.Loading -> {
+                        is StateScreen.Initial -> {}
+                        is StateScreen.Loading -> {
                             binding.pbCases.visibility = View.VISIBLE
                         }
 
-                        is StateApp.Success -> {
+                        is StateScreen.Success -> {
                             binding.pbCases.visibility = View.GONE
                             casesAdapter.submitList(state.value)
                         }
 
-                        is StateApp.ErrorInternet -> {
+                        is StateScreen.ErrorInternet -> {
                             router.replaceScreen(Screens.openErrorFragment())
                         }
 
-                        is StateApp.Error -> {
+                        is StateScreen.Error -> {
                             Log.e(TAG, state.error)
                         }
                     }

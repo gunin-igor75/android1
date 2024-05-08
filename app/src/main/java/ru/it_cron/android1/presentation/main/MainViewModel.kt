@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import ru.it_cron.android1.data.model.DataResult
 import ru.it_cron.android1.domain.model.AvailableState
 import ru.it_cron.android1.domain.usecases.CheckAvailableUseCase
 import ru.it_cron.android1.domain.usecases.ReadOnBoardingStateUseCase
@@ -33,8 +34,18 @@ class MainViewModel(
 
     fun checkAvailable() {
         viewModelScope.launch {
-            val result = checkAvailableUseCase()
-            _isAvailable.value = result
+            when (val result = checkAvailableUseCase()) {
+                is DataResult.Error -> {
+                    _isAvailable.value = AvailableState.Error(result.error)
+                }
+
+                is DataResult.Success -> {
+                    _isAvailable.value = AvailableState.Success(result.value)
+                }
+
+                is DataResult.ErrorInternet -> {}
+            }
+
         }
     }
 

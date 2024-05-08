@@ -19,7 +19,7 @@ val dataModule = module {
     single<ApiService> {
         ApiFactory.apiService
     }
-    single<AccessRepository> {
+    single<AccessRepository<Boolean>> {
         AccessRepositoryImpl(apiService = get())
     }
     single<CasesRepository<List<Case>>> {
