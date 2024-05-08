@@ -36,25 +36,25 @@ class AppIntro : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.vpIntro.adapter = AppIntroViewPagerAdapter()
-        binding.vpIntro.registerOnPageChangeCallback(object :ViewPager2.OnPageChangeCallback(){
+        binding.vpIntro.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 setupView(position)
             }
         })
-        binding.btIntro.setOnClickListener{
+        binding.btIntro.setOnClickListener {
             val current = binding.vpIntro.currentItem
             if (current == STEP - 1) {
                 viewModel.saveOnBoardingState(true)
                 CustomAnimated.animatedAlpha(
                     textView = binding.btIntro
-                ){
+                ) {
                     router.replaceScreen(Screens.openHomeFragment())
                 }
             } else {
                 CustomAnimated.animatedAlpha(
                     textView = binding.btIntro
-                ){
+                ) {
                     binding.vpIntro.currentItem = current + 1
                     binding.btIntro.alpha = 1f
                 }

@@ -7,7 +7,7 @@
     tools:context=".presentation.cases.CasesFragment">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tb_cases"
+        android:id="@+id/tbCases"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
@@ -19,7 +19,7 @@
         app:titleTextAppearance="@style/ToolBar">
 
         <TextView
-            android:id="@+id/tv_filter"
+            android:id="@+id/tvFilter"
             style="@style/IntroBody"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
@@ -31,51 +31,51 @@
     </androidx.appcompat.widget.Toolbar>
 
     <ImageView
-        android:id="@+id/iv_decor_1"
+        android:id="@+id/ivDecor1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:contentDescription="@string/image_ellipse_1_description"
         android:src="@drawable/im_ellipse_cases_1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tb_cases" />
+        app:layout_constraintTop_toBottomOf="@id/tbCases" />
 
     <ImageView
-        android:id="@+id/iv_decor_2"
+        android:id="@+id/ivDecor2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:contentDescription="@string/image_ellipse_1_description"
         android:src="@drawable/im_ellipse_cases_2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_decor_1" />
+        app:layout_constraintTop_toBottomOf="@id/ivDecor1" />
 
     <ImageView
-        android:id="@+id/iv_decor_3"
+        android:id="@+id/ivDecor3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:contentDescription="@string/image_ellipse_1_description"
         android:src="@drawable/im_ellipse_cases_3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_decor_2" />
+        app:layout_constraintTop_toBottomOf="@id/ivDecor2" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_cases"
+        android:id="@+id/rvCases"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="vertical"
         android:layout_marginTop="16dp"
+        android:orientation="vertical"
         android:paddingHorizontal="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tb_cases"
+        app:layout_constraintTop_toBottomOf="@id/tbCases"
         tools:itemCount="2"
         tools:listitem="@layout/case_item" />
 
     <ProgressBar
-        android:id="@+id/pb_cases"
+        android:id="@+id/pbCases"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminateTint="@color/orange"

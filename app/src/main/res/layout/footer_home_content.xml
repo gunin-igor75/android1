@@ -14,7 +14,7 @@
             app:layout_constraintGuide_percent="0.9" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/bt_send_request"
+            android:id="@+id/btSendRequest"
             style="@style/HomeButton"
             android:layout_width="@dimen/_108sdp"
             android:layout_height="@dimen/_108sdp"
@@ -24,7 +24,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_email"
+            android:id="@+id/tvEmail"
             style="@style/HomeHeaderFooter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,31 +34,31 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/iv_facebook"
+            android:id="@+id/ivFacebook"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
             android:contentDescription="@string/description_icon_facebook"
             android:src="@drawable/ic_facebook_black"
-            app:layout_constraintBottom_toBottomOf="@id/bt_send_request"
+            app:layout_constraintBottom_toBottomOf="@id/btSendRequest"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/iv_instagram"
+            android:id="@+id/ivInstagram"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
             android:layout_marginStart="@dimen/_12sdp"
             android:contentDescription="@string/description_icon_instagram"
             android:src="@drawable/ic_instagram_black"
-            app:layout_constraintBottom_toBottomOf="@id/bt_send_request"
-            app:layout_constraintStart_toEndOf="@id/iv_facebook" />
+            app:layout_constraintBottom_toBottomOf="@id/btSendRequest"
+            app:layout_constraintStart_toEndOf="@id/ivFacebook" />
 
         <ImageView
-            android:id="@+id/iv_telegram"
+            android:id="@+id/ivTelegram"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"
             android:layout_marginStart="@dimen/_12sdp"
             android:contentDescription="@string/description_icon_telegram"
             android:src="@drawable/ic_telegram_black"
-            app:layout_constraintBottom_toBottomOf="@id/bt_send_request"
-            app:layout_constraintStart_toEndOf="@id/iv_instagram" />
+            app:layout_constraintBottom_toBottomOf="@id/btSendRequest"
+            app:layout_constraintStart_toEndOf="@id/ivInstagram" />
 </merge>

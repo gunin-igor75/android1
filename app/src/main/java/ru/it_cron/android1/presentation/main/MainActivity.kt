@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(){
     private val navHolder: NavigatorHolder by inject()
     private val viewModel: MainViewModel by viewModel<MainViewModel>()
     private val navigator: AppNavigator by lazy {
-        AppNavigator(this, R.id.main_container, supportFragmentManager)
+        AppNavigator(this, R.id.mainContainer, supportFragmentManager)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main_container)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.mainContainer)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity(){
 
     private fun launchFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.main_container, fragment)
+            .replace(R.id.mainContainer, fragment)
             .commit()
     }
 

@@ -8,7 +8,7 @@
     tools:context=".presentation.error.ErrorFragment">
 
     <ImageView
-        android:id="@+id/iv_close"
+        android:id="@+id/ivClose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/icon_close_description"
@@ -17,20 +17,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/iv_image_error"
+        android:id="@+id/ivImageError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/error_description"
         android:src="@drawable/im_error_page"
-        app:layout_constraintBottom_toTopOf="@+id/appCompatTextView4"
+        app:layout_constraintBottom_toTopOf="@+id/tvInternetNot"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView4"
+        android:id="@+id/tvInternetNot"
         style="@style/ErrorPageTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,5 +40,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_image_error" />
+        app:layout_constraintTop_toBottomOf="@+id/ivImageError" />
 </androidx.constraintlayout.widget.ConstraintLayout>
