@@ -46,7 +46,9 @@ class CasesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupToolBarApp()
         setupRecyclerView()
-        observeViewModel()
+        observeViewModel {
+            router.replaceScreen(Screens.openErrorFragment())
+        }
         onClickAdapter()
     }
 
@@ -65,7 +67,9 @@ class CasesFragment : Fragment() {
         recyclerViewCases.adapter = casesAdapter
     }
 
-    private fun observeViewModel() {
+    private fun observeViewModel(
+        movieToErrorScreen: () -> Unit,
+    ) {
         lifecycleScope.launch {
             viewModel.cases
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle)
@@ -82,7 +86,7 @@ class CasesFragment : Fragment() {
                         }
 
                         is StateScreen.ErrorInternet -> {
-                            router.replaceScreen(Screens.openErrorFragment())
+                            movieToErrorScreen()
                         }
 
                         is StateScreen.Error -> {
