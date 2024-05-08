@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import ru.it_cron.android1.R
 import ru.it_cron.android1.databinding.FragmentCaseBinding
-import ru.it_cron.android1.presentation.extension.arguments
 
 class CaseFragment : Fragment() {
 
@@ -29,8 +29,8 @@ class CaseFragment : Fragment() {
     companion object {
 
         private const val CASE_ID = "case_id"
-
-        fun newInstance(caseId: String) = CaseFragment()
-            .arguments(CASE_ID to caseId)
+        fun newInstance(caseId: String) = CaseFragment().apply {
+            arguments = bundleOf(CASE_ID to caseId)
+        }
     }
 }
