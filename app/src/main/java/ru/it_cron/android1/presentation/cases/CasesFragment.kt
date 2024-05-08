@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.RequestManager
 import com.github.terrakok.cicerone.Router
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -25,10 +26,13 @@ class CasesFragment : Fragment() {
 
     private val viewModel: CasesViewModel by viewModel()
 
-    private val casesAdapter: CasesAdapter by inject()
+    private val glide by inject<RequestManager>()
 
     private val router: Router by inject()
 
+    private val casesAdapter: CasesAdapter by lazy {
+        CasesAdapter(glide)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
