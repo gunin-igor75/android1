@@ -18,12 +18,14 @@ class Android1App : Application() {
         startKoin {
             androidLogger(Level.DEBUG)
             androidContext(this@Android1App)
-            modules(listOf(
-                dataModule,
-                domainModule,
-                appModule,
-                navigationModule
-            ))
+            modules(
+                listOf(
+                    dataModule,
+                    domainModule,
+                    appModule,
+                    navigationModule
+                )
+            )
         }
     }
 }

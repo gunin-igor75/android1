@@ -7,20 +7,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.github.terrakok.cicerone.NavigatorHolder
+import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.it_cron.android1.R
 import ru.it_cron.android1.domain.model.AvailableState
-import ru.it_cron.android1.presentation.home.HomeFragment
-import ru.it_cron.android1.presentation.onboarding.AppIntro
+import ru.it_cron.android1.navigation.Screens
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity() {
 
     private val navHolder: NavigatorHolder by inject()
     private val viewModel: MainViewModel by viewModel<MainViewModel>()
@@ -28,6 +27,7 @@ class MainActivity : AppCompatActivity(){
         AppNavigator(this, R.id.mainContainer, supportFragmentManager)
     }
 
+    private val router: Router by inject()
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_Android1)
         super.onCreate(savedInstanceState)
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(){
         }
         viewModel.checkAvailable()
         checkDataServer()
-        setupFragment()
+        setupScreen()
     }
 
     override fun onResumeFragments() {
@@ -86,17 +86,12 @@ class MainActivity : AppCompatActivity(){
         ).show()
     }
 
-    private fun setupFragment() {
+    private fun setupScreen() {
         viewModel.isCompleted.observe(this) { completed ->
-            val fragment = if (completed) HomeFragment.newInstance() else AppIntro.newInstance()
-            launchFragment(fragment)
+            if (!completed) {
+                router.replaceScreen(Screens.openOnBoardingFragment())
+            }
         }
-    }
-
-    private fun launchFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.mainContainer, fragment)
-            .commit()
     }
 
     private fun changeIsLoading(): Boolean {

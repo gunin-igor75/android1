@@ -58,10 +58,9 @@ class HomeFragment : Fragment() {
             btSendRequest.setOnClickListener {
                 CustomAnimated.animatedAlpha(
                     btSendRequest,
-                ){
-                    router.navigateTo(Screens.openContactsFragment())
+                ) {
+                    /*TODO Send Request realisation*/
                 }
-                /*TODO Send Request realisation*/
             }
         }
     }
@@ -109,6 +108,7 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
     }
+
     private fun sendEmail(addresses: String) {
         try {
             val intent = Intent(Intent.ACTION_SENDTO).apply {

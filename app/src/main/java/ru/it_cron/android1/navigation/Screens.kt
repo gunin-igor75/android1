@@ -23,21 +23,27 @@ object Screens {
     fun openErrorFragment() = FragmentScreen {
         ErrorFragment.newInstance()
     }
+
     fun openCasesFragment() = FragmentScreen {
         CasesFragment.newInstance()
     }
+
     fun openCompanyFragment() = FragmentScreen {
         CompanyFragment.newInstance()
     }
-    fun openServicesFragment() = FragmentScreen{
+
+    fun openServicesFragment() = FragmentScreen {
         ServicesFragment.newInstance()
     }
-    fun openContactsFragment() = FragmentScreen{
+
+    fun openContactsFragment() = FragmentScreen {
         ContactsFragment.newInstance()
     }
-    fun openLoginFragment() = FragmentScreen{
+
+    fun openLoginFragment() = FragmentScreen {
         LoginFragment.newInstance()
     }
+
     fun openCaseFragment(caseId: String) = FragmentScreen {
         CaseFragment.newInstance(caseId)
     }
