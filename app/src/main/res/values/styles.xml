@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="GothamProReg">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/gotham_pro_reg</item>
+    </style>
+
+    <style name="GothamProReg.24sp">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="GothamProMed">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/gotham_pro_med</item>
+    </style>
+
+    <style name="GothamProMed.14sp">
+        <item name="android:textSize">14sp</item>
+    </style>
+
     <style name="HomeBodyTitle">
         <item name="android:textColor">@color/white</item>
         <item name="fontFamily">@font/gotham_pro_reg</item>
@@ -112,5 +130,11 @@
 
     <style name="HomeButton.Splash">
         <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="ToolBar.Filter">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/gotham_pro_bol</item>
     </style>
 </resources>
