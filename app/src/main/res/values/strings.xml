@@ -47,4 +47,9 @@
     <string name="go_to_home">Вернуться на \nГлавную</string>
     <string name="splash">Splash</string>
     <string name="image_splash_description">Image splash</string>
+    <string name="filters">Фильтры</string>
+    <string name="icon_clear_filter_description">Icon clear filter</string>
+    <string name="title_filter">Отрасль</string>
+    <string name="filter_selected">Гос.учереждения</string>
+    <string name="icon_enabled_description">Icon enabled</string>
 </resources>
