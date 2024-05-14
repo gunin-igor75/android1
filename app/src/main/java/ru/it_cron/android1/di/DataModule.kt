@@ -4,10 +4,13 @@ import org.koin.dsl.module
 import ru.it_cron.android1.data.network.api.ApiFactory
 import ru.it_cron.android1.data.network.api.ApiService
 import ru.it_cron.android1.data.repository.AccessRepositoryImpl
+import ru.it_cron.android1.data.repository.CaseDetailsRepositoryImp
 import ru.it_cron.android1.data.repository.CasesRepositoryImpl
 import ru.it_cron.android1.data.repository.OnBoardingRepositoryImpl
 import ru.it_cron.android1.domain.model.Case
+import ru.it_cron.android1.domain.model.CaseDetails
 import ru.it_cron.android1.domain.repository.AccessRepository
+import ru.it_cron.android1.domain.repository.CaseDetailsRepository
 import ru.it_cron.android1.domain.repository.CasesRepository
 import ru.it_cron.android1.domain.repository.OnBoardingRepository
 
@@ -24,5 +27,8 @@ val dataModule = module {
     }
     single<CasesRepository<List<Case>>> {
         CasesRepositoryImpl(apiService = get())
+    }
+    single<CaseDetailsRepository<CaseDetails>> {
+        CaseDetailsRepositoryImp(apiService = get())
     }
 }

@@ -16,8 +16,8 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.it_cron.android1.R
-import ru.it_cron.android1.domain.model.AvailableState
 import ru.it_cron.android1.navigation.Screens
+import ru.it_cron.android1.domain.model.AvailableState
 
 class MainActivity : AppCompatActivity() {
 

@@ -41,6 +41,7 @@ class CasesViewModel(
                     errorChannel.send(StateError.ErrorInternet)
 
                 }
+
                 is DataResult.Success -> {
                     _cases.value = StateScreen.Success(result.value)
                 }

@@ -5,6 +5,6 @@
     android:name="ru.it_cron.android1.presentation.home.HomeFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ru.it_cron.android1.presentation.main.MainActivity">
+    tools:context=".presentation.main.MainActivity">
 
 </androidx.fragment.app.FragmentContainerView>

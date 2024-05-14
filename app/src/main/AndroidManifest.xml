@@ -5,6 +5,7 @@
     <application
         android:allowBackup="true"
         android:name=".app.Android1App"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -22,32 +23,6 @@
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
-
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.BROWSABLE" />
-                <category android:name="android.intent.category.DEFAULT" />
-
-                <data android:scheme="https"/>
-                <data android:host="t.me"/>
-                <data android:pathPrefix="/+NnhpGqJYWAU2MDIy"/>
-
-                <data android:scheme="https"/>
-                <data android:host="www.facebook.com"/>
-                <data android:pathPrefix="/it.cron.ru"/>
-
-                <data android:scheme="https"/>
-                <data android:host="www.instagram.com"/>
-                <data android:pathPrefix="/itcron/?hl=ru"/>
-
-            </intent-filter>
-
-            <intent-filter>
-                <action android:name="android.intent.action.SENDTO" />
-                <data android:scheme="mailto" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
     </application>
 

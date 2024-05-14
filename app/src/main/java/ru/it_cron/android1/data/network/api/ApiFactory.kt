@@ -1,6 +1,5 @@
 package ru.it_cron.android1.data.network.api
 
-import android.os.Build
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -13,7 +12,7 @@ object ApiFactory {
     private const val HEADER_LANGUAGE = "Accept-Language"
     private const val HEADER_LANGUAGE_VALUE = "ru"
 
-    private val okHttpClient = getOrHttpBuilder()
+    private val okHttpClient = OkHttpClient.Builder()
         .addInterceptor(setHeader())
         .addInterceptor(loginInterceptor())
         .build()
@@ -29,13 +28,6 @@ object ApiFactory {
         "ApiService is null"
     )
 
-    private fun getOrHttpBuilder(): OkHttpClient.Builder =
-        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.N) {
-            OkHttpClient.Builder()
-        } else {
-            UnsafeOkHttpClient.getUnsafeOkHttpClient()
-        }
-
     private fun loginInterceptor(): Interceptor {
         return HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
@@ -43,7 +35,7 @@ object ApiFactory {
     }
 
     private fun setHeader(): Interceptor {
-        return Interceptor {chain ->
+        return Interceptor { chain ->
             val newBuilder = chain.request()
                 .newBuilder()
                 .addHeader(HEADER_LANGUAGE, HEADER_LANGUAGE_VALUE)

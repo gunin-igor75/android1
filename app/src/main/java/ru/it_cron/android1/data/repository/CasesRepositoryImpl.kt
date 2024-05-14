@@ -35,7 +35,8 @@ class CasesRepositoryImpl(
             }
         }
     }
-    private companion object{
+
+    private companion object {
         const val TAG = "CasesRepositoryImpl"
     }
 }

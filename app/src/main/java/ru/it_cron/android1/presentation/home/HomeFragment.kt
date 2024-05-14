@@ -1,8 +1,6 @@
 package ru.it_cron.android1.presentation.home
 
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +14,8 @@ import ru.it_cron.android1.databinding.FragmentHomeBinding
 import ru.it_cron.android1.navigation.Screens
 import ru.it_cron.android1.presentation.animation.CustomAnimated
 import ru.it_cron.android1.presentation.animation.CustomAnimated.Companion.animatedColor
+import ru.it_cron.android1.presentation.extension.sendEmail
+import ru.it_cron.android1.presentation.extension.sendRequest
 
 
 class HomeFragment : Fragment() {
@@ -96,40 +96,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun sendRequest(url: String, packageName: String) {
-        try {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-            intent.setPackage(packageName)
-            startActivity(intent)
-        } catch (e: Exception) {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
-                addCategory(Intent.CATEGORY_BROWSABLE)
-            }
-            startActivity(intent)
-        }
-    }
-
-    private fun sendEmail(addresses: String) {
-        try {
-            val intent = Intent(Intent.ACTION_SENDTO).apply {
-                data = Uri.parse(URL_GMAIL)
-                putExtra(Intent.EXTRA_EMAIL, addresses)
-            }
-            startActivity(intent)
-        } catch (e: Exception) {
-            val uriBuilder = Uri.parse(URL_PLAY_MARKET)
-                .buildUpon()
-                .appendQueryParameter(KEY_ID, PN_GMAIL)
-                .appendQueryParameter(KEY_LAUNCH, VALUE_TRUE)
-
-            val intent = Intent(Intent.ACTION_VIEW).apply {
-                data = uriBuilder.build()
-                setPackage(PN_PLAY_MARKET)
-            }
-            startActivity(intent)
-        }
-    }
-
     companion object {
         @JvmStatic
         fun newInstance() = HomeFragment()
@@ -137,17 +103,10 @@ class HomeFragment : Fragment() {
         private const val PN_TELEGRAM = "org.telegram.messenger"
         private const val PN_FACEBOOK = "com.facebook.katana"
         private const val PN_INSTAGRAM = "com.instagram.android"
-        private const val PN_GMAIL = "com.google.android.gm"
         private const val URL_TELEGRAM = "https://t.me/+NnhpGqJYWAU2MDIy"
         private const val URL_FACEBOOK = "https://www.facebook.com/it.cron.ru/"
         private const val URL_INSTAGRAM = "https://www.instagram.com/itcron/?hl=ru"
         private const val URL_EMAIL = "hello@it-cron.ru"
-        private const val PN_PLAY_MARKET = "com.android.vending"
-        private const val URL_PLAY_MARKET = "market://launch"
-        private const val URL_GMAIL = "mailto:"
-        private const val KEY_ID = "id"
-        private const val KEY_LAUNCH = "launch"
-        private const val VALUE_TRUE = "true"
     }
 }
 

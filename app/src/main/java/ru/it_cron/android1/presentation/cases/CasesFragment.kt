@@ -15,6 +15,7 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.it_cron.android1.databinding.FragmentCasesBinding
+import ru.it_cron.android1.domain.model.CaseBox
 import ru.it_cron.android1.domain.model.StateError
 import ru.it_cron.android1.domain.model.StateScreen
 import ru.it_cron.android1.navigation.Screens
@@ -107,8 +108,8 @@ class CasesFragment : Fragment() {
 
     private fun onClickAdapter() {
         casesAdapter.caseOnClickListener = object : CaseOnClickListener {
-            override fun onClickCase(caseId: String) {
-                router.navigateTo(Screens.openCaseFragment(caseId))
+            override fun onClickCase(caseBox: CaseBox) {
+                router.navigateTo(Screens.openCaseFragment(caseBox))
             }
         }
     }
