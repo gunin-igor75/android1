@@ -21,7 +21,10 @@ val appModule = module {
         )
     }
     viewModel<CasesViewModel> {
-        CasesViewModel(getCasesUseCase = get())
+        CasesViewModel(
+            getCasesUseCase = get(),
+            choiceFilters = get()
+        )
     }
 
     viewModel<CaseDetailsViewModel> {

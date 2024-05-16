@@ -4,5 +4,5 @@ interface ChoiceState<T> {
 
     fun isChecked(item: T): Boolean
 
-
+    fun isEmpty(): Boolean
 }

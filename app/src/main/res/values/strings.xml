@@ -52,4 +52,5 @@
     <string name="title_filter">Отрасль</string>
     <string name="filter_selected">Гос.учереждения</string>
     <string name="icon_enabled_description">Icon enabled</string>
+    <string name="case_not_found">По вашему запросу ничего не найдено.</string>
 </resources>

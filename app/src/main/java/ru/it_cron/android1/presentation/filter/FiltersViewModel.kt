@@ -1,5 +1,6 @@
 package ru.it_cron.android1.presentation.filter
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -74,6 +75,7 @@ class FiltersViewModel(
                 is DataResult.Success -> {
                     _state.value = StateScreen.Success(true)
                     _filters.value = convertToTypeItem(result.value)
+
                 }
             }
         }
@@ -106,7 +108,7 @@ class FiltersViewModel(
         filtersGroup.map {
             result.add(TypeItem.Header(it.id, it.name))
             it.filters.forEach { filter ->
-                result.add(TypeItem.FilterItem(filter.id, filter.name, filter.inChecked))
+                result.add(TypeItem.FilterItem(filter.id, filter.name, false))
             }
         }
         return result

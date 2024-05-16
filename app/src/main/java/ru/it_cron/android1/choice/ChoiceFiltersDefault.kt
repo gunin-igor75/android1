@@ -56,4 +56,12 @@ class ChoiceFiltersDefault : ChoiceFilters<String>, ChoiceState<String> {
     override fun isEnabled(): Boolean {
         return checkedFilters.isNotEmpty()
     }
+
+    override fun getEnabledId(): Set<String> {
+        return checkedFilters.toSet()
+    }
+
+    override fun isEmpty(): Boolean {
+        return checkedFilters.isEmpty()
+    }
 }

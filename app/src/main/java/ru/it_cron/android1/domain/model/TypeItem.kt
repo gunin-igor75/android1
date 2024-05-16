@@ -2,7 +2,6 @@ package ru.it_cron.android1.domain.model
 
 
 sealed interface TypeItem {
-
     fun getIds():String
 
     data class Header(

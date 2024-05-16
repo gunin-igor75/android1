@@ -1,6 +1,7 @@
 package ru.it_cron.android1.choice
 
 import kotlinx.coroutines.flow.Flow
+import java.util.HashSet
 
 interface ChoiceFilters<T: Any> {
 
@@ -15,5 +16,7 @@ interface ChoiceFilters<T: Any> {
     fun listen(): Flow<ChoiceState<T>>
 
     fun isEnabled(): Boolean
+
+    fun getEnabledId(): Set<String>
 
 }
