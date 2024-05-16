@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btGooglePlay"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Case"
+        app:icon="@drawable/ic_bt__google_play"
+        app:layout_constraintEnd_toStartOf="@id/btAppStore"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvTechnologyPlatform" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btAppStore"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Case"
+        app:icon="@drawable/ic_bt_apple_store"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btGooglePlay"
+        app:layout_constraintTop_toBottomOf="@+id/cvTechnologyPlatform" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btWebsite"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="@dimen/_242sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="20dp"
+        android:text="@string/button_look_website"
+        android:textAllCaps="false"
+        android:textAppearance="@style/CaseButton"
+        android:textColor="@color/white"
+        app:icon="@drawable/ic_world"
+        app:iconGravity="textStart"
+        app:iconPadding="8dp"
+        app:iconTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btGooglePlay"
+        app:strokeColor="@color/orange" />
+</merge>

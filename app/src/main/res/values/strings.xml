@@ -30,4 +30,21 @@
     <string name="image_case_description">Image case</string>
     <string name="filter">Фильтр</string>
     <string name="image_ellipse_1_description">Image ellipse 1</string>
+    <string name="case_title">Кейс</string>
+    <string name="header_case_title">ГБОУ «Курчатовская школа»</string>
+    <string name="task">Задача</string>
+    <string name="task_description">Разработать мобильное приложение с возможность просмотра новостной ленты, а также записью на дополнительное образование (кружки)</string>
+    <string name="app_allows">Приложение позволяет</string>
+    <string name="icon_application_allows_description">Icon application allows</string>
+    <string name="app_allows_content">Производить запись в организации дополнительного образования и формировать договор</string>
+    <string name="technology">Технология</string>
+    <string name="technology_description">iOS - Swift Android – Kotlin Backend - PHP</string>
+    <string name="platform">Платформа</string>
+    <string name="platform_description">iOS Android Backend Панель управления</string>
+    <string name="button_look_website">Посмотреть сайт</string>
+    <string name="contacts_info">Стать клиентом или \nпартнером!</string>
+    <string name="next_case">Следующий кейс</string>
+    <string name="go_to_home">Вернуться на \nГлавную</string>
+    <string name="splash">Splash</string>
+    <string name="image_splash_description">Image splash</string>
 </resources>

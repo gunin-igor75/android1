@@ -1,6 +1,6 @@
 package ru.it_cron.android1.data.mappers
 
-import ru.it_cron.android1.data.network.dto.DataCasesDto
+import ru.it_cron.android1.data.network.dto.cases_dto.DataCasesDto
 import ru.it_cron.android1.domain.model.Case
 
 

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llBlockImages"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="40dp"
+    android:orientation="horizontal"
+    android:paddingStart="16dp"
+    android:paddingTop="32dp"
+    android:paddingBottom="32dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/tvBlockTaskContent"
+    tools:background="@color/case_image_color"
+    tools:ignore="RtlSymmetry">
+
+    <ImageView
+        android:id="@+id/ivCase1"
+        android:layout_width="170dp"
+        android:layout_height="306dp"
+        android:contentDescription="@string/image_case_description"
+        tools:src="@drawable/case_image" />
+
+    <ImageView
+        android:id="@+id/ivCase2"
+        android:layout_width="170dp"
+        android:layout_height="306dp"
+        android:layout_marginStart="30dp"
+        android:contentDescription="@string/image_case_description"
+        tools:src="@drawable/case_image" />
+
+</LinearLayout>
+

@@ -10,6 +10,7 @@ import ru.it_cron.android1.di.dataModule
 import ru.it_cron.android1.di.domainModule
 import ru.it_cron.android1.di.navigationModule
 
+
 class Android1App : Application() {
 
     override fun onCreate() {

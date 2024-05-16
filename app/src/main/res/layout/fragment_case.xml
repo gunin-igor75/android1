@@ -1,9 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.case_screen.CaseFragment">
+    android:orientation="vertical"
+    android:paddingHorizontal="16dp"
+    tools:context=".presentation.case_details.CaseFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/tbCase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:navigationIcon="@drawable/ic_arrow_left"
+        app:title="@string/case_title"
+        app:titleTextAppearance="@style/ToolBar">
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/block_task_case" />
+
+            <include
+                android:id="@+id/ic_block_images"
+                layout="@layout/block_images_case" />
 
 
-</FrameLayout>
+            <TextView
+                android:id="@+id/tvAppAllows"
+                style="@style/CaseHeaderTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ic_block_images"
+                tools:text="@string/app_allows" />
+
+            <LinearLayout
+                android:id="@+id/llBlockCaseAppAllows"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvAppAllows" />
+
+            <include layout="@layout/block_technology_platform_case" />
+
+            <include layout="@layout/block_button_case" />
+
+            <include layout="@layout/block_contact_info_case" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btSendRequestCase"
+                style="@style/HomeButton.Case"
+                android:layout_width="@dimen/_204sdp"
+                android:layout_height="@dimen/_204sdp"
+                android:layout_marginTop="64dp"
+                android:background="@drawable/circle_bg_orange"
+                android:lineSpacingMultiplier="1.2"
+                android:text="@string/send_request"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvContactsInfoEmail" />
+
+            <include layout="@layout/block_next_case" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvGoToHome"
+                style="@style/CaseEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64dp"
+                android:text="@string/go_to_home"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cvNextCase" />
+
+            <ProgressBar
+                android:id="@+id/pbCase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/orange"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</LinearLayout>

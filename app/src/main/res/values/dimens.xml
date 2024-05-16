@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Padding application-->
+    <dimen name="padding_app">16dp</dimen>
+
+    <!--Size LinearProgressIndicator-->
+    <dimen name="width_progress">@dimen/_54sdp</dimen>
+    <dimen name="height_progress">@dimen/_4sdp</dimen>
+    <dimen name="margin_progress">8dp</dimen>
+
+</resources>

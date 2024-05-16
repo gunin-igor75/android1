@@ -59,4 +59,58 @@
         <item name="android:textColor">@color/white</item>
         <item name="fontFamily">@font/gotham_pro_bol</item>
     </style>
+
+    <style name="CaseHeaderTitle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/gotham_pro_reg</item>
+    </style>
+
+    <style name="tvPlatformsTitle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">@font/gotham_pro_med</item>
+    </style>
+
+    <style name="CaseHeaderTaskDescription">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/gotham_pro_light</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.Button.OutlinedButton.Case">
+        <item name="android:layout_width">@dimen/_136sdp</item>
+        <item name="android:layout_height">@dimen/_40sdp</item>
+        <item name="android:layout_marginTop">40dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconTint">@null</item>
+        <item name="strokeColor">@color/white</item>
+    </style>
+
+    <style name="CaseButton">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/gotham_pro_med</item>
+    </style>
+
+    <style name="CaseContacts">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/geometria_bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="CaseEmail">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">32sp</item>
+        <item name="fontFamily">@font/geometria_regular</item>
+    </style>
+
+    <style name="HomeButton.Case">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="HomeButton.Splash">
+        <item name="android:textSize">24sp</item>
+    </style>
 </resources>

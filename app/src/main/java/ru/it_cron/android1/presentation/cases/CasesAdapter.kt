@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import ru.it_cron.android1.databinding.CaseItemBinding
 import ru.it_cron.android1.domain.model.Case
+import ru.it_cron.android1.domain.model.CaseBox
 import ru.it_cron.android1.presentation.cases.CasesAdapter.CaseViewHolder
 
 class CasesAdapter(
@@ -31,10 +32,12 @@ class CasesAdapter(
             tvCaseTitle.text = case.title
             ivCase.visibility = View.VISIBLE
             glide.load(case.image)
-                .override(300, 200)
+                .override(WIDTH, HEIGHT)
                 .into(ivCase)
             root.setOnClickListener {
-                caseOnClickListener?.onClickCase(case.id)
+                val caseNext = if (position == itemCount - 1) null else getItem(position + 1)
+                val caseBox = CaseBox(case, caseNext)
+                caseOnClickListener?.onClickCase(caseBox)
             }
         }
     }
@@ -52,6 +55,10 @@ class CasesAdapter(
     }
 
     interface CaseOnClickListener {
-        fun onClickCase(caseId: String)
+        fun onClickCase(caseBox: CaseBox)
+    }
+    companion object{
+        private const val WIDTH = 300
+        private const val HEIGHT = 300
     }
 }
