@@ -51,6 +51,13 @@ class CasesFragment : Fragment() {
         observeViewModelUi()
         observeViewModelError()
         onClickAdapter()
+        onClickFilter()
+    }
+
+    private fun onClickFilter() {
+        binding.tvFilter.setOnClickListener {
+            router.navigateTo(Screens.openFiltersFragment())
+        }
     }
 
     private fun setupToolBarApp() {

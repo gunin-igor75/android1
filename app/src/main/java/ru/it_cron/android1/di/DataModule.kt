@@ -6,12 +6,15 @@ import ru.it_cron.android1.data.network.api.ApiService
 import ru.it_cron.android1.data.repository.AccessRepositoryImpl
 import ru.it_cron.android1.data.repository.CaseDetailsRepositoryImp
 import ru.it_cron.android1.data.repository.CasesRepositoryImpl
+import ru.it_cron.android1.data.repository.FilterRepositoryImp
 import ru.it_cron.android1.data.repository.OnBoardingRepositoryImpl
 import ru.it_cron.android1.domain.model.Case
 import ru.it_cron.android1.domain.model.CaseDetails
+import ru.it_cron.android1.domain.model.FiltersGroup
 import ru.it_cron.android1.domain.repository.AccessRepository
 import ru.it_cron.android1.domain.repository.CaseDetailsRepository
 import ru.it_cron.android1.domain.repository.CasesRepository
+import ru.it_cron.android1.domain.repository.FilterRepository
 import ru.it_cron.android1.domain.repository.OnBoardingRepository
 
 
@@ -30,5 +33,8 @@ val dataModule = module {
     }
     single<CaseDetailsRepository<CaseDetails>> {
         CaseDetailsRepositoryImp(apiService = get())
+    }
+    single<FilterRepository<List<FiltersGroup>>> {
+        FilterRepositoryImp(apiService = get())
     }
 }

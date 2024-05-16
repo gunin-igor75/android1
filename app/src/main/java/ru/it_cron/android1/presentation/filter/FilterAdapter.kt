@@ -1,73 +1,112 @@
 package ru.it_cron.android1.presentation.filter
 
-import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import ru.it_cron.android1.R
-import ru.it_cron.android1.databinding.FilterItemBinding
-import ru.it_cron.android1.domain.model.FilterItem
-import ru.it_cron.android1.presentation.filter.FilterAdapter.FilterViewHolder
+import ru.it_cron.android1.databinding.FilterItemDisabledBinding
+import ru.it_cron.android1.databinding.FilterItemEnabledBinding
+import ru.it_cron.android1.databinding.TitleFilterItemBinding
+import ru.it_cron.android1.domain.model.TypeItem
 
-class FilterAdapter : ListAdapter<FilterItem, FilterViewHolder>(FilterDiffCallBack) {
+class FilterAdapter : ListAdapter<TypeItem, RecyclerView.ViewHolder>(TypeItemDiffCallBack) {
 
-    val filterOnClickListener: FilterOnClickListener? = null
+    var filterItemOnClickListener: FilterItemOnClickListener? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilterViewHolder {
-        val view = FilterItemBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
-        return FilterViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: FilterViewHolder, position: Int) {
-        val filterItem = getItem(position)
-        with(holder.binding) {
-            tvFilterName.text = filterItem.name
-            tvFilterName.setTextColor(
-                ColorStateList.valueOf(
-                    ContextCompat.getColor(
-                        root.context,
-                        if (filterItem.inChecked) R.color.white
-                        else R.color.black
-                    )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            HEADER_TYPE -> {
+                val view = TitleFilterItemBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
                 )
-            )
-            cvFilter.backgroundTintList = ColorStateList.valueOf(
-                ContextCompat.getColor(
-                    root.context,
-                    if (filterItem.inChecked) R.color.orange
-                    else R.color.white
+                HeaderViewHolder(view)
+            }
+
+            ITEM_ENABLED_TYPE -> {
+                val view = FilterItemEnabledBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
                 )
-            )
-            ivFilter.setImageResource(
-                if (filterItem.inChecked) R.drawable.ic_selected
-                else R.drawable.ic_disabled
-            )
-        }
-        holder.binding.root.setOnClickListener {
-            filterOnClickListener?.onClickFilter(filterItem)
+                FilterEnabledViewHolder(view)
+            }
+
+            ITEM_DISABLED_TYPE -> {
+                val view = FilterItemDisabledBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+                FilterDisabledViewHolder(view)
+            }
+
+            else -> throw IllegalStateException("Unknown view type $viewType")
         }
     }
 
-    class FilterViewHolder(val binding: FilterItemBinding) : RecyclerView.ViewHolder(binding.root)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (val item = getItem(position)) {
+            is TypeItem.Header -> {
+                val currentHolder = holder as HeaderViewHolder
+                currentHolder.binding.tvTitleFilter.text = item.name
+            }
 
-    object FilterDiffCallBack : DiffUtil.ItemCallback<FilterItem>() {
-        override fun areItemsTheSame(oldItem: FilterItem, newItem: FilterItem): Boolean {
-            return oldItem.id == newItem.id
+            is TypeItem.FilterItem -> {
+                if (holder is FilterEnabledViewHolder) {
+                    holder.binding.tvFilterNameEnabled.text = item.name
+                    holder.binding.root.setOnClickListener {
+                        filterItemOnClickListener?.onClickFilterItem(item.id)
+                    }
+                }
+                if (holder is FilterDisabledViewHolder) {
+                    holder.binding.tvFilterName.text = item.name
+                    holder.binding.root.setOnClickListener {
+                        filterItemOnClickListener?.onClickFilterItem(item.id)
+                    }
+                }
+            }
+        }
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return when (val item = getItem(position)) {
+            is TypeItem.Header -> HEADER_TYPE
+            is TypeItem.FilterItem -> {
+                if (item.isEnabled) ITEM_ENABLED_TYPE else ITEM_DISABLED_TYPE
+            }
+        }
+    }
+
+    object TypeItemDiffCallBack : DiffUtil.ItemCallback<TypeItem>() {
+        override fun areItemsTheSame(oldItem: TypeItem, newItem: TypeItem): Boolean {
+            return oldItem.getIds() == newItem.getIds()
+
         }
 
-        override fun areContentsTheSame(oldItem: FilterItem, newItem: FilterItem): Boolean {
+        override fun areContentsTheSame(oldItem: TypeItem, newItem: TypeItem): Boolean {
             return oldItem == newItem
         }
     }
 
-    interface FilterOnClickListener {
-        fun onClickFilter(filterItem: FilterItem)
+    companion object {
+        const val HEADER_TYPE = 100
+        const val ITEM_ENABLED_TYPE = 200
+        const val ITEM_DISABLED_TYPE = 300
+    }
+
+    class HeaderViewHolder(val binding: TitleFilterItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
+
+    class FilterEnabledViewHolder(val binding: FilterItemEnabledBinding) :
+        RecyclerView.ViewHolder(binding.root)
+
+    class FilterDisabledViewHolder(val binding: FilterItemDisabledBinding) :
+        RecyclerView.ViewHolder(binding.root)
+
+    interface FilterItemOnClickListener {
+        fun onClickFilterItem(filterId: String)
     }
 }

@@ -2,14 +2,15 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cvFilter"
+    android:id="@+id/cvFilterItemEnabled"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:backgroundTint="@color/white"
+    android:backgroundTint="@color/orange"
     app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true"
     app:contentPaddingBottom="12dp"
-    app:contentPaddingLeft="@dimen/padding_app"
-    app:contentPaddingRight="@dimen/padding_app"
+    app:contentPaddingLeft="16dp"
+    app:contentPaddingRight="16dp"
     app:contentPaddingTop="12dp">
 
     <LinearLayout
@@ -19,19 +20,18 @@
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvFilterName"
+            android:id="@+id/tvFilterNameEnabled"
             style="@style/GothamProMed.14sp"
-            android:textColor="@color/black"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             tools:text="@string/filter_selected" />
 
         <ImageView
-            android:id="@+id/ivFilter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:src="@drawable/ic_disabled"
+            android:id="@+id/ivFilterEnabled"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_selected"
             android:contentDescription="@string/icon_enabled_description" />
     </LinearLayout>
 
