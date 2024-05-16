@@ -20,7 +20,7 @@ private const val TAG = "NetworkLoader"
 
 fun Fragment.sendRequest(
     url: String,
-    packageName: String
+    packageName: String,
 ) {
     try {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
@@ -35,7 +35,7 @@ fun Fragment.sendRequest(
 }
 
 fun Fragment.sendEmail(
-    addresses: String
+    addresses: String,
 ) {
     try {
         val intent = Intent(Intent.ACTION_SENDTO).apply {
@@ -58,7 +58,7 @@ fun Fragment.sendEmail(
 }
 
 fun Fragment.openInternet(
-    url: String
+    url: String,
 ) {
     try {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {

@@ -10,7 +10,7 @@ import ru.it_cron.android1.databinding.FragmentContactsBinding
 class ContactsFragment : Fragment() {
     private var _binding: FragmentContactsBinding? = null
     private val binding: FragmentContactsBinding
-        get() = _binding?: throw IllegalStateException("FragmentContactsBinding is null")
+        get() = _binding ?: throw IllegalStateException("FragmentContactsBinding is null")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

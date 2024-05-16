@@ -10,7 +10,7 @@ import ru.it_cron.android1.databinding.FragmentCompanyBinding
 class CompanyFragment : Fragment() {
     private var _binding: FragmentCompanyBinding? = null
     private val binding: FragmentCompanyBinding
-        get() = _binding?: throw IllegalStateException("FragmentCompanyBinding is null")
+        get() = _binding ?: throw IllegalStateException("FragmentCompanyBinding is null")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

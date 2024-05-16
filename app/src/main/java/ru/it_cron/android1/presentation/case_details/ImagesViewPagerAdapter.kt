@@ -9,8 +9,8 @@ import ru.it_cron.android1.domain.model.ContainerImage
 
 class ImagesViewPagerAdapter(
     private val containerData: ContainerImage,
-    private val glide: RequestManager
-): RecyclerView.Adapter<ImagesViewPagerAdapter.PagerViewHolderImage>() {
+    private val glide: RequestManager,
+) : RecyclerView.Adapter<ImagesViewPagerAdapter.PagerViewHolderImage>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolderImage {
         val view = SplashItemBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -29,5 +29,7 @@ class ImagesViewPagerAdapter(
                 .into(holder.binding.ivSplash)
         }
     }
-    class PagerViewHolderImage(val binding: SplashItemBinding): RecyclerView.ViewHolder(binding.root)
+
+    class PagerViewHolderImage(val binding: SplashItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
 }

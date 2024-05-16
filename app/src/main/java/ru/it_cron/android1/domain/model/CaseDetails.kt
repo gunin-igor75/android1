@@ -12,5 +12,5 @@ data class CaseDetails(
     val caseColorId: Int,
     val iOSUrl: String,
     val androidUrl: String,
-    val webUrl: String
+    val webUrl: String,
 )

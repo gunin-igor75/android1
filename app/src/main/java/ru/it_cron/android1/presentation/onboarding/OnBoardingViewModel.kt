@@ -7,11 +7,11 @@ import kotlinx.coroutines.launch
 import ru.it_cron.android1.domain.usecases.SaveOnBoardingStateUseCase
 
 class OnBoardingViewModel(
-    private val saveOnBoardingStateUseCase: SaveOnBoardingStateUseCase
-): ViewModel() {
+    private val saveOnBoardingStateUseCase: SaveOnBoardingStateUseCase,
+) : ViewModel() {
 
     fun saveOnBoardingState(completed: Boolean) {
-        viewModelScope.launch{
+        viewModelScope.launch {
             saveOnBoardingStateUseCase(completed)
         }
     }

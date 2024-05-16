@@ -82,44 +82,39 @@ class CaseFragment : Fragment() {
         val caseId = caseBox.case.id
         viewModel.getCase(caseId)
         lifecycleScope.launch {
-            viewModel.caseDetails
-                .flowWithLifecycle(viewLifecycleOwner.lifecycle)
-                .collect { state ->
-                    when (state) {
-                        is StateScreen.Initial -> {}
+            viewModel.caseDetails.flowWithLifecycle(viewLifecycleOwner.lifecycle).collect { state ->
+                when (state) {
+                    is StateScreen.Initial -> {}
 
-                        is StateScreen.Loading -> {
-                            binding.pbCase.visibility = View.VISIBLE
-                        }
+                    is StateScreen.Loading -> {
+                        binding.pbCase.visibility = View.VISIBLE
+                    }
 
-                        is StateScreen.Success -> {
-                            binding.pbCase.visibility = View.GONE
-                            setupContent(state.value)
-                            imageState.value = ContainerImage(
-                                state.value.caseColorId,
-                                state.value.images
-                            )
-                        }
+                    is StateScreen.Success -> {
+                        binding.pbCase.visibility = View.GONE
+                        setupContent(state.value)
+                        imageState.value = ContainerImage(
+                            state.value.caseColorId, state.value.images
+                        )
                     }
                 }
+            }
         }
     }
 
     private fun observeViewModelError() {
         lifecycleScope.launch {
-            viewModel.error
-                .flowWithLifecycle(viewLifecycleOwner.lifecycle)
-                .collect { state ->
-                    when (state) {
-                        is StateError.Error -> {
-                            Snackbar.make(binding.root, state.message, Snackbar.LENGTH_LONG).show()
-                        }
+            viewModel.error.flowWithLifecycle(viewLifecycleOwner.lifecycle).collect { state ->
+                when (state) {
+                    is StateError.Error -> {
+                        Snackbar.make(binding.root, state.message, Snackbar.LENGTH_LONG).show()
+                    }
 
-                        StateError.ErrorInternet -> {
-                            router.replaceScreen(Screens.openErrorFragment())
-                        }
+                    StateError.ErrorInternet -> {
+                        router.replaceScreen(Screens.openErrorFragment())
                     }
                 }
+            }
         }
     }
 
@@ -153,22 +148,19 @@ class CaseFragment : Fragment() {
         val currentBinding = BlockTaskCaseBinding.bind(binding.root)
         with(currentBinding) {
             if (!checkAndSetupGone(
-                    caseBox.case.title.isEmpty(),
-                    tvBlockCaseTitle
+                    caseBox.case.title.isEmpty(), tvBlockCaseTitle
                 )
             ) {
                 tvBlockCaseTitle.text = caseBox.case.title
             }
             if (!checkAndSetupGone(
-                    caseBox.case.image.isEmpty(),
-                    ivBlockCase
+                    caseBox.case.image.isEmpty(), ivBlockCase
                 )
             ) {
                 loadImage(ivBlockCase, caseBox.case.image)
             }
             if (!checkAndSetupGone(
-                    caseDetails.task.isEmpty(),
-                    tvBlockTaskContent
+                    caseDetails.task.isEmpty(), tvBlockTaskContent
                 )
             ) {
                 tvBlockTaskContent.text = caseDetails.task
@@ -179,8 +171,7 @@ class CaseFragment : Fragment() {
     private fun setupUiBlockImages(caseDetails: CaseDetails) {
         with(binding.icBlockImages) {
             if (!checkAndSetupGone(
-                    caseDetails.images.isEmpty(),
-                    llBlockImages
+                    caseDetails.images.isEmpty(), llBlockImages
                 )
             ) {
                 llBlockImages.setBackgroundColor(caseDetails.caseColorId)
@@ -195,21 +186,18 @@ class CaseFragment : Fragment() {
     private fun setupUiBlockAppAllows(caseDetails: CaseDetails) {
         with(binding) {
             if (!checkAndSetupGone(
-                    caseDetails.featureTitle.isEmpty(),
-                    tvAppAllows
+                    caseDetails.featureTitle.isEmpty(), tvAppAllows
                 )
             ) {
                 tvAppAllows.text = caseDetails.featureTitle
             }
             if (!checkAndSetupGone(
-                    caseDetails.featuresDone.isEmpty(),
-                    llBlockCaseAppAllows
+                    caseDetails.featuresDone.isEmpty(), llBlockCaseAppAllows
                 )
             ) {
                 caseDetails.featuresDone.forEach {
-                    val view =
-                        LayoutInflater.from(requireContext())
-                            .inflate(R.layout.app_allows_item, null)
+                    val view = LayoutInflater.from(requireContext())
+                        .inflate(R.layout.app_allows_item, null)
                     val currentBinding = AppAllowsItemBinding.bind(view)
                     currentBinding.tvAppAllowsText.text = it
                     llBlockCaseAppAllows.addView(view)
@@ -224,9 +212,7 @@ class CaseFragment : Fragment() {
         with(currentBinding) {
             cvTechnologyPlatform.setBackgroundColor(caseDetails.caseColorId)
             if (!checkAndSetupGone(
-                    caseDetails.technologies.isEmpty(),
-                    tvTechnologyTitle,
-                    tvTechnologyContent
+                    caseDetails.technologies.isEmpty(), tvTechnologyTitle, tvTechnologyContent
                 )
             ) {
                 val textTechnologies =
@@ -234,9 +220,7 @@ class CaseFragment : Fragment() {
                 tvTechnologyContent.text = textTechnologies
             }
             if (!checkAndSetupGone(
-                    caseDetails.platforms.isEmpty(),
-                    tvPlatformsTitle,
-                    tvPlatformsContent
+                    caseDetails.platforms.isEmpty(), tvPlatformsTitle, tvPlatformsContent
                 )
             ) {
                 val textPlatforms =
@@ -283,14 +267,9 @@ class CaseFragment : Fragment() {
         cornerRadius: Int? = null,
     ) {
         if (cornerRadius != null) {
-            Glide.with(requireContext())
-                .load(url)
-                .roundCorners(cornerRadius)
-                .into(imageView)
+            Glide.with(requireContext()).load(url).roundCorners(cornerRadius).into(imageView)
         } else {
-            Glide.with(requireContext())
-                .load(url)
-                .into(imageView)
+            Glide.with(requireContext()).load(url).into(imageView)
         }
     }
 

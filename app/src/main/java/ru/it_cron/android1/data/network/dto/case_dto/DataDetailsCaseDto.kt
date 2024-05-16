@@ -14,5 +14,5 @@ data class DataDetailsCaseDto(
     @SerializedName("CaseColor") val caseColor: String,
     @SerializedName("iOSUrl") val iOSUrl: String?,
     @SerializedName("AndroidUrl") val androidUrl: String?,
-    @SerializedName("WebUrl") val webUrl: String?
+    @SerializedName("WebUrl") val webUrl: String?,
 )

@@ -11,7 +11,7 @@ class ServicesFragment : Fragment() {
 
     private var _binding: FragmentServicesBinding? = null
     private val binding: FragmentServicesBinding
-        get() = _binding?: throw IllegalStateException("FragmentServicesBinding is null")
+        get() = _binding ?: throw IllegalStateException("FragmentServicesBinding is null")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -57,7 +57,8 @@ class CasesAdapter(
     interface CaseOnClickListener {
         fun onClickCase(caseBox: CaseBox)
     }
-    companion object{
+
+    companion object {
         private const val WIDTH = 300
         private const val HEIGHT = 300
     }

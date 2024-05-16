@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -14,6 +16,7 @@ import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import ru.it_cron.android1.R
 import ru.it_cron.android1.databinding.FragmentCasesBinding
 import ru.it_cron.android1.domain.model.CaseBox
 import ru.it_cron.android1.domain.model.StateError
@@ -48,9 +51,29 @@ class CasesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupToolBarApp()
         setupRecyclerView()
-        observeViewModelUi()
+        observeViewModel()
         observeViewModelError()
         onClickAdapter()
+        onClickFilter()
+        changeColorFilters()
+        setUpOnBackPressed()
+    }
+
+    private fun changeColorFilters() {
+        viewModel.isEnabled.observe(viewLifecycleOwner) { state ->
+            binding.tvFilter.setTextColor(
+                ContextCompat.getColor(
+                    binding.root.context,
+                    if (state) R.color.orange else R.color.white
+                )
+            )
+        }
+    }
+
+    private fun onClickFilter() {
+        binding.tvFilter.setOnClickListener {
+            router.navigateTo(Screens.openFiltersFragment())
+        }
     }
 
     private fun setupToolBarApp() {
@@ -58,6 +81,7 @@ class CasesFragment : Fragment() {
         val activity = requireActivity() as AppCompatActivity
         activity.setSupportActionBar(toolBar)
         toolBar.setNavigationOnClickListener {
+            viewModel.clearFilter()
             router.exit()
         }
     }
@@ -68,9 +92,9 @@ class CasesFragment : Fragment() {
         recyclerViewCases.adapter = casesAdapter
     }
 
-    private fun observeViewModelUi() {
+    private fun observeViewModel() {
         lifecycleScope.launch {
-            viewModel.cases
+            viewModel.state
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle)
                 .collect { state ->
                     when (state) {
@@ -81,10 +105,21 @@ class CasesFragment : Fragment() {
 
                         is StateScreen.Success -> {
                             binding.pbCases.visibility = View.GONE
-                            casesAdapter.submitList(state.value)
+                            launchContent()
                         }
                     }
                 }
+        }
+    }
+
+    private fun launchContent() {
+        viewModel.casesWithFilters.observe(viewLifecycleOwner) {
+            if (it.isEmpty()) {
+                binding.flCaseNotFound.visibility = View.VISIBLE
+            } else {
+                binding.flCaseNotFound.visibility = View.GONE
+                casesAdapter.submitList(it)
+            }
         }
     }
 
@@ -112,6 +147,18 @@ class CasesFragment : Fragment() {
                 router.navigateTo(Screens.openCaseFragment(caseBox))
             }
         }
+    }
+
+    private fun setUpOnBackPressed() {
+        requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (isEnabled) {
+                    viewModel.clearFilter()
+                    isEnabled = false
+                    requireActivity().onBackPressedDispatcher.onBackPressed()
+                }
+            }
+        })
     }
 
     companion object {

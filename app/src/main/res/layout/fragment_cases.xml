@@ -74,6 +74,37 @@
         tools:itemCount="2"
         tools:listitem="@layout/case_item" />
 
+    <FrameLayout
+        android:id="@+id/flCaseNotFound"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/trans_0_75"
+            app:cardCornerRadius="5dp"
+            app:contentPadding="@dimen/padding_app"
+            app:strokeColor="@color/white"
+            app:strokeWidth="1dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/GothamProReg.16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/case_not_found"
+                android:textAlignment="center" />
+
+        </com.google.android.material.card.MaterialCardView>
+    </FrameLayout>
+
+
     <ProgressBar
         android:id="@+id/pbCases"
         android:layout_width="wrap_content"

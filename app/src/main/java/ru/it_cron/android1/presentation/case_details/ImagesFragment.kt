@@ -68,9 +68,9 @@ class ImagesFragment : Fragment() {
         binding.llIndicators.setBackgroundColor(containerData.colorId)
         val size = containerData.images.size
         for (i in 0 until size) {
-            val  width = resources.getDimension(R.dimen.width_progress).toInt()
-            val  height = resources.getDimension(R.dimen.height_progress).toInt()
-            val  margin = resources.getDimension(R.dimen.margin_progress).toInt()
+            val width = resources.getDimension(R.dimen.width_progress).toInt()
+            val height = resources.getDimension(R.dimen.height_progress).toInt()
+            val margin = resources.getDimension(R.dimen.margin_progress).toInt()
             val layoutParams = LayoutParams(width, height)
             val view = LayoutInflater.from(requireContext())
                 .inflate(R.layout.images_progress_indicator, null) as LinearProgressIndicator
