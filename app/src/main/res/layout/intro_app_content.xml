@@ -8,33 +8,33 @@
 
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/vp_intro"
+        android:id="@+id/vpIntro"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_h_4"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineContent1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_h_4"
+        android:id="@+id/guidelineContent1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.65" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/bt_intro"
+        android:id="@+id/btIntro"
         style="@style/IntroButton"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/circle_bg_black"
-        app:layout_constraintBottom_toBottomOf="@id/guideline_h_3"
+        app:layout_constraintBottom_toBottomOf="@id/guidelineIContent2"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="@string/bt_next" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_h_3"
+        android:id="@+id/guidelineIContent2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

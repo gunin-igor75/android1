@@ -53,4 +53,10 @@
         <item name="android:layout_weight">@dimen/_48sdp</item>
         <item name="android:layout_height">@dimen/_48sdp</item>
     </style>
+
+    <style name="ToolBar">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/gotham_pro_bol</item>
+    </style>
 </resources>

@@ -76,6 +76,10 @@ dependencies {
     implementation(libs.intuit.spd)
     implementation(libs.intuit.ssp)
 
+    //glide
+    implementation(libs.glide)
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

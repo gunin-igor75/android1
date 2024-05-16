@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.it_cron.android1.R
 import ru.it_cron.android1.databinding.IntroAppDesignBinding
 import ru.it_cron.android1.presentation.onboarding.AppIntro.Companion.STEP
+import ru.it_cron.android1.presentation.onboarding.AppIntroViewPagerAdapter.PagerViewHolder
 
 class AppIntroViewPagerAdapter: RecyclerView.Adapter<PagerViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolder {
@@ -45,4 +46,5 @@ class AppIntroViewPagerAdapter: RecyclerView.Adapter<PagerViewHolder>() {
             }
         }
     }
+    class PagerViewHolder(val binding: IntroAppDesignBinding): RecyclerView.ViewHolder(binding.root)
 }

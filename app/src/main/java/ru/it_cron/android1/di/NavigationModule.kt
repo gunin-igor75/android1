@@ -6,6 +6,7 @@ import com.github.terrakok.cicerone.Router
 import org.koin.dsl.module
 
 val navigationModule = module {
+
     single<Cicerone<Router>> {
         Cicerone.create()
     }

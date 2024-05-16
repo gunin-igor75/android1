@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/iv_onboarding"
+        android:id="@+id/ivOnboarding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/image_onboarding_description"
@@ -17,24 +17,24 @@
         tools:src="@drawable/onboarding_first" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_first"
+        android:id="@+id/tvFirst"
         style="@style/IntroTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/tv_second"
+        app:layout_constraintBottom_toTopOf="@id/tvSecond"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline"
         app:layout_constraintVertical_chainStyle="packed"
         tools:text="@string/onboarding_first" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_second"
+        android:id="@+id/tvSecond"
         style="@style/IntroBody"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_first"
+        app:layout_constraintTop_toBottomOf="@id/tvFirst"
         tools:text="@string/onboarding_first_descr" />
 
     <androidx.constraintlayout.widget.Guideline

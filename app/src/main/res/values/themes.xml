@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Base.Theme.Android1" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Base.Theme.Android1" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:windowBackground">@color/black_light</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
     </style>
 
     <style name="Theme.Android1" parent="Base.Theme.Android1" />
     <style name="Theme.Android1.Launcher">
         <item name="android:windowBackground">@drawable/splash_screen_api_24</item>
-
     </style>
 </resources>

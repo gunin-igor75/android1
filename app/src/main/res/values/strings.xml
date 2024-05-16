@@ -26,4 +26,8 @@
     <string name="description_icon_facebook">Icon facebook</string>
     <string name="description_icon_instagram">Icon instagram</string>
     <string name="description_icon_telegram">Icon telegram</string>
+    <string name="icon_close_description">Icon close</string>
+    <string name="image_case_description">Image case</string>
+    <string name="filter">Фильтр</string>
+    <string name="image_ellipse_1_description">Image ellipse 1</string>
 </resources>
