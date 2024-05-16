@@ -1,6 +1,5 @@
 package ru.it_cron.android1.presentation.filter
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -43,13 +42,12 @@ class FiltersViewModel(
     val error = errorChannel.receiveAsFlow()
 
 
-
     init {
         getFilters()
         viewModelScope.launch {
             val combineFlow = combine(
                 _filters,
-                choiceFilters.listen(),
+                choiceFilters.stateIn(),
                 ::merge
             )
             combineFlow.collect {
@@ -93,11 +91,11 @@ class FiltersViewModel(
         items: MutableList<TypeItem>,
         choiceState: ChoiceState<String>,
     ): List<TypeItem> {
-        items.replaceAll{
-            if (it is TypeItem.FilterItem) {
-                it.copy(it.id, it.name, choiceState.isChecked(it.id))
+        items.replaceAll { item ->
+            if (item is TypeItem.FilterItem) {
+                item.copy(item.id, item.name, choiceState.isChecked(item.id))
             } else {
-                it
+                item
             }
         }
         return items.toList()

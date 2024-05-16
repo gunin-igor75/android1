@@ -21,18 +21,18 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvFilterName"
             style="@style/GothamProMed.14sp"
-            android:textColor="@color/black"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="@color/black"
             tools:text="@string/filter_selected" />
 
         <ImageView
             android:id="@+id/ivFilter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:src="@drawable/ic_disabled"
-            android:contentDescription="@string/icon_enabled_description" />
+            android:contentDescription="@string/icon_enabled_description"
+            tools:src="@drawable/ic_disabled" />
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

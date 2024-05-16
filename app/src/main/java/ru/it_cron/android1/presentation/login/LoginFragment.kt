@@ -11,7 +11,7 @@ class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding: FragmentLoginBinding
-        get() = _binding?: throw IllegalStateException("FragmentLoginBinding is null")
+        get() = _binding ?: throw IllegalStateException("FragmentLoginBinding is null")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

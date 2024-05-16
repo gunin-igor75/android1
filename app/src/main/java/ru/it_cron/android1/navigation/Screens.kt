@@ -55,7 +55,8 @@ object Screens {
     fun openImagesFragment(containerData: ContainerImage) = FragmentScreen {
         ImagesFragment.newInstance(containerData)
     }
-    fun openFiltersFragment() = FragmentScreen{
+
+    fun openFiltersFragment() = FragmentScreen {
         FilterFragment.newInstance()
     }
 }

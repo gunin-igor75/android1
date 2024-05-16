@@ -8,5 +8,5 @@ data class Case(
     val id: String,
     val image: String,
     val title: String,
-    val filters: List<Filter>
-): Parcelable
+    val filters: List<Filter>,
+) : Parcelable

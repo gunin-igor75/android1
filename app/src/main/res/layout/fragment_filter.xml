@@ -28,16 +28,16 @@
             android:contentDescription="@string/icon_clear_filter_description"
             android:ellipsize="end"
             android:gravity="end"
-            android:visibility="gone"
-            android:src="@drawable/ic_cleaner" />
+            android:src="@drawable/ic_cleaner"
+            android:visibility="gone" />
     </com.google.android.material.appbar.MaterialToolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFilters"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="@dimen/padding_app"
+        android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <ProgressBar

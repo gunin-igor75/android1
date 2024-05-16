@@ -31,8 +31,8 @@
             android:id="@+id/ivFilterEnabled"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_selected"
-            android:contentDescription="@string/icon_enabled_description" />
+            android:contentDescription="@string/icon_enabled_description"
+            android:src="@drawable/ic_selected" />
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

@@ -12,7 +12,7 @@ import ru.it_cron.android1.domain.repository.CaseDetailsRepository
 import java.io.IOException
 
 class CaseDetailsRepositoryImp(
-    private val apiService: ApiService
+    private val apiService: ApiService,
 ) : CaseDetailsRepository<CaseDetails> {
     override suspend fun getCase(caseId: String): DataResult<CaseDetails> {
         return withContext(Dispatchers.IO) {
@@ -34,7 +34,8 @@ class CaseDetailsRepositoryImp(
             }
         }
     }
-    private companion object{
+
+    private companion object {
         const val TAG = "CaseDetailsRepositoryImp"
     }
 }

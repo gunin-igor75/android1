@@ -41,7 +41,7 @@ class OnBoardingRepositoryImpl(
                 }
             }
             .map { preferences ->
-                val onBoardingState = preferences[PreferenceKey.KEY]?: false
+                val onBoardingState = preferences[PreferenceKey.KEY] ?: false
                 onBoardingState
             }
     }

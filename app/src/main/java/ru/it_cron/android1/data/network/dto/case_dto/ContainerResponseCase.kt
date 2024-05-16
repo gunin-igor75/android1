@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 data class ContainerResponseCase(
     @SerializedName("Error") val error: String?,
-    @SerializedName("Data") val dataDetailsCaseDto: DataDetailsCaseDto
+    @SerializedName("Data") val dataDetailsCaseDto: DataDetailsCaseDto,
 )

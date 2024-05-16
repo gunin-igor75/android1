@@ -57,7 +57,7 @@ class FilterFragment : Fragment() {
     }
 
     private fun observeIconClear() {
-        viewModel.isEnabled.observe(viewLifecycleOwner){state ->
+        viewModel.isEnabled.observe(viewLifecycleOwner) { state ->
             if (state) {
                 binding.ivCleaner.visibility = View.VISIBLE
             } else {

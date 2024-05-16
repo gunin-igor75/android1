@@ -39,7 +39,7 @@ class ChoiceFiltersDefault : ChoiceFilters<String>, ChoiceState<String> {
         notifyUpdates()
     }
 
-    override fun listen(): Flow<ChoiceState<String>> {
+    override fun stateIn(): Flow<ChoiceState<String>> {
         return stateChoice.map { this }
     }
 

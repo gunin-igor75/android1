@@ -8,7 +8,7 @@ import ru.it_cron.android1.databinding.IntroAppDesignBinding
 import ru.it_cron.android1.presentation.onboarding.AppIntro.Companion.STEP
 import ru.it_cron.android1.presentation.onboarding.AppIntroViewPagerAdapter.PagerViewHolder
 
-class AppIntroViewPagerAdapter: RecyclerView.Adapter<PagerViewHolder>() {
+class AppIntroViewPagerAdapter : RecyclerView.Adapter<PagerViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerViewHolder {
         val view = IntroAppDesignBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -29,16 +29,19 @@ class AppIntroViewPagerAdapter: RecyclerView.Adapter<PagerViewHolder>() {
                         binding.tvFirst.text = context.getString(R.string.onboarding_first)
                         binding.tvSecond.text = context.getString(R.string.onboarding_first_descr)
                     }
+
                     1 -> {
                         binding.ivOnboarding.setImageResource(R.drawable.onboarding_second)
                         binding.tvFirst.text = context.getString(R.string.onboarding_second)
                         binding.tvSecond.text = context.getString(R.string.onboarding_second_descr)
                     }
+
                     2 -> {
                         binding.ivOnboarding.setImageResource(R.drawable.onboarding_third)
                         binding.tvFirst.text = context.getString(R.string.onboarding_third)
                         binding.tvSecond.text = context.getString(R.string.onboarding_third_descr)
                     }
+
                     else -> IllegalStateException(
                         "Position $position >= size pager: $STEP"
                     )
@@ -46,5 +49,7 @@ class AppIntroViewPagerAdapter: RecyclerView.Adapter<PagerViewHolder>() {
             }
         }
     }
-    class PagerViewHolder(val binding: IntroAppDesignBinding): RecyclerView.ViewHolder(binding.root)
+
+    class PagerViewHolder(val binding: IntroAppDesignBinding) :
+        RecyclerView.ViewHolder(binding.root)
 }

@@ -1,7 +1,6 @@
 package ru.it_cron.android1.presentation.cases
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,7 +61,6 @@ class CasesFragment : Fragment() {
 
     private fun changeColorFilters() {
         viewModel.isEnabled.observe(viewLifecycleOwner) { state ->
-            Log.d("CasesFragment", "state $state")
             binding.tvFilter.setTextColor(
                 ContextCompat.getColor(
                     binding.root.context,
@@ -117,9 +115,9 @@ class CasesFragment : Fragment() {
     private fun launchContent() {
         viewModel.casesWithFilters.observe(viewLifecycleOwner) {
             if (it.isEmpty()) {
-                binding.tvCaseNotFound.visibility = View.VISIBLE
+                binding.flCaseNotFound.visibility = View.VISIBLE
             } else {
-                binding.tvCaseNotFound.visibility = View.GONE
+                binding.flCaseNotFound.visibility = View.GONE
                 casesAdapter.submitList(it)
             }
         }
