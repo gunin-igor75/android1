@@ -8,6 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.github.terrakok.cicerone.Router
 import org.koin.android.ext.android.inject
+import ru.it_cron.android1.constant.PN_FACEBOOK
+import ru.it_cron.android1.constant.PN_INSTAGRAM
+import ru.it_cron.android1.constant.PN_TELEGRAM
+import ru.it_cron.android1.constant.URL_EMAIL
+import ru.it_cron.android1.constant.URL_FACEBOOK
+import ru.it_cron.android1.constant.URL_INSTAGRAM
+import ru.it_cron.android1.constant.URL_TELEGRAM
 import ru.it_cron.android1.databinding.BodyHomeContentBinding
 import ru.it_cron.android1.databinding.FooterHomeContentBinding
 import ru.it_cron.android1.databinding.FragmentHomeBinding
@@ -99,14 +106,6 @@ class HomeFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() = HomeFragment()
-
-        private const val PN_TELEGRAM = "org.telegram.messenger"
-        private const val PN_FACEBOOK = "com.facebook.katana"
-        private const val PN_INSTAGRAM = "com.instagram.android"
-        private const val URL_TELEGRAM = "https://t.me/+NnhpGqJYWAU2MDIy"
-        private const val URL_FACEBOOK = "https://www.facebook.com/it.cron.ru/"
-        private const val URL_INSTAGRAM = "https://www.instagram.com/itcron/?hl=ru"
-        private const val URL_EMAIL = "hello@it-cron.ru"
     }
 }
 

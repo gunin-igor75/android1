@@ -53,4 +53,8 @@
     <string name="filter_selected">Гос.учереждения</string>
     <string name="icon_enabled_description">Icon enabled</string>
     <string name="case_not_found">По вашему запросу ничего \nне найдено.</string>
+    <string name="menu_cron">menu_cron</string>
+    <string name="menu_instagram">menu_instagram</string>
+    <string name="menu_facebook">menu_facebook</string>
+    <string name="menu_telegram">menu_telegram</string>
 </resources>
