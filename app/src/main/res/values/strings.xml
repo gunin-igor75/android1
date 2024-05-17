@@ -57,4 +57,44 @@
     <string name="menu_instagram">menu_instagram</string>
     <string name="menu_facebook">menu_facebook</string>
     <string name="menu_telegram">menu_telegram</string>
+    <string name="image_rectangle_company_description">image rectangle company</string>
+    <string name="cron_as_expected">cron as expected</string>
+    <string name="motto">вот наш слоган</string>
+    <string name="project_product_approach">Проектно-\nпродуктовый</string>
+    <string name="project_product_content">подход к разработке \nпрограммного обеспечения</string>
+    <string name="project">Проектный</string>
+    <string name="product">Продуктовый</string>
+    <string name="project_content">Позволяет нам качественно организовать деятельность для взаимодействия наших сотрудников и Заказчика</string>
+    <string name="product_content">Оказывать услуги и выдавать тот результат, который необходим Заказчику и рынку</string>
+    <string name="image_decor_company_description">image decor company</string>
+    <string name="image_avatar_company_description">image avatar company description</string>
+    <string name="puchow">Пухов Александр Сергеевич</string>
+    <string name="puchow_job">Учредитель и руководитель \nООО «АЙТИ КРОН»</string>
+    <string name="puchow_job_title">Несколько слов о зарождении и названии компании</string>
+    <string name="puchow_job_paragraph1">У меня уже был опыт управления другой компанией.
+В этой компании было несколько партнеров и несмотря на то,
+что общее движение было согласованным, некоторые реализации я видел по-другому. Поэтому в конце 2018 года
+я решил, что хочу реализовать свои идеи на все 100%.
+В какой-то мере это был некий челендж. Сейчас все идет по плану :)</string>
+    <string name="puchow_job_paragraph2">По поводу названия. IT – очевидно, потому что мы работаем в IT,
+а CRON – связано с Linux планировщиком и это отсылка
+к тому, что мы работаем, как часы.
+Мы предоставляем услуги точно
+в срок и с отличным качеством.
+Наш слоган – cron as expected ;)</string>
+    <string name="client_company">Мы сотрудничаем с клиентами, мыслящими на перспективу, чтобы трансформировать идеи в реальные продукты.</string>
+    <string name="icon_logo_gazprom">icon logo gazprom</string>
+    <string name="icon_logo_luck">icon_logo_luck</string>
+    <string name="icon_logo_t">icon logo t+</string>
+    <string name="icon_logo_meg">icon logo megaphon</string>
+    <string name="icon_logo_ros">icon logo ros</string>
+    <string name="icon_logo_abp">icon logo abp</string>
+    <string name="icon_logo_help">icon logo help</string>
+    <string name="icon_logo_kurch">icon logo kurch</string>
+    <string name="icon_logo_prim">icon logo prim</string>
+    <string name="icon_logo_pay">icon logo pay</string>
+    <string name="icon_logo_libertex">icon logo libertex</string>
+    <string name="icon_logo_atb">icon logo atb</string>
+    <string name="icon_logo_skb">icon logo skb</string>
+    <string name="icon_logo_lykke">icon logo lykke</string>
 </resources>

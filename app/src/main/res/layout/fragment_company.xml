@@ -19,9 +19,53 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_app">
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.3" />
+
+            <ImageView
+                android:id="@+id/ivCompanyRect1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/image_rectangle_company_description"
+                android:src="@drawable/im_rectangle_big"
+                app:layout_constraintStart_toEndOf="@+id/guideline1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <include layout="@layout/block_approach_title_company" />
+
+            <include layout="@layout/block_approach_content_company" />
+
+            <ImageView
+                android:id="@+id/ivCompanyRect3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:contentDescription="@string/image_rectangle_company_description"
+                android:src="@drawable/im_rectangle_big"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvContentProduct" />
+
+            <include
+                android:id="@+id/clPuchow"
+                layout="@layout/block_manager_company"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_62sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivCompanyRect3" />
+
+            <include layout="@layout/block_client_company" />
+
+            
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </ScrollView>
 </LinearLayout>
