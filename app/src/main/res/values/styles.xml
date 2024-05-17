@@ -7,11 +7,19 @@
     </style>
 
     <style name="GothamProReg.24sp">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/_24ssp</item>
+    </style>
+
+    <style name="GothamProReg.20sp">
+        <item name="android:textSize">@dimen/_20sdp</item>
     </style>
 
     <style name="GothamProReg.16sp">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/_16ssp</item>
+    </style>
+
+    <style name="GothamProReg.14sp">
+        <item name="android:textSize">@dimen/_14sdp</item>
     </style>
 
     <style name="GothamProMed">
@@ -21,6 +29,32 @@
 
     <style name="GothamProMed.14sp">
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="GothamProMed.16sp">
+        <item name="android:textSize">@dimen/_16sdp</item>
+    </style>
+
+    <style name="GothamProBold">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/gotham_pro_bol</item>
+    </style>
+
+    <style name="GothamProBold.32sp">
+        <item name="android:textSize">@dimen/_32sdp</item>
+    </style>
+
+    <style name="GothamProBold.16sp">
+        <item name="android:textSize">@dimen/_16sdp</item>
+    </style>
+
+    <style name="GothamProLight">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/gotham_pro_light</item>
+    </style>
+
+    <style name="GothamProLight.20sp">
+        <item name="android:textSize">@dimen/_20sdp</item>
     </style>
 
     <style name="HomeBodyTitle">
