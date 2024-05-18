@@ -13,7 +13,7 @@
         android:lineSpacingMultiplier="1.2"
         android:text="@string/client_company"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/clPuchow" />
+        app:layout_constraintTop_toBottomOf="@+id/inPuchow" />
 
     <!--1 Element-->
 
