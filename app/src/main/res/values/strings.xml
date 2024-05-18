@@ -29,7 +29,7 @@
     <string name="icon_close_description">Icon close</string>
     <string name="image_case_description">Image case</string>
     <string name="filter">Фильтр</string>
-    <string name="image_ellipse_1_description">Image ellipse 1</string>
+    <string name="image_ellipse_description">Image ellipse 1</string>
     <string name="case_title">Кейс</string>
     <string name="header_case_title">ГБОУ «Курчатовская школа»</string>
     <string name="task">Задача</string>
@@ -97,4 +97,15 @@
     <string name="icon_logo_atb">icon logo atb</string>
     <string name="icon_logo_skb">icon logo skb</string>
     <string name="icon_logo_lykke">icon logo lykke</string>
+    <string name="customer_reviews">Отзывы клиентов</string>
+    <string name="see_all">Смотреть все</string>
+    <string name="icon_arrow_long">icon arrow long</string>
+    <string name="reviews_content">«У меня уже был опыт управления другой компанией. В этой компании было несколько партнеров и несмотря на то, что общее движение было согласованным, некоторые реализации я видел по-другому. Поэтому в конце 2018 года я решил, что хочу реализовать свои идеи на все 100%. В какой-то мере это был некий челендж. Сейчас все идет по плану :)»</string>
+    <string name="icon_slider">icon slider</string>
+    <string name="communications_title">Взгляните чем мы дышим</string>
+    <string name="instagram"><u>Instagram</u></string>
+    <string name="facebook"><u>Facebook</u></string>
+    <string name="telegram"><u>Telegram</u></string>
+    <string name="join_team">Присоединяйтесь к команде</string>
+    <string name="slogan_team">Таланты всегда приветствуются. Отправляй свое портфолио по адресу <b><font color="#FFFB6542">hr@it-cron.ru</font></b></string>
 </resources>

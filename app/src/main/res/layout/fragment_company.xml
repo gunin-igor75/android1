@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/image_rectangle_company_description"
-                android:src="@drawable/im_rectangle_big"
+                android:src="@drawable/im_rectangle_middle"
                 app:layout_constraintStart_toEndOf="@+id/guideline1"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,7 +53,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvContentProduct" />
 
             <include
-                android:id="@+id/clPuchow"
+                android:id="@+id/inPuchow"
                 layout="@layout/block_manager_company"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -63,7 +63,24 @@
 
             <include layout="@layout/block_client_company" />
 
-            
+            <include
+                android:id="@+id/inReviews"
+                layout="@layout/block_customer_reviews_company"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sBlockClient" />
+
+            <include layout="@layout/block_communications_company" />
+
+            <include
+                android:id="@+id/inJoinTeam"
+                layout="@layout/block_join_team_company"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spCommunications" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
