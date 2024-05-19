@@ -108,4 +108,8 @@
     <string name="telegram"><u>Telegram</u></string>
     <string name="join_team">Присоединяйтесь к команде</string>
     <string name="slogan_team">Таланты всегда приветствуются. Отправляй свое портфолио по адресу <b><font color="#FFFB6542">hr@it-cron.ru</font></b></string>
+    <string name="country">Россия, Москва</string>
+    <string name="street">119330, ул. Мосфильмовская, 35</string>
+    <string name="phone">+7 (495) 006–13–57</string>
+    <string name="contact_via">Связаться через</string>
 </resources>

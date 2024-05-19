@@ -130,8 +130,34 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/clCommunications" />
 
+            <include
+                android:id="@+id/bClientCompany"
+                layout="@layout/block_contact_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_64sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/inJoinTeam" />
+
+            <include
+                android:id="@+id/btSendApp"
+                layout="@layout/button_send_app"
+                android:layout_width="@dimen/_204sdp"
+                android:layout_height="@dimen/_204sdp"
+                android:layout_marginTop="@dimen/_64sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bClientCompany" />
+
+            <include
+                android:id="@+id/inCommunicationsAddress"
+                layout="@layout/block_communications_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_64sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btSendApp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </ScrollView>
 </LinearLayout>

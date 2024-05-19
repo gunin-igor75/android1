@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProBold.24sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/country"
+        android:textAlignment="center" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/street"
+        android:textAlignment="center" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/phone"
+        android:textAlignment="center"
+        android:textColor="@color/orange" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.24sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/contact_via"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:id="@+id/ivTelegram"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/description_icon_telegram"
+        android:src="@drawable/ic_telegram_black" />
+</LinearLayout>

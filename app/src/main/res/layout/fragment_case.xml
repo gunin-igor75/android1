@@ -58,20 +58,24 @@
 
             <include layout="@layout/block_button_case" />
 
-            <include layout="@layout/block_contact_info_case" />
+            <include
+                android:id="@+id/BlockContactInfoCase"
+                layout="@layout/block_contact_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_64sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btWebsite" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <include
                 android:id="@+id/btSendRequestCase"
-                style="@style/HomeButton.Case"
+                layout="@layout/button_send_app"
                 android:layout_width="@dimen/_204sdp"
                 android:layout_height="@dimen/_204sdp"
                 android:layout_marginTop="64dp"
-                android:background="@drawable/circle_bg_orange"
-                android:lineSpacingMultiplier="1.2"
-                android:text="@string/send_request"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvContactsInfoEmail" />
+                app:layout_constraintTop_toBottomOf="@+id/BlockContactInfoCase" />
 
             <include layout="@layout/block_next_case" />
 
@@ -80,9 +84,10 @@
                 style="@style/CaseEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="64dp"
+                android:layout_marginVertical="64dp"
                 android:text="@string/go_to_home"
                 android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cvNextCase" />
