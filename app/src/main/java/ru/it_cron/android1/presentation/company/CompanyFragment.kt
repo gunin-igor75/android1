@@ -1,11 +1,7 @@
 package ru.it_cron.android1.presentation.company
 
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.TextPaint
 import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +18,7 @@ import ru.it_cron.android1.constant.URL_EMAIL
 import ru.it_cron.android1.constant.URL_FACEBOOK
 import ru.it_cron.android1.constant.URL_INSTAGRAM
 import ru.it_cron.android1.constant.URL_TELEGRAM
+import ru.it_cron.android1.databinding.BlockCommunicationsCompanyBinding
 import ru.it_cron.android1.databinding.FragmentCompanyBinding
 import ru.it_cron.android1.presentation.extension.sendEmail
 import ru.it_cron.android1.presentation.extension.sendRequest
@@ -47,6 +44,28 @@ class CompanyFragment : Fragment() {
         onClickMenuListener()
         onClickBack()
         joinTeam()
+        onClickViewListener()
+    }
+
+    private fun onClickViewListener() {
+        val blockCommunicationsBinding = BlockCommunicationsCompanyBinding.bind(binding.root)
+        with(blockCommunicationsBinding) {
+            tvCommunicationsInstagram.setOnClickListener {
+                sendRequest(URL_INSTAGRAM, PN_INSTAGRAM)
+            }
+            tvCommunicationsFacebook.setOnClickListener {
+                sendRequest(URL_FACEBOOK, PN_FACEBOOK)
+            }
+            tvCommunicationsTelegram.setOnClickListener {
+                sendRequest(URL_TELEGRAM, PN_TELEGRAM)
+            }
+        }
+        binding.inCommunicationsAddress.ivTelegram.setOnClickListener {
+            sendRequest(URL_TELEGRAM, PN_TELEGRAM)
+        }
+        binding.inBlockClientCompany.tvContactsInfoEmail.setOnClickListener {
+            sendEmail(URL_EMAIL)
+        }
     }
 
     private fun joinTeam() {
