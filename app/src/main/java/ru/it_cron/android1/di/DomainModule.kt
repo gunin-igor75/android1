@@ -7,6 +7,7 @@ import ru.it_cron.android1.domain.usecases.CheckAvailableUseCase
 import ru.it_cron.android1.domain.usecases.GetCaseDetailsUseCase
 import ru.it_cron.android1.domain.usecases.GetCasesUseCase
 import ru.it_cron.android1.domain.usecases.GetFiltersUseCase
+import ru.it_cron.android1.domain.usecases.GetReviewsUseCase
 import ru.it_cron.android1.domain.usecases.ReadOnBoardingStateUseCase
 import ru.it_cron.android1.domain.usecases.SaveOnBoardingStateUseCase
 
@@ -28,6 +29,9 @@ val domainModule = module {
     }
     factory<GetFiltersUseCase> {
         GetFiltersUseCase(repository = get())
+    }
+    factory<GetReviewsUseCase> {
+        GetReviewsUseCase(repository = get())
     }
     single<ChoiceFilters<String>> {
         ChoiceFiltersDefault()
