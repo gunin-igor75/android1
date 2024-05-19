@@ -1,9 +1,16 @@
 package ru.it_cron.android1.presentation.company
 
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.TextPaint
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.github.terrakok.cicerone.Router
 import org.koin.android.ext.android.inject
@@ -11,11 +18,14 @@ import ru.it_cron.android1.R
 import ru.it_cron.android1.constant.PN_FACEBOOK
 import ru.it_cron.android1.constant.PN_INSTAGRAM
 import ru.it_cron.android1.constant.PN_TELEGRAM
+import ru.it_cron.android1.constant.URL_EMAIL
 import ru.it_cron.android1.constant.URL_FACEBOOK
 import ru.it_cron.android1.constant.URL_INSTAGRAM
 import ru.it_cron.android1.constant.URL_TELEGRAM
 import ru.it_cron.android1.databinding.FragmentCompanyBinding
+import ru.it_cron.android1.presentation.extension.sendEmail
 import ru.it_cron.android1.presentation.extension.sendRequest
+import ru.it_cron.android1.presentation.utils.makeLinks
 
 class CompanyFragment : Fragment() {
     private var _binding: FragmentCompanyBinding? = null
@@ -36,7 +46,32 @@ class CompanyFragment : Fragment() {
         setupMenu()
         onClickMenuListener()
         onClickBack()
+        joinTeam()
     }
+
+    private fun joinTeam() {
+        val view = binding.inJoinTeam.tvJoinTeamSlogan
+        val listener = View.OnClickListener {
+            sendEmail(URL_EMAIL)
+        }
+        val color = ContextCompat.getColor(
+            binding.root.context,
+            R.color.orange
+        )
+        val spannableString = makeLinks(
+            text = view.text.toString(),
+            phrase = PHRASE,
+            phraseColor = color,
+            listener = listener
+        )
+
+        view.movementMethod = LinkMovementMethod.getInstance()
+        view.setText(
+            spannableString,
+            TextView.BufferType.SPANNABLE
+        )
+    }
+
 
     private fun setupMenu() {
         binding.tbCompany.inflateMenu(R.menu.fragment_company)
@@ -77,6 +112,9 @@ class CompanyFragment : Fragment() {
     }
 
     companion object {
+
+        private const val PHRASE = "hr@it-cron.ru"
+
         @JvmStatic
         fun newInstance() = CompanyFragment()
     }
