@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.github.terrakok.cicerone.Router
+import org.koin.android.ext.android.inject
 import ru.it_cron.android1.R
 import ru.it_cron.android1.constant.PN_FACEBOOK
 import ru.it_cron.android1.constant.PN_INSTAGRAM
@@ -20,6 +22,7 @@ class CompanyFragment : Fragment() {
     private val binding: FragmentCompanyBinding
         get() = _binding ?: throw IllegalStateException("FragmentCompanyBinding is null")
 
+    private val router: Router by inject()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -32,6 +35,7 @@ class CompanyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setupMenu()
         onClickMenuListener()
+        onClickBack()
     }
 
     private fun setupMenu() {
@@ -62,6 +66,13 @@ class CompanyFragment : Fragment() {
 
                 else -> false
             }
+        }
+    }
+
+    private fun onClickBack() {
+        val toolBar = binding.tbCompany
+        toolBar.setNavigationOnClickListener {
+            router.exit()
         }
     }
 

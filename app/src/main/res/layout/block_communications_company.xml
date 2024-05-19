@@ -13,7 +13,7 @@
         android:contentDescription="@string/description_image_squares"
         android:src="@drawable/im_rectangle_middle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inReviews" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/llCommunications"

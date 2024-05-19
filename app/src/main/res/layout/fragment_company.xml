@@ -19,8 +19,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/padding_app">
+            android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline1"
@@ -38,19 +37,49 @@
                 app:layout_constraintStart_toEndOf="@+id/guideline1"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <include layout="@layout/block_approach_title_company" />
+            <LinearLayout
+                android:id="@+id/llApproach"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/padding_app"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivCompanyRect1">
 
-            <include layout="@layout/block_approach_content_company" />
+                <include layout="@layout/block_approach_title_company" />
+
+                <include layout="@layout/block_approach_content_company" />
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.9" />
+
+            <ImageView
+                android:id="@+id/ivCompanyRect2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_85sdp"
+                android:contentDescription="@string/image_rectangle_company_description"
+                android:src="@drawable/im_rectangle_smail"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@id/ivCompanyRect1" />
+
 
             <ImageView
                 android:id="@+id/ivCompanyRect3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="26dp"
                 android:layout_marginTop="32dp"
                 android:contentDescription="@string/image_rectangle_company_description"
                 android:src="@drawable/im_rectangle_big"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvContentProduct" />
+                app:layout_constraintTop_toBottomOf="@id/llApproach" />
 
             <include
                 android:id="@+id/inPuchow"
@@ -61,7 +90,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ivCompanyRect3" />
 
-            <include layout="@layout/block_client_company" />
+            <LinearLayout
+                android:id="@+id/llClientCompany"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/padding_app"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/inPuchow">
+
+                <include layout="@layout/block_client_company" />
+            </LinearLayout>
 
             <include
                 android:id="@+id/inReviews"
@@ -69,9 +108,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sBlockClient" />
+                app:layout_constraintTop_toBottomOf="@+id/llClientCompany" />
 
-            <include layout="@layout/block_communications_company" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clCommunications"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_app"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/inReviews">
+
+                <include layout="@layout/block_communications_company" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <include
                 android:id="@+id/inJoinTeam"
@@ -79,7 +128,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spCommunications" />
+                app:layout_constraintTop_toBottomOf="@+id/clCommunications" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

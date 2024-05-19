@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+    android:orientation="vertical"
+    tools:parentTag="android.widget.LinearLayout">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvClientsTitle"
@@ -11,9 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_62sdp"
         android:lineSpacingMultiplier="1.2"
-        android:text="@string/client_company"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inPuchow" />
+        android:text="@string/client_company" />
 
     <!--1 Element-->
 
@@ -23,10 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_32sdp"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvClientsTitle">
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -55,8 +50,7 @@
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_10sdp"
-        android:background="@color/gray"
-        app:layout_constraintTop_toBottomOf="@+id/llItem1" />
+        android:background="@color/gray" />
 
     <!--2 Element-->
 
@@ -66,10 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16sdp"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vItem1">
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -98,8 +89,7 @@
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_10sdp"
-        android:background="@color/gray"
-        app:layout_constraintTop_toBottomOf="@+id/llItem2" />
+        android:background="@color/gray" />
 
     <!--3 Element-->
 
@@ -109,10 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16sdp"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vItem2">
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -141,8 +128,7 @@
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_10sdp"
-        android:background="@color/gray"
-        app:layout_constraintTop_toBottomOf="@+id/llItem3" />
+        android:background="@color/gray" />
 
     <!--4 Element-->
 
@@ -152,10 +138,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16sdp"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vItem3">
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -184,8 +167,7 @@
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_10sdp"
-        android:background="@color/gray"
-        app:layout_constraintTop_toBottomOf="@+id/llItem4" />
+        android:background="@color/gray" />
 
     <!--5 Element-->
 
@@ -195,10 +177,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16sdp"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vItem4">
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -227,8 +206,7 @@
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_10sdp"
-        android:background="@color/gray"
-        app:layout_constraintTop_toBottomOf="@+id/llItem5" />
+        android:background="@color/gray" />
 
     <!--6 Element-->
 
@@ -238,10 +216,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16sdp"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vItem5">
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -270,8 +245,7 @@
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_10sdp"
-        android:background="@color/gray"
-        app:layout_constraintTop_toBottomOf="@+id/llItem6" />
+        android:background="@color/gray" />
 
     <!--7 Element-->
 
@@ -281,10 +255,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16sdp"
         android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vItem6">
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -307,9 +278,6 @@
     </LinearLayout>
 
     <Space
-        android:id="@+id/sBlockClient"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_62sdp"
-        app:layout_constraintTop_toBottomOf="@id/llItem7" />
-
+        android:layout_height="@dimen/_64sdp" />
 </merge>

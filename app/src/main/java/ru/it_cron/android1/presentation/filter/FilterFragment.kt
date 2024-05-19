@@ -45,7 +45,7 @@ class FilterFragment : Fragment() {
         observeViewModel()
         observeViewModelError()
         observeIconClear()
-        setupToolBarApp()
+        onClickBack()
         setupOnClick()
         onClickIconClear()
     }
@@ -125,7 +125,7 @@ class FilterFragment : Fragment() {
         }
     }
 
-    private fun setupToolBarApp() {
+    private fun onClickBack() {
         val toolBar = binding.tbCases
         toolBar.setNavigationOnClickListener {
             router.exit()
