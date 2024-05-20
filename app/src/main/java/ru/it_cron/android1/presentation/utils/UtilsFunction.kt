@@ -6,6 +6,7 @@ import android.text.TextPaint
 import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 
 fun setupText(textView: TextView, list: List<String>): String {
     val result = StringBuilder()
@@ -56,3 +57,7 @@ fun makeLinks(
     return spannableString
 }
 
+fun Fragment.dpToPx(dpValue: Int): Int {
+    val dpRatio = resources.displayMetrics.density
+    return (dpValue * dpRatio).toInt()
+}

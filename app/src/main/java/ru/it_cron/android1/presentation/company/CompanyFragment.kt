@@ -15,9 +15,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.bumptech.glide.RequestManager
 import com.github.terrakok.cicerone.Router
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.it_cron.android1.R
 import ru.it_cron.android1.constant.PN_FACEBOOK
 import ru.it_cron.android1.constant.PN_INSTAGRAM
@@ -29,9 +29,9 @@ import ru.it_cron.android1.constant.URL_TELEGRAM
 import ru.it_cron.android1.databinding.BlockCommunicationsCompanyBinding
 import ru.it_cron.android1.databinding.FragmentCompanyBinding
 import ru.it_cron.android1.domain.model.StateError
-import ru.it_cron.android1.navigation.Screens
 import ru.it_cron.android1.presentation.extension.sendEmail
 import ru.it_cron.android1.presentation.extension.sendRequest
+import ru.it_cron.android1.presentation.utils.dpToPx
 import ru.it_cron.android1.presentation.utils.makeLinks
 
 class CompanyFragment : Fragment() {
@@ -41,9 +41,10 @@ class CompanyFragment : Fragment() {
 
     private val router: Router by inject()
 
-    private val viewModel: CompanyViewModel by inject()
+    private val viewModel by viewModel<CompanyViewModel>()
 
-    private val glide by inject<RequestManager>()
+    private
+    val glide by inject<RequestManager>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,7 +59,7 @@ class CompanyFragment : Fragment() {
         setupMenu()
         onClickMenuListener()
         onClickBack()
-        joinTeam()
+        createSpannableWord()
         onClickViewListener()
         observeViewModelError()
         observeViewModelReviews()
@@ -94,11 +95,11 @@ class CompanyFragment : Fragment() {
             viewModel.error.flowWithLifecycle(viewLifecycleOwner.lifecycle).collect { state ->
                 when (state) {
                     is StateError.Error -> {
-                        Snackbar.make(binding.root, state.message, Snackbar.LENGTH_LONG).show()
+                        binding.inReviews.clReviews.visibility = View.GONE
                     }
 
                     StateError.ErrorInternet -> {
-                        router.replaceScreen(Screens.openErrorFragment())
+                        binding.inReviews.clReviews.visibility = View.GONE
                     }
                 }
             }
@@ -106,6 +107,7 @@ class CompanyFragment : Fragment() {
     }
 
     private fun onClickViewListener() {
+
         val blockCommunicationsBinding = BlockCommunicationsCompanyBinding.bind(binding.root)
         with(blockCommunicationsBinding) {
             tvCommunicationsInstagram.setOnClickListener {
@@ -126,7 +128,7 @@ class CompanyFragment : Fragment() {
         }
     }
 
-    private fun joinTeam() {
+    private fun createSpannableWord() {
         val view = binding.inJoinTeam.tvJoinTeamSlogan
         val listener = View.OnClickListener {
             sendEmail(URL_EMAIL)
@@ -192,7 +194,8 @@ class CompanyFragment : Fragment() {
         val layoutParams = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
         )
-        layoutParams.setMargins(MARGIN, 0, MARGIN, 0)
+        val margin = dpToPx(MARGIN)
+        layoutParams.setMargins(margin, 0, 0, 0)
         for (i in 0 until size) {
             val indicator = ImageView(requireContext())
             indicator.setImageDrawable(

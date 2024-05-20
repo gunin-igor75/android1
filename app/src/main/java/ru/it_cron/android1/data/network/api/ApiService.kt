@@ -22,8 +22,7 @@ interface ApiService {
     ): ContainerResponseCase
 
     @GET("filters")
-    suspend fun getFilters(
-    ): ContainerResponseFilters
+    suspend fun getFilters(): ContainerResponseFilters
 
     @GET("testimonials")
     suspend fun getReviews(): ContainerResponseReviews
