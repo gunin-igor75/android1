@@ -55,3 +55,4 @@ fun makeLinks(
     )
     return spannableString
 }
+

@@ -5,10 +5,18 @@ import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
+import com.bumptech.glide.RequestManager
 import com.github.terrakok.cicerone.Router
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import ru.it_cron.android1.R
 import ru.it_cron.android1.constant.PN_FACEBOOK
@@ -20,6 +28,8 @@ import ru.it_cron.android1.constant.URL_INSTAGRAM
 import ru.it_cron.android1.constant.URL_TELEGRAM
 import ru.it_cron.android1.databinding.BlockCommunicationsCompanyBinding
 import ru.it_cron.android1.databinding.FragmentCompanyBinding
+import ru.it_cron.android1.domain.model.StateError
+import ru.it_cron.android1.navigation.Screens
 import ru.it_cron.android1.presentation.extension.sendEmail
 import ru.it_cron.android1.presentation.extension.sendRequest
 import ru.it_cron.android1.presentation.utils.makeLinks
@@ -30,6 +40,11 @@ class CompanyFragment : Fragment() {
         get() = _binding ?: throw IllegalStateException("FragmentCompanyBinding is null")
 
     private val router: Router by inject()
+
+    private val viewModel: CompanyViewModel by inject()
+
+    private val glide by inject<RequestManager>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -45,6 +60,49 @@ class CompanyFragment : Fragment() {
         onClickBack()
         joinTeam()
         onClickViewListener()
+        observeViewModelError()
+        observeViewModelReviews()
+    }
+
+    private fun observeViewModelReviews() {
+        viewModel.reviews.observe(viewLifecycleOwner) {
+            if (it.isEmpty()) {
+                binding.inReviews.clReviews.visibility = View.GONE
+            } else {
+                binding.inReviews.clReviews.visibility = View.VISIBLE
+                binding.inReviews.vpReviews.adapter = ReviewsViewPagerAdapter(
+                    reviews = it,
+                    glide = glide
+                )
+                setupReviewsIndicators(it.size)
+                settingViewPager()
+            }
+        }
+
+    }
+
+    private fun settingViewPager() {
+        binding.inReviews.vpReviews.registerOnPageChangeCallback(object : OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                changeBackgroundIndicator(position)
+            }
+        })
+    }
+
+    private fun observeViewModelError() {
+        lifecycleScope.launch {
+            viewModel.error.flowWithLifecycle(viewLifecycleOwner.lifecycle).collect { state ->
+                when (state) {
+                    is StateError.Error -> {
+                        Snackbar.make(binding.root, state.message, Snackbar.LENGTH_LONG).show()
+                    }
+
+                    StateError.ErrorInternet -> {
+                        router.replaceScreen(Screens.openErrorFragment())
+                    }
+                }
+            }
+        }
     }
 
     private fun onClickViewListener() {
@@ -130,9 +188,52 @@ class CompanyFragment : Fragment() {
         }
     }
 
+    private fun setupReviewsIndicators(size: Int) {
+        val layoutParams = LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        layoutParams.setMargins(MARGIN, 0, MARGIN, 0)
+        for (i in 0 until size) {
+            val indicator = ImageView(requireContext())
+            indicator.setImageDrawable(
+                ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.reviews_indicator_inactive
+                )
+            )
+            indicator.layoutParams = layoutParams
+            binding.inReviews.llIndicators.addView(indicator)
+        }
+    }
+
+    private fun changeBackgroundIndicator(position: Int) {
+        with(binding.inReviews) {
+            val count = llIndicators.childCount
+            for (i in 0 until count) {
+                val indicator = llIndicators.getChildAt(i) as ImageView
+                if (i == position) {
+                    indicator.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(),
+                            R.drawable.reviews_indicator_active
+                        )
+                    )
+                } else {
+                    indicator.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(),
+                            R.drawable.reviews_indicator_inactive
+                        )
+                    )
+                }
+            }
+        }
+    }
+
     companion object {
 
         private const val PHRASE = "hr@it-cron.ru"
+        private const val MARGIN = 8
 
         @JvmStatic
         fun newInstance() = CompanyFragment()

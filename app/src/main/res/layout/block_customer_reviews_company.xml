@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clReviews"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@color/white"
     android:padding="@dimen/padding_app">
 
@@ -46,68 +46,26 @@
 
     </LinearLayout>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvReviewsContent"
-        style="@style/GothamProReg.14sp"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpReviews"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_32sdp"
-        android:lineSpacingMultiplier="1.3"
-        android:textColor="@color/text_company"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/llSeeAll"
-        tools:text="@string/reviews_content" />
+        app:layout_constraintTop_toBottomOf="@+id/llSeeAll"
+        app:layout_constraintBottom_toTopOf="@+id/llIndicators" />
 
     <LinearLayout
-        android:id="@+id/llReviewsNameJob"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_24ssp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvReviewsContent">
-
-        <ImageView
-            android:layout_width="@dimen/_64sdp"
-            android:layout_height="@dimen/_64sdp"
-            android:contentDescription="@string/image_avatar_company_description"
-            tools:src="@drawable/avatarka" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:orientation="vertical">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvReviewsName"
-                style="@style/GothamProBold.12sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/text_company"
-                tools:text="@string/puchow" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvReviewsJob"
-                style="@style/GothamProReg.12sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_4sdp"
-                android:textColor="@color/text_company"
-                tools:text="@string/puchow_job" />
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <ImageView
-        android:layout_width="wrap_content"
+        android:id="@+id/llIndicators"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_40sdp"
-        android:contentDescription="@string/icon_slider"
-        android:src="@drawable/ic_sliders"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llReviewsNameJob" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vpReviews"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

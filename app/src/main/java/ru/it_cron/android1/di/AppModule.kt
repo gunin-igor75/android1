@@ -6,6 +6,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import ru.it_cron.android1.presentation.case_details.CaseDetailsViewModel
 import ru.it_cron.android1.presentation.cases.CasesViewModel
+import ru.it_cron.android1.presentation.company.CompanyViewModel
 import ru.it_cron.android1.presentation.filter.FiltersViewModel
 import ru.it_cron.android1.presentation.main.MainViewModel
 import ru.it_cron.android1.presentation.onboarding.OnBoardingViewModel
@@ -36,6 +37,10 @@ val appModule = module {
             getFiltersUseCase = get(),
             choiceFilters = get()
         )
+    }
+
+    viewModel<CompanyViewModel> {
+        CompanyViewModel(getReviewsUseCase = get())
     }
 
     single {
