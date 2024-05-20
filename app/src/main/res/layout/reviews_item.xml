@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvReviewsContent"
+        style="@style/GothamProReg.14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:lineSpacingMultiplier="1.3"
+        android:maxLines="8"
+        android:textColor="@color/text_company"
+        tools:text="@string/reviews_content" />
+
+    <LinearLayout
+        android:id="@+id/llReviewsNameJob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_24ssp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivReview"
+            android:layout_width="@dimen/_64sdp"
+            android:layout_height="@dimen/_64sdp"
+            android:contentDescription="@string/image_avatar_company_description"
+            tools:src="@drawable/avatarka" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvReviewsName"
+                style="@style/GothamProBold.12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_company"
+                tools:text="@string/puchow" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvReviewsJob"
+                style="@style/GothamProReg.12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:lineSpacingMultiplier="1.4"
+                android:textColor="@color/text_company"
+                tools:text="@string/puchow_job" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

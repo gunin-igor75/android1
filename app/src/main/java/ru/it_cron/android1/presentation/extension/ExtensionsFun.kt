@@ -72,3 +72,5 @@ fun Fragment.openInternet(
 
 fun <T> RequestBuilder<T>.roundCorners(cornerRadius: Int) =
     apply(RequestOptions().transform(RoundedCorners(cornerRadius)))
+
+

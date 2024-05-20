@@ -9,8 +9,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="black_light">#FF131213</color>
     <color name="orange">#FFFB6542</color>
+    <color name="grat_light">#FFE0E0E0</color>
     <color name="gray">#FF5A5959</color>
     <color name="trans_0_5">#7F000000</color>
     <color name="trans_0_75">#BF000000</color>
     <color name="case_image_color">#FF69488D</color>
+    <color name="text_company">#FF131212</color>
 </resources>

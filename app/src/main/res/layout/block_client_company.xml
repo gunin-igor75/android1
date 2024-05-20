@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvClientsTitle"
+        style="@style/GothamProReg.16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_62sdp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/client_company" />
+
+    <!--1 Element-->
+
+    <LinearLayout
+        android:id="@+id/llItem1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_32sdp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:contentDescription="@string/icon_logo_gazprom"
+            android:src="@drawable/ic_logo_gazprom" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:contentDescription="@string/icon_logo_luck"
+            android:src="@drawable/ic_logo_lukoil" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vItem1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@color/gray" />
+
+    <!--2 Element-->
+
+    <LinearLayout
+        android:id="@+id/llItem2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:contentDescription="@string/icon_logo_t"
+            android:src="@drawable/ic_logo_t_" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:contentDescription="@string/icon_logo_meg"
+            android:src="@drawable/ic_logo_megafon" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vItem2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@color/gray" />
+
+    <!--3 Element-->
+
+    <LinearLayout
+        android:id="@+id/llItem3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:contentDescription="@string/icon_logo_ros"
+            android:src="@drawable/ic_logo_rosbank" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:contentDescription="@string/icon_logo_abp"
+            android:src="@drawable/ic_logo_abp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vItem3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@color/gray" />
+
+    <!--4 Element-->
+
+    <LinearLayout
+        android:id="@+id/llItem4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:contentDescription="@string/icon_logo_help"
+            android:src="@drawable/ic_logo_doc_help" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:contentDescription="@string/icon_logo_kurch"
+            android:src="@drawable/ic_logo_ksh" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vItem4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@color/gray" />
+
+    <!--5 Element-->
+
+    <LinearLayout
+        android:id="@+id/llItem5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:contentDescription="@string/icon_logo_prim"
+            android:src="@drawable/ic_logo_bank_primarye" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:contentDescription="@string/icon_logo_pay"
+            android:src="@drawable/ic_logo_on_pay" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vItem5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@color/gray" />
+
+    <!--6 Element-->
+
+    <LinearLayout
+        android:id="@+id/llItem6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:contentDescription="@string/icon_logo_libertex"
+            android:src="@drawable/ic_logo_libertex" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:contentDescription="@string/icon_logo_atb"
+            android:src="@drawable/ic_logo_atb" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vItem6"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@color/gray" />
+
+    <!--7 Element-->
+
+    <LinearLayout
+        android:id="@+id/llItem7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:contentDescription="@string/icon_logo_skb"
+            android:src="@drawable/ic_logo_skb_bank" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:contentDescription="@string/icon_logo_lykke"
+            android:src="@drawable/ic_logo_lykke" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_64sdp" />
+</merge>

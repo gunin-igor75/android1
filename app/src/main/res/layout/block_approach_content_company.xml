@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleProject"
+        style="@style/GothamProLight.20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_64sdp"
+        android:text="@string/project" />
+
+    <View
+        android:id="@+id/vLine1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:background="@color/gray" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvContentProject"
+        style="@style/GothamProReg.14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:lineSpacingMultiplier="1.4"
+        android:text="@string/project_content" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvTitleProduct"
+        style="@style/GothamProLight.20sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_32sdp"
+        android:text="@string/product" />
+
+    <View
+        android:id="@+id/vLine2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:background="@color/gray" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvContentProduct"
+        style="@style/GothamProReg.14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:lineSpacingMultiplier="1.4"
+        android:text="@string/product_content" />
+
+
+</merge>

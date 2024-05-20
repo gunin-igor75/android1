@@ -21,7 +21,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.it_cron.android1.R
 import ru.it_cron.android1.databinding.AppAllowsItemBinding
 import ru.it_cron.android1.databinding.BlockButtonCaseBinding
-import ru.it_cron.android1.databinding.BlockContactInfoCaseBinding
 import ru.it_cron.android1.databinding.BlockNextCaseBinding
 import ru.it_cron.android1.databinding.BlockTaskCaseBinding
 import ru.it_cron.android1.databinding.BlockTechnologyPlatformCaseBinding
@@ -274,8 +273,7 @@ class CaseFragment : Fragment() {
     }
 
     private fun onClockEmail() {
-        val currentBinding = BlockContactInfoCaseBinding.bind(binding.root)
-        currentBinding.tvContactsInfoEmail.setOnClickListener {
+        binding.btSendRequestCase.btSendApp.setOnClickListener {
             sendEmail(URL_EMAIL)
         }
     }

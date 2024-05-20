@@ -78,8 +78,6 @@ class CasesFragment : Fragment() {
 
     private fun setupToolBarApp() {
         val toolBar = binding.tbCases
-        val activity = requireActivity() as AppCompatActivity
-        activity.setSupportActionBar(toolBar)
         toolBar.setNavigationOnClickListener {
             viewModel.clearFilter()
             router.exit()
