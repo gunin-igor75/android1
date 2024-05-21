@@ -112,4 +112,7 @@
     <string name="street">119330, ул. Мосфильмовская, 35</string>
     <string name="phone">+7 (495) 006–13–57</string>
     <string name="contact_via">Связаться через</string>
+    <string name="application">Заявка</string>
+    <string name="full_brief">Заполните бриф</string>
+    <string name="submit_application">Оставьте заявку, либо звоните, мы пообщаемся и сами все за вас заполним: +7 (495) 006–13–57</string>
 </resources>

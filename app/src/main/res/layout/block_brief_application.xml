@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProBold.35sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:text="@string/full_brief"
+        android:lineSpacingMultiplier="1.2" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAppPhone"
+        style="@style/GothamProReg.16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8sp"
+        android:lineSpacingMultiplier="1.3"
+        android:text="@string/submit_application" />
+
+</LinearLayout>

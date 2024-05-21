@@ -3,6 +3,7 @@ package ru.it_cron.android1.navigation
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import ru.it_cron.android1.domain.model.CaseBox
 import ru.it_cron.android1.domain.model.ContainerImage
+import ru.it_cron.android1.presentation.application.ApplicationFragment
 import ru.it_cron.android1.presentation.case_details.CaseFragment
 import ru.it_cron.android1.presentation.case_details.ImagesFragment
 import ru.it_cron.android1.presentation.cases.CasesFragment
@@ -58,5 +59,9 @@ object Screens {
 
     fun openFiltersFragment() = FragmentScreen {
         FilterFragment.newInstance()
+    }
+
+    fun openApplicationFragment() = FragmentScreen {
+        ApplicationFragment.newInstance()
     }
 }

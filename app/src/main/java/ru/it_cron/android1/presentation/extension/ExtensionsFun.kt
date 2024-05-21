@@ -70,6 +70,14 @@ fun Fragment.openInternet(
     }
 }
 
+fun Fragment.callPhone(
+    phoneNumber: String,
+) {
+    val call = Uri.parse("tel:$phoneNumber")
+    val intent = Intent(Intent.ACTION_DIAL, call)
+    startActivity(intent)
+}
+
 fun <T> RequestBuilder<T>.roundCorners(cornerRadius: Int) =
     apply(RequestOptions().transform(RoundedCorners(cornerRadius)))
 
