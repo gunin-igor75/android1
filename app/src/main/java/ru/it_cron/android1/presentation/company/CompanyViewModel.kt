@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import ru.it_cron.android1.data.model.DataResult
-import ru.it_cron.android1.domain.model.Review
+import ru.it_cron.android1.domain.model.company.Review
 import ru.it_cron.android1.domain.model.StateError
 import ru.it_cron.android1.domain.usecases.GetReviewsUseCase
 

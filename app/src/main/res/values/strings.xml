@@ -115,4 +115,10 @@
     <string name="application">Заявка</string>
     <string name="full_brief">Заполните бриф</string>
     <string name="submit_application">Оставьте заявку, либо звоните, мы пообщаемся и сами все за вас заполним: +7 (495) 006–13–57</string>
+    <string name="app_test">UX-тестирование</string>
+    <string name="checkbox_app_1">Даю согласие на обработку персональных данных</string>
+    <string name="checkbox_app_2">Соглашаюсь с политикой конфиденциальности</string>
+    <string name="checkbox_app_span_1">обработку персональных данных</string>
+    <string name="checkbox_app_span_2">политикой конфиденциальности</string>
+    <string name="button_ok">Ок</string>
 </resources>

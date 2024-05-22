@@ -7,7 +7,7 @@ import retrofit2.HttpException
 import ru.it_cron.android1.data.mappers.dataDetailsCaseDtoToCaseDetails
 import ru.it_cron.android1.data.model.DataResult
 import ru.it_cron.android1.data.network.api.ApiService
-import ru.it_cron.android1.domain.model.CaseDetails
+import ru.it_cron.android1.domain.model.cases.CaseDetails
 import ru.it_cron.android1.domain.repository.CaseDetailsRepository
 import java.io.IOException
 

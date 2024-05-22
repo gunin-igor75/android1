@@ -1,6 +1,6 @@
 package ru.it_cron.android1.domain.usecases
 
-import ru.it_cron.android1.domain.model.CaseDetails
+import ru.it_cron.android1.domain.model.cases.CaseDetails
 import ru.it_cron.android1.domain.repository.CaseDetailsRepository
 
 class GetCaseDetailsUseCase(

@@ -25,9 +25,9 @@ import ru.it_cron.android1.databinding.BlockNextCaseBinding
 import ru.it_cron.android1.databinding.BlockTaskCaseBinding
 import ru.it_cron.android1.databinding.BlockTechnologyPlatformCaseBinding
 import ru.it_cron.android1.databinding.FragmentCaseBinding
-import ru.it_cron.android1.domain.model.CaseBox
-import ru.it_cron.android1.domain.model.CaseDetails
-import ru.it_cron.android1.domain.model.ContainerImage
+import ru.it_cron.android1.domain.model.cases.CaseBox
+import ru.it_cron.android1.domain.model.cases.CaseDetails
+import ru.it_cron.android1.domain.model.filter.ContainerImage
 import ru.it_cron.android1.domain.model.StateError
 import ru.it_cron.android1.domain.model.StateScreen
 import ru.it_cron.android1.navigation.Screens

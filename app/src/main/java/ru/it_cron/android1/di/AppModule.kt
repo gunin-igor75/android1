@@ -4,6 +4,10 @@ import com.bumptech.glide.Glide
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
+import ru.it_cron.android1.choice.ChoiceAreaActivityDefault
+import ru.it_cron.android1.choice.ChoiceBudgetDefault
+import ru.it_cron.android1.choice.ChoiceServicesDefault
+import ru.it_cron.android1.presentation.application.ApplicationViewModel
 import ru.it_cron.android1.presentation.case_details.CaseDetailsViewModel
 import ru.it_cron.android1.presentation.cases.CasesViewModel
 import ru.it_cron.android1.presentation.company.CompanyViewModel
@@ -43,7 +47,25 @@ val appModule = module {
         CompanyViewModel(getReviewsUseCase = get())
     }
 
+    viewModel<ApplicationViewModel> {
+        ApplicationViewModel(
+            getServicesUseCase = get(),
+            getBudgetsUseCase = get(),
+            getAreaActivityUseCase = get()
+        )
+    }
+
     single {
         Glide.with(androidContext())
+    }
+
+    scope<ApplicationViewModel> {
+        scoped { ChoiceBudgetDefault() }
+    }
+    scope<ApplicationViewModel> {
+        scoped { ChoiceServicesDefault() }
+    }
+    scope<ApplicationViewModel> {
+        scoped { ChoiceAreaActivityDefault() }
     }
 }

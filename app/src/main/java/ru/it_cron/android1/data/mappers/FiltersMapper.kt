@@ -2,8 +2,8 @@ package ru.it_cron.android1.data.mappers
 
 import ru.it_cron.android1.data.network.dto.cases_dto.FilterDto
 import ru.it_cron.android1.data.network.dto.filter_dto.DataFiltersDto
-import ru.it_cron.android1.domain.model.Filter
-import ru.it_cron.android1.domain.model.FiltersGroup
+import ru.it_cron.android1.domain.model.filter.Filter
+import ru.it_cron.android1.domain.model.filter.FiltersGroup
 
 fun FilterDto.filterDtoToFilter(): Filter {
     return Filter(

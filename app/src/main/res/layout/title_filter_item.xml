@@ -5,6 +5,7 @@
     style="@style/GothamProReg.24sp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:lineSpacingMultiplier="1.2"
     android:paddingVertical="@dimen/padding_app"
     tools:text="@string/title_filter">
 

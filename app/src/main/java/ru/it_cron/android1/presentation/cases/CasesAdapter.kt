@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import ru.it_cron.android1.databinding.CaseItemBinding
-import ru.it_cron.android1.domain.model.Case
-import ru.it_cron.android1.domain.model.CaseBox
+import ru.it_cron.android1.domain.model.cases.Case
+import ru.it_cron.android1.domain.model.cases.CaseBox
 import ru.it_cron.android1.presentation.cases.CasesAdapter.CaseViewHolder
 
 class CasesAdapter(

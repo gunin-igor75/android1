@@ -10,6 +10,9 @@ import ru.it_cron.android1.domain.usecases.GetFiltersUseCase
 import ru.it_cron.android1.domain.usecases.GetReviewsUseCase
 import ru.it_cron.android1.domain.usecases.ReadOnBoardingStateUseCase
 import ru.it_cron.android1.domain.usecases.SaveOnBoardingStateUseCase
+import ru.it_cron.android1.domain.usecases.application.GetAreaActivityUseCase
+import ru.it_cron.android1.domain.usecases.application.GetBudgetsUseCase
+import ru.it_cron.android1.domain.usecases.application.GetServicesUseCase
 
 val domainModule = module {
     factory<SaveOnBoardingStateUseCase> {
@@ -33,7 +36,17 @@ val domainModule = module {
     factory<GetReviewsUseCase> {
         GetReviewsUseCase(repository = get())
     }
-    single<ChoiceFilters<String>> {
+    factory<ChoiceFilters<String>> {
         ChoiceFiltersDefault()
+    }
+
+    factory<GetServicesUseCase> {
+        GetServicesUseCase(repository = get())
+    }
+    factory<GetBudgetsUseCase> {
+        GetBudgetsUseCase(repository = get())
+    }
+    factory<GetAreaActivityUseCase> {
+        GetAreaActivityUseCase(repository = get())
     }
 }

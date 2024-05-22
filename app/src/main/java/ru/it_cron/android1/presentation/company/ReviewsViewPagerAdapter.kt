@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import ru.it_cron.android1.databinding.ReviewsItemBinding
-import ru.it_cron.android1.domain.model.Review
+import ru.it_cron.android1.domain.model.company.Review
 
 class ReviewsViewPagerAdapter(
     private val reviews: List<Review>,

@@ -7,7 +7,7 @@ import retrofit2.HttpException
 import ru.it_cron.android1.data.mappers.reviewsDtosToReviews
 import ru.it_cron.android1.data.model.DataResult
 import ru.it_cron.android1.data.network.api.ApiService
-import ru.it_cron.android1.domain.model.Review
+import ru.it_cron.android1.domain.model.company.Review
 import ru.it_cron.android1.domain.repository.ReviewsRepository
 import java.io.IOException
 

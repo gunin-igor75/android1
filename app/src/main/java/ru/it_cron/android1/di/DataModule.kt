@@ -4,16 +4,18 @@ import org.koin.dsl.module
 import ru.it_cron.android1.data.network.api.ApiFactory
 import ru.it_cron.android1.data.network.api.ApiService
 import ru.it_cron.android1.data.repository.AccessRepositoryImpl
+import ru.it_cron.android1.data.repository.AppRepositoryImpl
 import ru.it_cron.android1.data.repository.CaseDetailsRepositoryImp
 import ru.it_cron.android1.data.repository.CasesRepositoryImpl
 import ru.it_cron.android1.data.repository.FilterRepositoryImp
 import ru.it_cron.android1.data.repository.OnBoardingRepositoryImpl
 import ru.it_cron.android1.data.repository.ReviewsRepositoryImpl
-import ru.it_cron.android1.domain.model.Case
-import ru.it_cron.android1.domain.model.CaseDetails
-import ru.it_cron.android1.domain.model.FiltersGroup
-import ru.it_cron.android1.domain.model.Review
+import ru.it_cron.android1.domain.model.cases.Case
+import ru.it_cron.android1.domain.model.cases.CaseDetails
+import ru.it_cron.android1.domain.model.filter.FiltersGroup
+import ru.it_cron.android1.domain.model.company.Review
 import ru.it_cron.android1.domain.repository.AccessRepository
+import ru.it_cron.android1.domain.repository.AppRepository
 import ru.it_cron.android1.domain.repository.CaseDetailsRepository
 import ru.it_cron.android1.domain.repository.CasesRepository
 import ru.it_cron.android1.domain.repository.FilterRepository
@@ -42,5 +44,8 @@ val dataModule = module {
     }
     single<ReviewsRepository<List<Review>>> {
         ReviewsRepositoryImpl(apiService = get())
+    }
+    single<AppRepository> {
+        AppRepositoryImpl()
     }
 }

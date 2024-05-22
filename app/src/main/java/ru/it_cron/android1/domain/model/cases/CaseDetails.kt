@@ -1,4 +1,4 @@
-package ru.it_cron.android1.domain.model
+package ru.it_cron.android1.domain.model.cases
 
 data class CaseDetails(
     val id: String,
