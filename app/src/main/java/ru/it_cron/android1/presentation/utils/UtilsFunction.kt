@@ -43,6 +43,7 @@ fun makeLinks(
         }
 
         override fun onClick(widget: View) {
+            widget.cancelPendingInputEvents()
             listener.onClick(widget)
         }
     }

@@ -121,4 +121,6 @@
     <string name="checkbox_app_span_1">обработку персональных данных</string>
     <string name="checkbox_app_span_2">политикой конфиденциальности</string>
     <string name="button_ok">Ок</string>
+    <string name="phrase_phone">+7 (495) 006–13–57</string>
+    <string name="phone_number">74950861357</string>
 </resources>
