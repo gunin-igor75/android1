@@ -64,6 +64,10 @@ class ApplicationFragment : Fragment() {
         createSpannableWordPolitic()
         setupRecyclerView()
         onClickAdaptersItem()
+        setupEditTextTask(
+            binding.inTask.tilTask,
+            binding.inTask.tetTask
+        )
         setupEditTextNameAndCompany(
             binding.inContactsInfo.tilName,
             binding.inContactsInfo.tetName
@@ -81,6 +85,21 @@ class ApplicationFragment : Fragment() {
             binding.inContactsInfo.tetPhone
         )
 
+    }
+
+    private fun setupEditTextTask(
+        textInputLayout: TextInputLayout,
+        textInputEditText: TextInputEditText,
+    ) {
+        textInputEditText.setOnFocusChangeListener { _, _ ->
+            textInputLayout.boxStrokeColor =
+                ContextCompat.getColor(requireContext(), R.color.orange)
+        }
+        val textWatcher = TextWatcherSimple { text ->
+            val isValid = validationText(text)
+            viewModel.sendResultInput(isValid)
+        }
+        textInputEditText.addTextChangedListener(textWatcher)
     }
 
     private fun setupEditTextNameAndCompany(

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.24sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/contact_info" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/black_light"
+        app:cursorColor="@color/white"
+        app:endIconMode="custom"
+        app:hintTextColor="@color/gray">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tetName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_text_name"
+            android:inputType="textCapWords"
+            android:maxLength="30" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilCompany"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/black_light"
+        app:cursorColor="@color/white"
+        app:endIconMode="custom"
+        app:hintTextColor="@color/gray">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tetCompany"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_text_company"
+            android:inputType="text"
+            android:maxLength="30" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/black_light"
+        app:cursorColor="@color/white"
+        app:endIconMode="custom"
+        app:errorIconDrawable="@drawable/ic_error_16"
+        app:hintTextColor="@color/gray">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tetEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_light"
+            android:hint="@string/edit_text_email"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/black_light"
+        app:cursorColor="@color/white"
+        app:endIconMode="custom"
+        app:errorIconDrawable="@drawable/ic_error_16"
+        app:hintTextColor="@color/gray">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tetPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_light"
+            android:hint="@string/edit_text_phone"
+            android:inputType="phone" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--    <androidx.appcompat.widget.AppCompatEditText-->
+    <!--        android:id="@+id/etName"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="@dimen/_16sdp"-->
+    <!--        android:backgroundTint="@color/gray_light"-->
+    <!--        android:hint="@string/edit_text_name"-->
+    <!--        android:inputType="textPersonName" />-->
+
+    <!--    <androidx.appcompat.widget.AppCompatEditText-->
+    <!--        android:id="@+id/etCompany"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="@dimen/_16sdp"-->
+    <!--        android:backgroundTint="@color/gray_light"-->
+    <!--        android:hint="@string/edit_text_company"-->
+    <!--        android:inputType="text" />-->
+
+    <!--    <androidx.appcompat.widget.AppCompatEditText-->
+    <!--        android:id="@+id/etEmail"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="@dimen/_16sdp"-->
+    <!--        android:backgroundTint="@color/gray_light"-->
+    <!--        android:hint="@string/edit_text_email"-->
+    <!--        android:inputType="textEmailAddress" />-->
+
+    <!--    <androidx.appcompat.widget.AppCompatEditText-->
+    <!--        android:id="@+id/etPhone"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="@dimen/_16sdp"-->
+    <!--        android:backgroundTint="@color/gray_light"-->
+    <!--        android:hint="@string/edit_text_phone"-->
+    <!--        android:inputType="phone" />-->
+</LinearLayout>

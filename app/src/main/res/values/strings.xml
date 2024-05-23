@@ -132,4 +132,8 @@
     <string name="Empty" />
     <string name="valid_number_phone">Введите валидный номер телефона</string>
     <string name="valid_email">Введите валидный email</string>
+    <string name="task_title">Задача</string>
+    <string name="description_task">Описание</string>
+    <string name="attach_file">Прикрепить файл</string>
+    <string name="ps_button_attach_file">*Прикрепление файлов не обязательно</string>
 </resources>

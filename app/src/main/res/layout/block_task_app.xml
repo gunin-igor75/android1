@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.24sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/task_title" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        app:boxBackgroundColor="@color/black_light"
+        app:cursorColor="@color/white"
+        app:endIconMode="custom"
+        app:hintTextColor="@color/gray">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tetTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/description_task"
+            android:inputType="textCapWords"
+            android:maxLength="250" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btAttachFile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:backgroundTint="@color/white"
+        android:paddingVertical="@dimen/_12sdp"
+        android:text="@string/attach_file"
+        android:textAllCaps="false"
+        android:textAppearance="@style/GothamProMed.14sp"
+        app:cornerRadius="25dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray_light"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:text="@string/ps_button_attach_file" />
+
+</LinearLayout>

@@ -67,6 +67,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/ivDecor" />
 
+            <include
+                android:id="@+id/inTask"
+                layout="@layout/block_task_app"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_64sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvServices" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvBudgets"
                 android:layout_width="match_parent"
@@ -75,7 +84,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rvServices" />
+                app:layout_constraintTop_toBottomOf="@id/inTask" />
 
             <include
                 android:id="@+id/inContactsInfo"
