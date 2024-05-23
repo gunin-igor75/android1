@@ -136,4 +136,5 @@
     <string name="description_task">Описание</string>
     <string name="attach_file">Прикрепить файл</string>
     <string name="ps_button_attach_file">*Прикрепление файлов не обязательно</string>
+    <string name="image_file">image file</string>
 </resources>
