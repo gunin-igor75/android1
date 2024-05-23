@@ -77,6 +77,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rvServices" />
 
+            <include
+                android:id="@+id/inContactsInfo"
+                layout="@layout/block_contact_info_app"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_64sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rvBudgets" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvAreaActivity"
                 android:layout_width="match_parent"
@@ -85,7 +94,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rvBudgets" />
+                app:layout_constraintTop_toBottomOf="@id/inContactsInfo" />
 
             <androidx.appcompat.widget.AppCompatCheckBox
                 android:id="@+id/chPersonalInfo"

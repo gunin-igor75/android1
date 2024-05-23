@@ -49,6 +49,9 @@ class ApplicationViewModel(
     private var _areaActivityFlow: MutableStateFlow<MutableList<AppItem>> =
         MutableStateFlow(mutableListOf())
 
+    private var _isErrorInput: MutableLiveData<Boolean> = MutableLiveData()
+    val isErrorInput: LiveData<Boolean> = _isErrorInput
+
     init {
         getServices()
         getBudget()
@@ -133,7 +136,7 @@ class ApplicationViewModel(
         choiceAreaActivity.toggle(item)
     }
 
-    fun clearChoces() {
+    fun clearChoices() {
         choiceServices.clearAll()
         choiceBudget.clearAll()
         choiceAreaActivity.clearAll()
@@ -142,6 +145,10 @@ class ApplicationViewModel(
     override fun onCleared() {
         super.onCleared()
         scope.close()
+    }
+
+    fun sendResultInput(result: Boolean) {
+        _isErrorInput.value = result
     }
 
     private fun merge(
@@ -157,4 +164,6 @@ class ApplicationViewModel(
         }
         return items.toList()
     }
+
+
 }

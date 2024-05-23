@@ -199,4 +199,14 @@
         <item name="android:textColor">@color/white</item>
         <item name="fontFamily">@font/gotham_pro_bol</item>
     </style>
+
+    <style name="TextInputLayoutAppearance" parent="Widget.Design.TextInputLayout">
+        <!-- reference our hint & error styles -->
+        <item name="android:background">@color/black_light</item>
+        <!--        <item name="android:textColor">@color/your_colour_he</item>-->
+        <!--        <item name="android:textColorHint">@color/your_colour_here</item>-->
+        <!--        <item name="colorControlNormal">@color/your_colour_here</item>-->
+        <!--        <item name="colorControlActivated">@color/your_colour_here</item>-->
+        <!--        <item name="colorControlHighlight">@color/your_colour_here</item>-->
+    </style>
 </resources>

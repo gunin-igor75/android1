@@ -1,5 +1,6 @@
 package ru.it_cron.android1.presentation.application
 
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
@@ -10,6 +11,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import com.github.terrakok.cicerone.Router
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.it_cron.android1.R
@@ -20,6 +23,8 @@ import ru.it_cron.android1.presentation.application.PersonalInfoFragment.Compani
 import ru.it_cron.android1.presentation.application.PoliticFragment.Companion.FLAG_SELECTION_PP
 import ru.it_cron.android1.presentation.application.PoliticFragment.Companion.KEY_FRAGMENT_PP
 import ru.it_cron.android1.presentation.application.adapters.ApplicationAdapter
+import ru.it_cron.android1.presentation.application.watchers.TextWatcherPhone
+import ru.it_cron.android1.presentation.application.watchers.TextWatcherSimple
 import ru.it_cron.android1.presentation.extension.callPhone
 import ru.it_cron.android1.presentation.utils.makeLinks
 
@@ -59,8 +64,107 @@ class ApplicationFragment : Fragment() {
         createSpannableWordPolitic()
         setupRecyclerView()
         onClickAdaptersItem()
+        setupEditTextNameAndCompany(
+            binding.inContactsInfo.tilName,
+            binding.inContactsInfo.tetName
+        )
+        setupEditTextNameAndCompany(
+            binding.inContactsInfo.tilCompany,
+            binding.inContactsInfo.tetCompany
+        )
+        setupEditTextEmail(
+            binding.inContactsInfo.tilEmail,
+            binding.inContactsInfo.tetEmail
+        )
+        setupEditTextPhone(
+            binding.inContactsInfo.tilPhone,
+            binding.inContactsInfo.tetPhone
+        )
 
     }
+
+    private fun setupEditTextNameAndCompany(
+        textInputLayout: TextInputLayout,
+        textInputEditText: TextInputEditText,
+    ) {
+        textInputLayout.setEndIconTintMode(PorterDuff.Mode.DST)
+        textInputEditText.setOnFocusChangeListener { _, _ ->
+            textInputLayout.boxStrokeColor =
+                ContextCompat.getColor(requireContext(), R.color.orange)
+        }
+        val textWatcher = TextWatcherSimple { text ->
+            val isValid = validationText(text)
+            viewModel.sendResultInput(isValid)
+            if (isValid) {
+                textInputLayout.endIconDrawable = ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_selected_16
+                )
+            }
+        }
+        textInputEditText.addTextChangedListener(textWatcher)
+    }
+
+    private fun setupEditTextEmail(
+        textInputLayout: TextInputLayout,
+        textInputEditText: TextInputEditText,
+    ) {
+        textInputLayout.setEndIconTintMode(PorterDuff.Mode.DST)
+        textInputEditText.setOnFocusChangeListener { _, _ ->
+            textInputLayout.boxStrokeColor =
+                ContextCompat.getColor(requireContext(), R.color.orange)
+        }
+        val textWatcher = TextWatcherSimple { text ->
+            val isValid = validationEmailAndPhone(text, PATTERN_EMAIL)
+            viewModel.sendResultInput(isValid)
+            if (isValid) {
+                textInputLayout.error = null
+                textInputLayout.endIconDrawable = ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_selected_16
+                )
+            } else {
+                textInputLayout.error = getString(R.string.valid_email)
+            }
+        }
+        textInputLayout.setErrorIconOnClickListener {
+            textInputEditText.setText(getString(R.string.Empty))
+            textInputLayout.error = null
+        }
+        textInputEditText.addTextChangedListener(textWatcher)
+    }
+
+    private fun setupEditTextPhone(
+        textInputLayout: TextInputLayout,
+        textInputEditText: TextInputEditText,
+    ) {
+        textInputLayout.setEndIconTintMode(PorterDuff.Mode.DST)
+        textInputEditText.setOnFocusChangeListener { _, _ ->
+            textInputLayout.boxStrokeColor =
+                ContextCompat.getColor(requireContext(), R.color.orange)
+        }
+        val textWatcher = TextWatcherPhone(
+            editText = textInputEditText
+        ) { text ->
+            val isValid = validationEmailAndPhone(text, PATTERN_PHONE)
+            viewModel.sendResultInput(isValid)
+            if (isValid) {
+                textInputLayout.error = null
+                textInputLayout.endIconDrawable = ContextCompat.getDrawable(
+                    requireContext(),
+                    R.drawable.ic_selected_16
+                )
+            } else {
+                textInputLayout.error = getString(R.string.valid_number_phone)
+            }
+        }
+        textInputLayout.setErrorIconOnClickListener {
+            textInputEditText.setText(getString(R.string.Empty))
+            textInputLayout.error = null
+        }
+        textInputEditText.addTextChangedListener(textWatcher)
+    }
+
 
     private fun setupRecyclerView() {
         binding.rvServices.adapter = serviceAdapter
@@ -174,12 +278,24 @@ class ApplicationFragment : Fragment() {
     private fun onClickBack() {
         val toolBar = binding.tbApp
         toolBar.setNavigationOnClickListener {
-            viewModel.clearChoces()
+            viewModel.clearChoices()
             router.exit()
         }
     }
 
+    private fun validationText(text: String): Boolean {
+        return text.isNotBlank()
+    }
+
+    private fun validationEmailAndPhone(email: String, pattern: String): Boolean {
+        val regex = pattern.toRegex()
+        return regex.matches(email)
+    }
+
     companion object {
+        private const val PATTERN_EMAIL = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$"
+        private const val PATTERN_PHONE = "^\\+7\\(\\d{3}\\)-\\d{3}-\\d{2}-\\d{2}\$"
+
         @JvmStatic
         fun newInstance() = ApplicationFragment()
     }

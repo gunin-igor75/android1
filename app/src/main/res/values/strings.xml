@@ -123,4 +123,13 @@
     <string name="button_ok">Ок</string>
     <string name="phrase_phone">+7 (495) 006–13–57</string>
     <string name="phone_number">74950861357</string>
+    <string name="contact_info">Контактные данные</string>
+    <string name="edit_text_name">Имя</string>
+    <string name="edit_text_company">Компания</string>
+    <string name="edit_text_email">Email</string>
+    <string name="edit_text_phone">Тедефон</string>
+    <string name="enter_valid_email">Enter valid email</string>
+    <string name="Empty" />
+    <string name="valid_number_phone">Введите валидный номер телефона</string>
+    <string name="valid_email">Введите валидный email</string>
 </resources>
