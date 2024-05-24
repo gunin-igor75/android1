@@ -11,11 +11,13 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import com.github.terrakok.cicerone.Router
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.it_cron.android1.R
+import ru.it_cron.android1.databinding.BottomSheetAppBinding
 import ru.it_cron.android1.databinding.FragmentApplicationBinding
 import ru.it_cron.android1.navigation.Screens
 import ru.it_cron.android1.presentation.application.PersonalInfoFragment.Companion.FLAG_SELECTION_PI
@@ -84,7 +86,36 @@ class ApplicationFragment : Fragment() {
             binding.inContactsInfo.tilPhone,
             binding.inContactsInfo.tetPhone
         )
+        launchBottomSheet()
+    }
 
+    private fun launchBottomSheet() {
+        binding.inTask.btAttachFile.setOnClickListener {
+            val bottomSheetDialog = BottomSheetDialog(
+                requireActivity(), R.style.BottomSheetDialogTheme
+            )
+            val bsBinding = BottomSheetAppBinding.inflate(layoutInflater, null, false)
+            bottomSheetDialog.setContentView(bsBinding.root)
+            bottomSheetDialog.show()
+            onClickViewBottomSheet(bsBinding) {
+                bottomSheetDialog.cancel()
+            }
+        }
+    }
+
+    private fun onClickViewBottomSheet(
+        binding: BottomSheetAppBinding,
+        onClickCancel: () -> Unit,
+    ) {
+        binding.cvPhoto.setOnClickListener {
+
+        }
+        binding.cvDocument.setOnClickListener {
+
+        }
+        binding.cvCancel.setOnClickListener {
+            onClickCancel()
+        }
     }
 
     private fun setupEditTextTask(

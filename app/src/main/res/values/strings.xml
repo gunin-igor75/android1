@@ -137,4 +137,7 @@
     <string name="attach_file">Прикрепить файл</string>
     <string name="ps_button_attach_file">*Прикрепление файлов не обязательно</string>
     <string name="image_file">image file</string>
+    <string name="photo_title">Фотография</string>
+    <string name="document_title">Документ</string>
+    <string name="cancel_title">Cancel</string>
 </resources>

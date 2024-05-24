@@ -16,4 +16,12 @@
     <color name="case_image_color">#FF69488D</color>
     <color name="text_company">#FF131212</color>
     <color name="gray_light">#FFBDBDBD</color>
+    <color name="file_pdf">#FFFB6542</color>
+    <color name="file_doc">#FF4084C8</color>
+    <color name="file_xls">#FF4CAF50</color>
+    <color name="file_txt">#FF616161</color>
+    <color name="file_archive">#FFF1B322</color>
+    <color name="file_image">#FF945DED</color>
+    <color name="file_other">#FF5D53FF</color>
+    <color name="page">#FFF5F5F5</color>
 </resources>

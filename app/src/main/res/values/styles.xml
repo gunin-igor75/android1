@@ -14,6 +14,10 @@
         <item name="android:textSize">@dimen/_20sdp</item>
     </style>
 
+    <style name="GothamProReg.17sp">
+        <item name="android:textSize">@dimen/_17ssp</item>
+    </style>
+
     <style name="GothamProReg.16sp">
         <item name="android:textSize">@dimen/_16ssp</item>
     </style>
@@ -31,12 +35,16 @@
         <item name="fontFamily">@font/gotham_pro_med</item>
     </style>
 
-    <style name="GothamProMed.14sp">
-        <item name="android:textSize">@dimen/_14sdp</item>
+    <style name="GothamProMed.17sp">
+        <item name="android:textSize">@dimen/_17sdp</item>
     </style>
 
     <style name="GothamProMed.16sp">
         <item name="android:textSize">@dimen/_16sdp</item>
+    </style>
+
+    <style name="GothamProMed.14sp">
+        <item name="android:textSize">@dimen/_14sdp</item>
     </style>
 
     <style name="GothamProMed.12sp">
