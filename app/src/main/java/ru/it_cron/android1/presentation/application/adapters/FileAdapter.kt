@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -59,8 +60,7 @@ class FileAdapter(
                     tvFileType.text = item.extension
                     tvFileName.text = item.getName()
                     tvFileSize.text = item.getStringSize()
-                    Log.d("FileAdapter", item.colorId.toString())
-                    tvFileType.background = context.resources.getDrawable(item.colorId)
+                    tvFileType.background = ContextCompat.getDrawable(context, item.colorId)
                 }
                 holder.binding.btRemoveFile.btRemove.setOnClickListener {
                     fileItemOnClickListener?.onClickItem(item)
