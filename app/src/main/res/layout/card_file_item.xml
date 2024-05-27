@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/_115sdp"
     android:layout_height="@dimen/_80sdp"
+    android:layout_marginEnd="@dimen/_16sdp"
     android:background="@drawable/card_view"
     android:paddingStart="@dimen/_8sdp"
     android:paddingTop="@dimen/_8sdp"
@@ -15,22 +16,22 @@
         style="@style/GothamProMed.12sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/orange"
-        android:textAllCaps="true"
         android:paddingHorizontal="4dp"
+        android:textAllCaps="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:background="@color/orange"
         tools:text="PDF" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:baselineAligned="false"
         android:gravity="bottom"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:baselineAligned="false">
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="0dp"

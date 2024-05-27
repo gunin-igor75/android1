@@ -1,14 +1,19 @@
 package ru.it_cron.android1.data.repository
 
+import android.util.Log
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import ru.it_cron.android1.data.model.DataResult
+import ru.it_cron.android1.data.model.ErrorBody
 import ru.it_cron.android1.data.model.RequestApp
 import ru.it_cron.android1.data.network.api.ApiService
 import ru.it_cron.android1.domain.model.app.AppItem
@@ -16,6 +21,7 @@ import ru.it_cron.android1.domain.model.app.AppItem.App
 import ru.it_cron.android1.domain.model.app.AppItem.Header
 import ru.it_cron.android1.domain.model.app.FileItem
 import ru.it_cron.android1.domain.repository.AppRepository
+import java.io.IOException
 
 class AppRepositoryImpl(
     private val apiService: ApiService,
@@ -94,8 +100,14 @@ class AppRepositoryImpl(
     }
 
     override fun addFileItem(fileItem: FileItem) {
+        Log.d(TAG, fileItem.toString())
         _fileItems.add(fileItem)
         eventChange.tryEmit(Unit)
+        notifyUpdateFiles()
+    }
+
+    override fun clearFileItem() {
+        _fileItems.clear()
         notifyUpdateFiles()
     }
 
@@ -105,19 +117,36 @@ class AppRepositoryImpl(
         notifyUpdateFiles()
     }
 
-    override suspend fun sendApp(requestApp: RequestApp) {
+    override suspend fun sendApp(requestApp: RequestApp): DataResult<String> {
         val filesBody = requestApp.files.map { createBodyRequest(it) }
-        val response = apiService.sendApplication(
-            services = requestApp.services,
-            budget = requestApp.budget,
-            description = requestApp.task,
-            files = filesBody,
-            name = requestApp.name,
-            company = requestApp.company,
-            email = requestApp.email,
-            phone = requestApp.phone,
-            requestFrom = requestApp.areaActivity,
-        )
+        return withContext(Dispatchers.IO) {
+            try {
+                val response = apiService.sendApplication(
+                    services = requestApp.services,
+                    budget = requestApp.budget,
+                    description = requestApp.task,
+                    files = filesBody,
+                    name = requestApp.name,
+                    company = requestApp.company,
+                    email = requestApp.email,
+                    phone = requestApp.phone,
+                    requestFrom = requestApp.areaActivity
+                )
+                if (response.errorDto == null) {
+                    DataResult.Success(response.data)
+                } else {
+                    val errorBody = ErrorBody(
+                        message = response.errorDto.message,
+                        code = response.errorDto.code
+                    )
+                    Log.e(TAG, errorBody.toString())
+                    DataResult.Error(error = response.errorDto.message)
+                }
+            } catch (e: IOException) {
+                Log.e(TAG, e.message.toString())
+                DataResult.ErrorInternet()
+            }
+        }
     }
 
     private fun notifyUpdateFiles() {
@@ -137,5 +166,6 @@ class AppRepositoryImpl(
     companion object {
         private const val MAX_COUNT = 5
         private const val TEXT_CONTENT = "[content]"
+        private const val TAG = "AppRepositoryImpl"
     }
 }

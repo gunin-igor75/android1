@@ -55,7 +55,9 @@ val appModule = module {
             deleteFileItemUseCase = get(),
             addFileItemUseCase = get(),
             getFileItemsUseCase = get(),
-            isCountFilesUseCase = get()
+            isCountFilesUseCase = get(),
+            sendAppUseCase = get(),
+            clearFileItemsUseCase = get()
         )
     }
 

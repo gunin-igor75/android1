@@ -1,6 +1,8 @@
 package ru.it_cron.android1.domain.repository
 
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
+import ru.it_cron.android1.data.model.DataResult
 import ru.it_cron.android1.data.model.RequestApp
 import ru.it_cron.android1.domain.model.app.AppItem
 import ru.it_cron.android1.domain.model.app.FileItem
@@ -14,5 +16,6 @@ interface AppRepository {
     fun addFileItem(fileItem: FileItem)
     fun deleteFileItem(fileItem: FileItem)
     fun isCountFiles(): Flow<Boolean>
-    suspend fun sendApp(requestApp: RequestApp)
+    suspend fun sendApp(requestApp: RequestApp): DataResult<String>
+    fun clearFileItem()
 }

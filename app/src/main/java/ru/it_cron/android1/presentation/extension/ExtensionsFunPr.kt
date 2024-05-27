@@ -7,6 +7,18 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import ru.it_cron.android1.constant.BMP
+import ru.it_cron.android1.constant.DOC
+import ru.it_cron.android1.constant.JAR
+import ru.it_cron.android1.constant.JPEG
+import ru.it_cron.android1.constant.PDF
+import ru.it_cron.android1.constant.PNG
+import ru.it_cron.android1.constant.RAR
+import ru.it_cron.android1.constant.SVG
+import ru.it_cron.android1.constant.TXT
+import ru.it_cron.android1.constant.XLS
+import ru.it_cron.android1.constant.XLSX
+import ru.it_cron.android1.constant.ZIP
 
 
 private const val PN_GMAIL = "com.google.android.gm"
@@ -17,6 +29,11 @@ private const val KEY_ID = "id"
 private const val KEY_LAUNCH = "launch"
 private const val VALUE_TRUE = "true"
 private const val TAG = "NetworkLoader"
+private const val APP = "app"
+private val exrList = listOf(
+    TXT, PNG, SVG, JPEG, BMP, PDF,
+    DOC, XLS, XLSX, ZIP, RAR, JAR
+)
 
 fun Fragment.sendRequest(
     url: String,
@@ -87,5 +104,12 @@ fun Fragment.dpToPx(dpValue: Int): Int {
     return (dpValue * dpRatio).toInt()
 }
 
-fun String.getExtension() = substringAfter('.').lowercase()
+fun String.getExtension(): String {
+    val ext = substringAfter('.').lowercase()
+    return if (exrList.contains(ext)) {
+        ext
+    } else {
+        APP
+    }
+}
 

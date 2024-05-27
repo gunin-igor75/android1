@@ -6,25 +6,20 @@ import android.text.TextPaint
 import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.TextView
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.runBlocking
 import ru.it_cron.android1.R
+import ru.it_cron.android1.constant.BMP
+import ru.it_cron.android1.constant.DOC
+import ru.it_cron.android1.constant.JAR
+import ru.it_cron.android1.constant.JPEG
+import ru.it_cron.android1.constant.PDF
+import ru.it_cron.android1.constant.PNG
+import ru.it_cron.android1.constant.RAR
+import ru.it_cron.android1.constant.SVG
+import ru.it_cron.android1.constant.TXT
+import ru.it_cron.android1.constant.XLS
+import ru.it_cron.android1.constant.XLSX
+import ru.it_cron.android1.constant.ZIP
 import ru.it_cron.android1.presentation.extension.getExtension
-
-
-private const val TXT = "txt"
-private const val PNG = "png"
-private const val SVG = "svg"
-private const val JPEG = "jpeg"
-private const val BMP = "bmp"
-private const val PDF = "pdf"
-private const val DOC = "doc"
-private const val XLS = "xls"
-private const val XLSX = "xlsx"
-private const val ZIP = "zip"
-private const val RAR = "rar"
-private const val JAR = "jar"
 
 
 private const val TEXT_TYPE = "text/plain"

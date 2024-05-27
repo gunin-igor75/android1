@@ -11,12 +11,14 @@ import ru.it_cron.android1.domain.usecases.GetReviewsUseCase
 import ru.it_cron.android1.domain.usecases.ReadOnBoardingStateUseCase
 import ru.it_cron.android1.domain.usecases.SaveOnBoardingStateUseCase
 import ru.it_cron.android1.domain.usecases.application.AddFileItemUseCase
+import ru.it_cron.android1.domain.usecases.application.ClearFileItemsUseCase
 import ru.it_cron.android1.domain.usecases.application.DeleteFileItemUseCase
 import ru.it_cron.android1.domain.usecases.application.GetAreaActivityUseCase
 import ru.it_cron.android1.domain.usecases.application.GetBudgetsUseCase
 import ru.it_cron.android1.domain.usecases.application.GetFileItemsUseCase
 import ru.it_cron.android1.domain.usecases.application.GetServicesUseCase
 import ru.it_cron.android1.domain.usecases.application.IsCountFilesUseCase
+import ru.it_cron.android1.domain.usecases.application.SendAppUseCase
 
 val domainModule = module {
     factory<SaveOnBoardingStateUseCase> {
@@ -64,5 +66,11 @@ val domainModule = module {
     }
     factory<IsCountFilesUseCase> {
         IsCountFilesUseCase(repository = get())
+    }
+    factory<SendAppUseCase> {
+        SendAppUseCase(repository = get())
+    }
+    factory<ClearFileItemsUseCase> {
+        ClearFileItemsUseCase(repository = get())
     }
 }

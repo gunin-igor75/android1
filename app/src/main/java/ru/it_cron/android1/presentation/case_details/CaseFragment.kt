@@ -75,6 +75,7 @@ class CaseFragment : Fragment() {
         onClickImages()
         onClockEmail()
         onClickHomeTitle()
+        onClickSendApp()
     }
 
     private fun observeViewModel() {
@@ -287,6 +288,12 @@ class CaseFragment : Fragment() {
     private fun onClickImages() {
         binding.icBlockImages.llBlockImages.setOnClickListener {
             router.navigateTo(Screens.openImagesFragment(imageState.value))
+        }
+    }
+
+    private fun onClickSendApp() {
+        binding.btSendRequestCase.btSendApp.setOnClickListener {
+            router.navigateTo(Screens.openApplicationFragment())
         }
     }
 

@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/_115sdp"
     android:layout_height="@dimen/_80sdp"
+    android:layout_marginEnd="@dimen/_16sdp"
     android:backgroundTint="@color/black_light">
 
     <ImageView

@@ -38,7 +38,7 @@ interface ApiService {
         @Part("Services") services: String,
         @Part("Budget") budget: String,
         @Part("Description") description: String,
-        @Part("FileDescriptions") files: List<MultipartBody.Part>? = null,
+        @Part files: List<MultipartBody.Part>? = null,
         @Part("ContactName") name: String,
         @Part("ContactCompany") company: String,
         @Part("ContactEmail") email: String,

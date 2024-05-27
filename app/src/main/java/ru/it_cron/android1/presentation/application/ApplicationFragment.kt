@@ -33,6 +33,7 @@ import ru.it_cron.android1.databinding.BottomSheetAppBinding
 import ru.it_cron.android1.databinding.FragmentApplicationBinding
 import ru.it_cron.android1.domain.model.app.ContainerApp
 import ru.it_cron.android1.domain.model.app.FileItem
+import ru.it_cron.android1.domain.model.app.StateScreenApp
 import ru.it_cron.android1.navigation.Screens
 import ru.it_cron.android1.presentation.application.PersonalInfoFragment.Companion.FLAG_SELECTION_PI
 import ru.it_cron.android1.presentation.application.PersonalInfoFragment.Companion.KEY_FRAGMENT_PI
@@ -72,15 +73,17 @@ class ApplicationFragment : Fragment() {
     }
 
     private val fileItemAdapter by lazy {
-        FileAdapter()
+        FileAdapter(requireContext())
     }
     private lateinit var launcherContractFile: ActivityResultLauncher<String>
     private lateinit var launcherContractPhoto: ActivityResultLauncher<Uri>
     private lateinit var bottomSheetDialog: BottomSheetDialog
 
-    private lateinit var uriImage: Uri
+    private val uriImage: Uri by lazy {
+        initTempUri()
+    }
 
-    private val requestPermissionLauncher =
+    private var requestPermissionLauncher: ActivityResultLauncher<String> =
         registerForActivityResult(
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
@@ -145,6 +148,8 @@ class ApplicationFragment : Fragment() {
         setupButtonAttachFile()
         launchWarningFileMaxSize()
         onClickButtonCloseWarningFileMaxSize()
+        setupButtonSendApp()
+        observeAnswerSendApp()
     }
 
     private fun launchCamera() {
@@ -157,10 +162,10 @@ class ApplicationFragment : Fragment() {
 
     private fun downloadFileFromPhone() {
         val contract = ActivityResultContracts.GetContent()
-        launcherContractFile = registerForActivityResult(contract) { it ->
-            val uri = it ?: throw IllegalStateException("Uri is null")
+        launcherContractFile = registerForActivityResult(contract) { uri ->
+            val uriCurrent = uri ?: throw IllegalStateException("Uri is null")
             createFileItem(
-                uri = uri,
+                uri = uriCurrent,
                 isPhoto = false
             )
         }
@@ -171,7 +176,6 @@ class ApplicationFragment : Fragment() {
         launcherContractPhoto = registerForActivityResult(contract) { result ->
             try {
                 if (result) {
-                    uriImage = initTempUri()
                     createFileItem(
                         uri = uriImage,
                         isPhoto = true
@@ -194,7 +198,6 @@ class ApplicationFragment : Fragment() {
             viewModel.isFileMaxSize(true)
             return
         }
-        /*TODO launch big size file*/
         val extension = nameFile.getExtension()
         val mimeType = getMimeType(nameFile)
         requireActivity().contentResolver.openInputStream(uri).use {
@@ -527,7 +530,11 @@ class ApplicationFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.buttonSendAppIsActive
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle)
-                .collect { binding.btSendApp.btSendApp.isEnabled = it }
+                .collect { isAppReady ->
+                    binding.btSendApp.btSendApp.isEnabled = isAppReady
+                    val alpha = if (isAppReady) ALPHA_FULL else ALPHA_HALF
+                    binding.btSendApp.btSendApp.alpha = alpha
+                }
         }
     }
 
@@ -545,8 +552,10 @@ class ApplicationFragment : Fragment() {
     }
 
     private fun setupButtonAttachFile() {
-        viewModel.isFilesMaxCount.observe(viewLifecycleOwner) {
-            binding.inTask.btAttachFile.isEnabled = !it
+        viewModel.isFilesMaxCount.observe(viewLifecycleOwner) { isMaxCountFiles ->
+            binding.inTask.btAttachFile.isEnabled = !isMaxCountFiles
+            val alpha = if (isMaxCountFiles) ALPHA_HALF else ALPHA_FULL
+            binding.inTask.btAttachFile.alpha = alpha
         }
     }
 
@@ -566,12 +575,37 @@ class ApplicationFragment : Fragment() {
         }
     }
 
+    private fun observeAnswerSendApp() {
+        lifecycleScope.launch {
+            viewModel.answer
+                .flowWithLifecycle(viewLifecycleOwner.lifecycle)
+                .collect { state ->
+                    when (state) {
+                        StateScreenApp.Error -> {
+                            router.navigateTo(Screens.openErrorAppFragment())
+                        }
+
+                        StateScreenApp.ErrorInternet -> {
+                            router.navigateTo(Screens.openErrorFragment())
+                        }
+
+                        StateScreenApp.Success -> {
+                            router.navigateTo(Screens.openSendAppOkFragment())
+                        }
+                    }
+                }
+        }
+    }
+
+
     companion object {
         private const val PATTERN_EMAIL = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$"
         private const val PATTERN_PHONE = "^\\+7\\(\\d{3}\\)-\\d{3}-\\d{2}-\\d{2}\$"
         private val CAMERA_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
         private const val TAG = "ApplicationFragment"
         private const val MAX_SIZE_FILE = 15_000_000
+        private const val ALPHA_FULL = 1f
+        private const val ALPHA_HALF = 0.5f
 
         @JvmStatic
         fun newInstance() = ApplicationFragment()

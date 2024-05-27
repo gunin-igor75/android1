@@ -1,5 +1,7 @@
 package ru.it_cron.android1.presentation.application.adapters
 
+import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -9,7 +11,9 @@ import ru.it_cron.android1.databinding.CardFileItemBinding
 import ru.it_cron.android1.databinding.CardImageItemBinding
 import ru.it_cron.android1.domain.model.app.FileItem
 
-class FileAdapter : ListAdapter<FileItem, RecyclerView.ViewHolder>(FileItemDiffCallBack) {
+class FileAdapter(
+    private val context: Context,
+) : ListAdapter<FileItem, RecyclerView.ViewHolder>(FileItemDiffCallBack) {
     var fileItemOnClickListener: FileItemOnClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -55,7 +59,8 @@ class FileAdapter : ListAdapter<FileItem, RecyclerView.ViewHolder>(FileItemDiffC
                     tvFileType.text = item.extension
                     tvFileName.text = item.getName()
                     tvFileSize.text = item.getStringSize()
-                    tvFileType.setBackgroundColor(item.colorId)
+                    Log.d("FileAdapter", item.colorId.toString())
+                    tvFileType.background = context.resources.getDrawable(item.colorId)
                 }
                 holder.binding.btRemoveFile.btRemove.setOnClickListener {
                     fileItemOnClickListener?.onClickItem(item)
