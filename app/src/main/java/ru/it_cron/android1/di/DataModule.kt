@@ -1,5 +1,6 @@
 package ru.it_cron.android1.di
 
+import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import ru.it_cron.android1.data.network.api.ApiFactory
 import ru.it_cron.android1.data.network.api.ApiService
@@ -46,6 +47,9 @@ val dataModule = module {
         ReviewsRepositoryImpl(apiService = get())
     }
     single<AppRepository> {
-        AppRepositoryImpl(apiService = get())
+        AppRepositoryImpl(
+            apiService = get(),
+            context = androidContext()
+        )
     }
 }

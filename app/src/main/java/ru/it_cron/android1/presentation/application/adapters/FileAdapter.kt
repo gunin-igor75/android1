@@ -1,7 +1,6 @@
 package ru.it_cron.android1.presentation.application.adapters
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat

@@ -153,4 +153,27 @@
     <string name="phone_underline"><u>+7 (495) 006–13–57</u></string>
     <string name="something_went_wrong">Что-то пошло не так...</string>
     <string name="let_s_try_again_call">Попробуем еще раз? Или позвоните нам.</string>
+    <string name="ui_test">UX-тестирование</string>
+    <string name="design_app">Дизайн моб. приложения</string>
+    <string name="design_ui">Дизайн веб-интерфейса</string>
+    <string name="develop_web">Веб-разработка и интеграции</string>
+    <string name="develop_mobile">Разработка моб. приложений</string>
+    <string name="strategy">"Стратегия"</string>
+    <string name="creative">"Креатив"</string>
+    <string name="analytics">"Аналитика"</string>
+    <string name="testings">"Тестирование"</string>
+    <string name="other">"Другое"</string>
+    <string name="budget">"Бюджет"</string>
+    <string name="budget_less">&#60; 500 тыс.р."</string>
+    <string name="budget_05_1">0.5 – 1 млн.р.</string>
+    <string name="budget_1_3">1 – 3 млн.р.</string>
+    <string name="budget_5_10">5 – 10 млн.р.</string>
+    <string name="budget_10">> 10 млн.р.</string>
+    <string name="how_to_know">Откуда вы узнали о нас?</string>
+    <string name="social_network">Соцсети</string>
+    <string name="recommendations">Рекомендации</string>
+    <string name="work">Работы</string>
+    <string name="ratings">Рейтинги</string>
+    <string name="newsletter">Рассылка</string>
+    <string name="advertising">Реклама</string>
 </resources>

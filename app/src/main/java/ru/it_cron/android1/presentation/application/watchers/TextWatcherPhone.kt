@@ -24,7 +24,7 @@ class TextWatcherPhone(
 
     override fun afterTextChanged(s: Editable?) {
         val string = s.toString()
-        val phone = string.replace("\\D".toRegex(), "")
+        val phone = string.filter { it.isDigit() }
         if (!editedFlag) {
             if (phone.length >= 10 && !backspacingFlag) {
                 editedFlag = true

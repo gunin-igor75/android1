@@ -1,5 +1,6 @@
 package ru.it_cron.android1.data.repository
 
+import android.content.Context
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -12,6 +13,7 @@ import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import ru.it_cron.android1.R
 import ru.it_cron.android1.data.model.DataResult
 import ru.it_cron.android1.data.model.ErrorBody
 import ru.it_cron.android1.data.model.RequestApp
@@ -25,39 +27,40 @@ import java.io.IOException
 
 class AppRepositoryImpl(
     private val apiService: ApiService,
+    context: Context,
 ) : AppRepository {
 
     private val services: MutableList<AppItem> = mutableListOf(
-        Header("Услуги"),
-        App("UX-тестирование"),
-        App("Дизайн моб. приложения"),
-        App("Дизайн веб-интерфейса"),
-        App("Веб-разработка и интеграции"),
-        App("Разработка моб. приложений"),
-        App("Стратегия"),
-        App("Креатив"),
-        App("Аналитика"),
-        App("Тестирование"),
-        App("Другое")
+        Header(context.getString(R.string.services)),
+        App(context.getString(R.string.ui_test)),
+        App(context.getString(R.string.design_app)),
+        App(context.getString(R.string.design_ui)),
+        App(context.getString(R.string.develop_web)),
+        App(context.getString(R.string.develop_mobile)),
+        App(context.getString(R.string.strategy)),
+        App(context.getString(R.string.creative)),
+        App(context.getString(R.string.analytics)),
+        App(context.getString(R.string.testings)),
+        App(context.getString(R.string.other))
     )
 
     private val budgets: MutableList<AppItem> = mutableListOf(
-        Header("Бюджет"),
-        App("< 500 тыс.р."),
-        App("0.5 - 1 млн.р."),
-        App("1 - 3 млн.р."),
-        App("5 - 10 млн.р."),
-        App("> 10 млн.р.")
+        Header(context.getString(R.string.budget)),
+        App(context.getString(R.string.budget_less)),
+        App(context.getString(R.string.budget_05_1)),
+        App(context.getString(R.string.budget_1_3)),
+        App(context.getString(R.string.budget_5_10)),
+        App(context.getString(R.string.budget_10))
     )
 
     private val areaActivity: MutableList<AppItem> = mutableListOf(
-        Header("Откуда вы узнали о нас?"),
-        App("Соцсети"),
-        App("Рекомендации"),
-        App("Работы"),
-        App("Рейтинги"),
-        App("Рассылка"),
-        App("Реклама")
+        Header(context.getString(R.string.how_to_know)),
+        App(context.getString(R.string.social_network)),
+        App(context.getString(R.string.recommendations)),
+        App(context.getString(R.string.work)),
+        App(context.getString(R.string.ratings)),
+        App(context.getString(R.string.newsletter)),
+        App(context.getString(R.string.advertising))
     )
 
     private val _fileItems: MutableList<FileItem> = mutableListOf()
