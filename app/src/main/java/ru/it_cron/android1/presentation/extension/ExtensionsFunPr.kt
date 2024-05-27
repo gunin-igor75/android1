@@ -82,3 +82,10 @@ fun <T> RequestBuilder<T>.roundCorners(cornerRadius: Int) =
     apply(RequestOptions().transform(RoundedCorners(cornerRadius)))
 
 
+fun Fragment.dpToPx(dpValue: Int): Int {
+    val dpRatio = resources.displayMetrics.density
+    return (dpValue * dpRatio).toInt()
+}
+
+fun String.getExtension() = substringAfter('.').lowercase()
+

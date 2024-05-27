@@ -1,34 +1,55 @@
 package ru.it_cron.android1.presentation.application
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.graphics.PorterDuff
+import android.net.Uri
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
+import androidx.documentfile.provider.DocumentFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.github.terrakok.cicerone.Router
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.it_cron.android1.R
 import ru.it_cron.android1.databinding.BottomSheetAppBinding
 import ru.it_cron.android1.databinding.FragmentApplicationBinding
+import ru.it_cron.android1.domain.model.app.ContainerApp
+import ru.it_cron.android1.domain.model.app.FileItem
 import ru.it_cron.android1.navigation.Screens
 import ru.it_cron.android1.presentation.application.PersonalInfoFragment.Companion.FLAG_SELECTION_PI
 import ru.it_cron.android1.presentation.application.PersonalInfoFragment.Companion.KEY_FRAGMENT_PI
 import ru.it_cron.android1.presentation.application.PoliticFragment.Companion.FLAG_SELECTION_PP
 import ru.it_cron.android1.presentation.application.PoliticFragment.Companion.KEY_FRAGMENT_PP
 import ru.it_cron.android1.presentation.application.adapters.ApplicationAdapter
+import ru.it_cron.android1.presentation.application.adapters.FileAdapter
 import ru.it_cron.android1.presentation.application.watchers.TextWatcherPhone
 import ru.it_cron.android1.presentation.application.watchers.TextWatcherSimple
 import ru.it_cron.android1.presentation.extension.callPhone
+import ru.it_cron.android1.presentation.extension.getExtension
+import ru.it_cron.android1.presentation.utils.getColorIdFile
+import ru.it_cron.android1.presentation.utils.getMimeType
 import ru.it_cron.android1.presentation.utils.makeLinks
+import java.io.File
+import java.util.UUID
+
 
 class ApplicationFragment : Fragment() {
 
@@ -50,6 +71,36 @@ class ApplicationFragment : Fragment() {
         ApplicationAdapter()
     }
 
+    private val fileItemAdapter by lazy {
+        FileAdapter()
+    }
+    private lateinit var launcherContractFile: ActivityResultLauncher<String>
+    private lateinit var launcherContractPhoto: ActivityResultLauncher<Uri>
+    private lateinit var bottomSheetDialog: BottomSheetDialog
+
+    private lateinit var uriImage: Uri
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                launcherContractPhoto.launch(uriImage)
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.grant_permission),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        downloadFileFromPhone()
+        downloadPhotoFromPhone()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -64,7 +115,7 @@ class ApplicationFragment : Fragment() {
         createSpannableWordPhone()
         createSpannableWordPersonalInfo()
         createSpannableWordPolitic()
-        setupRecyclerView()
+        setupRecyclerViewServicesBudgetAreaActivity()
         onClickAdaptersItem()
         setupEditTextTask(
             binding.inTask.tilTask,
@@ -72,11 +123,13 @@ class ApplicationFragment : Fragment() {
         )
         setupEditTextNameAndCompany(
             binding.inContactsInfo.tilName,
-            binding.inContactsInfo.tetName
+            binding.inContactsInfo.tetName,
+            true
         )
         setupEditTextNameAndCompany(
             binding.inContactsInfo.tilCompany,
-            binding.inContactsInfo.tetCompany
+            binding.inContactsInfo.tetCompany,
+            false
         )
         setupEditTextEmail(
             binding.inContactsInfo.tilEmail,
@@ -87,11 +140,84 @@ class ApplicationFragment : Fragment() {
             binding.inContactsInfo.tetPhone
         )
         launchBottomSheet()
+        setCheckBoxState()
+        onClickButtonSendApp()
+        setupButtonAttachFile()
+        launchWarningFileMaxSize()
+        onClickButtonCloseWarningFileMaxSize()
     }
+
+    private fun launchCamera() {
+        if (hasRequiredPermissions(CAMERA_PERMISSIONS)) {
+            launcherContractPhoto.launch(uriImage)
+        } else {
+            requestPermissionLauncher.launch(CAMERA_PERMISSIONS[0])
+        }
+    }
+
+    private fun downloadFileFromPhone() {
+        val contract = ActivityResultContracts.GetContent()
+        launcherContractFile = registerForActivityResult(contract) { it ->
+            val uri = it ?: throw IllegalStateException("Uri is null")
+            createFileItem(
+                uri = uri,
+                isPhoto = false
+            )
+        }
+    }
+
+    private fun downloadPhotoFromPhone() {
+        val contract = ActivityResultContracts.TakePicture()
+        launcherContractPhoto = registerForActivityResult(contract) { result ->
+            try {
+                if (result) {
+                    uriImage = initTempUri()
+                    createFileItem(
+                        uri = uriImage,
+                        isPhoto = true
+                    )
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Error ${e.message}")
+            }
+        }
+    }
+
+    private fun createFileItem(
+        uri: Uri,
+        isPhoto: Boolean,
+    ) {
+        val docFile = DocumentFile.fromSingleUri(requireContext(), uri)
+        val nameFile = docFile?.name ?: ""
+        val size = docFile?.length() ?: 0
+        if (size > MAX_SIZE_FILE) {
+            viewModel.isFileMaxSize(true)
+            return
+        }
+        /*TODO launch big size file*/
+        val extension = nameFile.getExtension()
+        val mimeType = getMimeType(nameFile)
+        requireActivity().contentResolver.openInputStream(uri).use {
+            val byteArray = it?.readBytes()
+            val fileItem = FileItem(
+                id = UUID.randomUUID().toString(),
+                nameFile = nameFile,
+                size = size,
+                extension = extension,
+                mimeType = mimeType,
+                colorId = getColorIdFile(nameFile),
+                isPhoto = isPhoto
+            )
+            fileItem.byteArray = byteArray
+            fileItem.uri = uri
+            viewModel.addFileItem(fileItem)
+        }
+    }
+
 
     private fun launchBottomSheet() {
         binding.inTask.btAttachFile.setOnClickListener {
-            val bottomSheetDialog = BottomSheetDialog(
+            bottomSheetDialog = BottomSheetDialog(
                 requireActivity(), R.style.BottomSheetDialogTheme
             )
             val bsBinding = BottomSheetAppBinding.inflate(layoutInflater, null, false)
@@ -108,10 +234,12 @@ class ApplicationFragment : Fragment() {
         onClickCancel: () -> Unit,
     ) {
         binding.cvPhoto.setOnClickListener {
-
+            launchCamera()
+            bottomSheetDialog.cancel()
         }
         binding.cvDocument.setOnClickListener {
-
+            launcherContractFile.launch("*/*")
+            bottomSheetDialog.cancel()
         }
         binding.cvCancel.setOnClickListener {
             onClickCancel()
@@ -128,7 +256,7 @@ class ApplicationFragment : Fragment() {
         }
         val textWatcher = TextWatcherSimple { text ->
             val isValid = validationText(text)
-            viewModel.sendResultInput(isValid)
+            viewModel.setTaskState(isValid)
         }
         textInputEditText.addTextChangedListener(textWatcher)
     }
@@ -136,6 +264,7 @@ class ApplicationFragment : Fragment() {
     private fun setupEditTextNameAndCompany(
         textInputLayout: TextInputLayout,
         textInputEditText: TextInputEditText,
+        isName: Boolean,
     ) {
         textInputLayout.setEndIconTintMode(PorterDuff.Mode.DST)
         textInputEditText.setOnFocusChangeListener { _, _ ->
@@ -144,7 +273,7 @@ class ApplicationFragment : Fragment() {
         }
         val textWatcher = TextWatcherSimple { text ->
             val isValid = validationText(text)
-            viewModel.sendResultInput(isValid)
+            if (isName) viewModel.setNameState(isValid) else viewModel.setCompanyState(isValid)
             if (isValid) {
                 textInputLayout.endIconDrawable = ContextCompat.getDrawable(
                     requireContext(),
@@ -166,7 +295,7 @@ class ApplicationFragment : Fragment() {
         }
         val textWatcher = TextWatcherSimple { text ->
             val isValid = validationEmailAndPhone(text, PATTERN_EMAIL)
-            viewModel.sendResultInput(isValid)
+            viewModel.setEmailState(isValid)
             if (isValid) {
                 textInputLayout.error = null
                 textInputLayout.endIconDrawable = ContextCompat.getDrawable(
@@ -197,7 +326,7 @@ class ApplicationFragment : Fragment() {
             editText = textInputEditText
         ) { text ->
             val isValid = validationEmailAndPhone(text, PATTERN_PHONE)
-            viewModel.sendResultInput(isValid)
+            viewModel.setPhoneState(isValid)
             if (isValid) {
                 textInputLayout.error = null
                 textInputLayout.endIconDrawable = ContextCompat.getDrawable(
@@ -216,13 +345,15 @@ class ApplicationFragment : Fragment() {
     }
 
 
-    private fun setupRecyclerView() {
+    private fun setupRecyclerViewServicesBudgetAreaActivity() {
         binding.rvServices.adapter = serviceAdapter
         binding.rvServices.suppressLayout(false)
         binding.rvBudgets.adapter = budgetAdapter
         binding.rvBudgets.suppressLayout(false)
         binding.rvAreaActivity.adapter = areaActivityAdapter
         binding.rvAreaActivity.suppressLayout(false)
+        binding.inTask.rvFiles.adapter = fileItemAdapter
+
         viewModel.services.observe(viewLifecycleOwner) {
             serviceAdapter.submitList(it)
         }
@@ -231,6 +362,14 @@ class ApplicationFragment : Fragment() {
         }
         viewModel.areaActivity.observe(viewLifecycleOwner) {
             areaActivityAdapter.submitList(it)
+        }
+        viewModel.fileItems.observe(viewLifecycleOwner) {
+            if (it.isEmpty()) {
+                binding.inTask.rvFiles.visibility = View.GONE
+            } else {
+                binding.inTask.rvFiles.visibility = View.VISIBLE
+                fileItemAdapter.submitList(it)
+            }
         }
     }
 
@@ -252,6 +391,12 @@ class ApplicationFragment : Fragment() {
             object : ApplicationAdapter.ServiceItemOnClickListener {
                 override fun onClickItem(name: String) {
                     viewModel.toggleAreaActivity(name)
+                }
+            }
+        fileItemAdapter.fileItemOnClickListener =
+            object : FileAdapter.FileItemOnClickListener {
+                override fun onClickItem(fileItem: FileItem) {
+                    viewModel.deleteFileItem(fileItem)
                 }
             }
     }
@@ -325,6 +470,15 @@ class ApplicationFragment : Fragment() {
         )
     }
 
+    private fun setCheckBoxState() {
+        binding.chPersonalInfo.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.setPersonalInfoState(isChecked)
+        }
+        binding.chPolitic.setOnCheckedChangeListener { _, isChecked ->
+            viewModel.setPoliticState(isChecked)
+        }
+    }
+
     private fun onClickBack() {
         val toolBar = binding.tbApp
         toolBar.setNavigationOnClickListener {
@@ -342,9 +496,82 @@ class ApplicationFragment : Fragment() {
         return regex.matches(email)
     }
 
+    private fun hasRequiredPermissions(permissions: Array<String>): Boolean {
+        return permissions.all {
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                it
+            ) == PackageManager.PERMISSION_GRANTED
+        }
+    }
+
+    private fun initTempUri(): Uri {
+        val tempImageDir = File(
+            requireContext().filesDir,
+            resources.getString(R.string.temp_images_dir)
+        )
+        tempImageDir.mkdir()
+        val fileName = UUID.randomUUID().toString() + ".jpeg"
+        val tempImage = File(
+            tempImageDir,
+            fileName
+        )
+        return FileProvider.getUriForFile(
+            requireContext(),
+            resources.getString(R.string.authorities),
+            tempImage
+        )
+    }
+
+    private fun setupButtonSendApp() {
+        lifecycleScope.launch {
+            viewModel.buttonSendAppIsActive
+                .flowWithLifecycle(viewLifecycleOwner.lifecycle)
+                .collect { binding.btSendApp.btSendApp.isEnabled = it }
+        }
+    }
+
+    private fun onClickButtonSendApp() {
+        binding.btSendApp.btSendApp.setOnClickListener {
+            val containerApp = ContainerApp(
+                task = binding.inTask.tetTask.text.toString().trim(),
+                name = binding.inContactsInfo.tetName.text.toString().trim(),
+                company = binding.inContactsInfo.tetCompany.text.toString().trim(),
+                email = binding.inContactsInfo.tetEmail.text.toString().trim(),
+                phone = binding.inContactsInfo.tetPhone.text.toString().trim()
+            )
+            viewModel.sendApp(containerApp)
+        }
+    }
+
+    private fun setupButtonAttachFile() {
+        viewModel.isFilesMaxCount.observe(viewLifecycleOwner) {
+            binding.inTask.btAttachFile.isEnabled = !it
+        }
+    }
+
+    private fun launchWarningFileMaxSize() {
+        viewModel.isFileNaxSize.observe(viewLifecycleOwner) { isGone ->
+            if (isGone) {
+                binding.cvErrorSizeFile.visibility = View.VISIBLE
+            } else {
+                binding.cvErrorSizeFile.visibility = View.GONE
+            }
+        }
+    }
+
+    private fun onClickButtonCloseWarningFileMaxSize() {
+        binding.btFileOk.btSendApp.setOnClickListener {
+            viewModel.isFileMaxSize(false)
+        }
+    }
+
     companion object {
         private const val PATTERN_EMAIL = "^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$"
         private const val PATTERN_PHONE = "^\\+7\\(\\d{3}\\)-\\d{3}-\\d{2}-\\d{2}\$"
+        private val CAMERA_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+        private const val TAG = "ApplicationFragment"
+        private const val MAX_SIZE_FILE = 15_000_000
 
         @JvmStatic
         fun newInstance() = ApplicationFragment()

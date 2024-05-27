@@ -14,22 +14,32 @@ import ru.it_cron.android1.choice.ChoiceAreaActivityDefault
 import ru.it_cron.android1.choice.ChoiceBudgetDefault
 import ru.it_cron.android1.choice.ChoiceServicesDefault
 import ru.it_cron.android1.choice.ChoiceState
+import ru.it_cron.android1.data.model.RequestApp
 import ru.it_cron.android1.domain.model.app.AppItem
+import ru.it_cron.android1.domain.model.app.ContainerApp
+import ru.it_cron.android1.domain.model.app.FileItem
+import ru.it_cron.android1.domain.usecases.application.AddFileItemUseCase
+import ru.it_cron.android1.domain.usecases.application.DeleteFileItemUseCase
 import ru.it_cron.android1.domain.usecases.application.GetAreaActivityUseCase
 import ru.it_cron.android1.domain.usecases.application.GetBudgetsUseCase
+import ru.it_cron.android1.domain.usecases.application.GetFileItemsUseCase
 import ru.it_cron.android1.domain.usecases.application.GetServicesUseCase
+import ru.it_cron.android1.domain.usecases.application.IsCountFilesUseCase
 
 class ApplicationViewModel(
     private val getServicesUseCase: GetServicesUseCase,
     private val getBudgetsUseCase: GetBudgetsUseCase,
     private val getAreaActivityUseCase: GetAreaActivityUseCase,
+    private val deleteFileItemUseCase: DeleteFileItemUseCase,
+    private val addFileItemUseCase: AddFileItemUseCase,
+    private val getFileItemsUseCase: GetFileItemsUseCase,
+    private val isCountFilesUseCase: IsCountFilesUseCase,
 ) : ViewModel(), KoinScopeComponent {
 
     override val scope: Scope = createScope(this)
     private val choiceServices by scope.inject<ChoiceServicesDefault>()
     private val choiceBudget by scope.inject<ChoiceBudgetDefault>()
     private val choiceAreaActivity by scope.inject<ChoiceAreaActivityDefault>()
-
 
     private var _services = MutableLiveData<List<AppItem>>()
     val services: LiveData<List<AppItem>> = _services
@@ -49,8 +59,37 @@ class ApplicationViewModel(
     private var _areaActivityFlow: MutableStateFlow<MutableList<AppItem>> =
         MutableStateFlow(mutableListOf())
 
-    private var _isErrorInput: MutableLiveData<Boolean> = MutableLiveData()
-    val isErrorInput: LiveData<Boolean> = _isErrorInput
+    private var _fileItems: MutableLiveData<List<FileItem>> = MutableLiveData()
+    val fileItems: LiveData<List<FileItem>> = _fileItems
+
+    private var _isFilesMaxCount: MutableLiveData<Boolean> = MutableLiveData()
+    val isFilesMaxCount: LiveData<Boolean> = _isFilesMaxCount
+
+    private var _isFileMaxSize: MutableLiveData<Boolean> = MutableLiveData(false)
+    val isFileNaxSize: LiveData<Boolean> = _isFileMaxSize
+
+    private val _servicesState = MutableStateFlow(false)
+    private val _budgetState = MutableStateFlow(false)
+    private val _areaActivityState = MutableStateFlow(false)
+    private val _taskState = MutableStateFlow(false)
+    private val _nameState = MutableStateFlow(false)
+    private val _companyState = MutableStateFlow(false)
+    private val _emailState = MutableStateFlow(false)
+    private val _phoneState = MutableStateFlow(false)
+    private val _personalInfoState = MutableStateFlow(false)
+    private val _politicState = MutableStateFlow(false)
+    val buttonSendAppIsActive = combine(
+        _servicesState,
+        _budgetState,
+        _areaActivityState,
+        _taskState,
+        _nameState,
+        _companyState,
+        _emailState,
+        _phoneState,
+        _personalInfoState,
+        _politicState,
+    ) { array -> array.all { it } }
 
     init {
         getServices()
@@ -59,6 +98,8 @@ class ApplicationViewModel(
         combineFlowService()
         combineFlowBudget()
         combineFlowAreaActivity()
+        getFileItems()
+        getIsFilesMaxCount()
     }
 
     private fun getServices() {
@@ -94,6 +135,7 @@ class ApplicationViewModel(
             )
             combineFlow.collect {
                 _services.value = it
+                _servicesState.value = !choiceServices.isEmpty()
             }
         }
     }
@@ -107,6 +149,7 @@ class ApplicationViewModel(
             )
             combineFlow.collect {
                 _budgets.value = it
+                _budgetState.value = !choiceBudget.isEmpty()
             }
         }
     }
@@ -120,6 +163,15 @@ class ApplicationViewModel(
             )
             combineFlow.collect {
                 _areaActivity.value = it
+                _areaActivityState.value = !choiceAreaActivity.isEmpty()
+            }
+        }
+    }
+
+    private fun getIsFilesMaxCount() {
+        viewModelScope.launch {
+            isCountFilesUseCase().collect {
+                _isFilesMaxCount.value = it
             }
         }
     }
@@ -147,8 +199,67 @@ class ApplicationViewModel(
         scope.close()
     }
 
-    fun sendResultInput(result: Boolean) {
-        _isErrorInput.value = result
+    fun addFileItem(fileItem: FileItem) {
+        addFileItemUseCase(fileItem)
+    }
+
+    fun deleteFileItem(fileItem: FileItem) {
+        deleteFileItemUseCase(fileItem)
+    }
+
+    fun setTaskState(value: Boolean) {
+        _taskState.value = value
+    }
+
+    fun setNameState(value: Boolean) {
+        _nameState.value = value
+    }
+
+    fun setCompanyState(value: Boolean) {
+        _companyState.value = value
+    }
+
+    fun setEmailState(value: Boolean) {
+        _emailState.value = value
+    }
+
+    fun setPhoneState(value: Boolean) {
+        _phoneState.value = value
+    }
+
+    fun setPersonalInfoState(value: Boolean) {
+        _personalInfoState.value = value
+    }
+
+    fun setPoliticState(value: Boolean) {
+        _politicState.value = value
+    }
+
+    fun sendApp(containerApp: ContainerApp) {
+        val service = choiceServices.getEnabledId().joinToString("\n")
+        val budget = choiceBudget.getEnabledId().first()
+        val areaActivity = choiceAreaActivity.getEnabledId().first()
+        val files = _fileItems.value ?: emptyList()
+        val requestApp = RequestApp(
+            task = containerApp.task,
+            name = containerApp.name,
+            company = containerApp.company,
+            email = containerApp.email,
+            phone = containerApp.phone,
+            services = service,
+            budget = budget,
+            areaActivity = areaActivity,
+            files = files
+        )
+
+    }
+
+    private fun getFileItems() {
+        viewModelScope.launch {
+            getFileItemsUseCase().collect {
+                _fileItems.value = it
+            }
+        }
     }
 
     private fun merge(
@@ -165,5 +276,7 @@ class ApplicationViewModel(
         return items.toList()
     }
 
-
+    fun isFileMaxSize(value: Boolean) {
+        _isFileMaxSize.value = value
+    }
 }

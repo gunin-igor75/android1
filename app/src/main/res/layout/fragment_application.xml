@@ -1,148 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".presentation.application.ApplicationFragment">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/tbApp"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:navigationIcon="@drawable/ic_arrow_left"
-        app:title="@string/application"
-        app:titleTextAppearance="@style/ToolBar">
+        android:orientation="vertical"
+        tools:context=".presentation.application.ApplicationFragment">
 
-    </com.google.android.material.appbar.MaterialToolbar>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/tbApp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:layout_marginBottom="@dimen/_64sdp">
+            app:navigationIcon="@drawable/ic_arrow_left"
+            app:title="@string/application"
+            app:titleTextAppearance="@style/ToolBar">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_50sdp"
-                android:layout_marginEnd="@dimen/_12ssp"
-                android:contentDescription="@string/image_rectangle_company_description"
-                android:src="@drawable/im_rectangle_smail"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        </com.google.android.material.appbar.MaterialToolbar>
 
-            <include
-                android:id="@+id/inBriefApp"
-                layout="@layout/block_brief_application"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_64sdp">
 
-            <ImageView
-                android:id="@+id/ivDecor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_40sdp"
-                android:contentDescription="@string/image_rectangle_company_description"
-                android:src="@drawable/im_rectangle_smail"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/inBriefApp" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_50sdp"
+                    android:layout_marginEnd="@dimen/_12ssp"
+                    android:contentDescription="@string/image_rectangle_company_description"
+                    android:src="@drawable/im_rectangle_smail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvServices"
+                <include
+                    android:id="@+id/inBriefApp"
+                    layout="@layout/block_brief_application"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivDecor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_40sdp"
+                    android:contentDescription="@string/image_rectangle_company_description"
+                    android:src="@drawable/im_rectangle_smail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/inBriefApp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvServices"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_50sdp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ivDecor" />
+
+                <include
+                    android:id="@+id/inTask"
+                    layout="@layout/block_task_app"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_64sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rvServices" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvBudgets"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_35sdp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/inTask" />
+
+                <include
+                    android:id="@+id/inContactsInfo"
+                    layout="@layout/block_contact_info_app"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_64sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rvBudgets" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvAreaActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_35sdp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/inContactsInfo" />
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/chPersonalInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_64sdp"
+                    android:button="@drawable/checkbox_application"
+                    android:paddingHorizontal="@dimen/_16sdp"
+                    android:text="@string/checkbox_app_1"
+                    android:textAppearance="@style/GothamProReg.16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rvAreaActivity" />
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/chPolitic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_24sdp"
+                    android:button="@drawable/checkbox_application"
+                    android:paddingHorizontal="@dimen/_16sdp"
+                    android:text="@string/checkbox_app_2"
+                    android:textAppearance="@style/GothamProReg.16sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/chPersonalInfo" />
+
+                <include
+                    android:id="@+id/btSendApp"
+                    layout="@layout/button_send_app"
+                    android:layout_width="@dimen/_204sdp"
+                    android:layout_height="@dimen/_204sdp"
+                    android:layout_marginTop="@dimen/_64sdp"
+                    android:layout_marginBottom="@dimen/_64sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/chPolitic" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvErrorSizeFile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_24sdp"
+        app:cardBackgroundColor="@color/trans_0_75"
+        android:visibility="gone"
+        app:cardCornerRadius="10dp"
+        app:strokeColor="@color/white"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/GothamProBold.28sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_50sdp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ivDecor" />
+                android:text="@string/ops_title" />
 
-            <include
-                android:id="@+id/inTask"
-                layout="@layout/block_task_app"
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/GothamProReg.16sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_64sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rvServices" />
+                android:layout_marginTop="@dimen/_16sdp"
+                android:text="@string/file_warning" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvBudgets"
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/GothamProReg.16sp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_35sdp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/inTask" />
-
-            <include
-                android:id="@+id/inContactsInfo"
-                layout="@layout/block_contact_info_app"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_64sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rvBudgets" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvAreaActivity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_35sdp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/inContactsInfo" />
-
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/chPersonalInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_64sdp"
-                android:button="@drawable/checkbox_application"
-                android:paddingHorizontal="@dimen/_16sdp"
-                android:text="@string/checkbox_app_1"
-                android:textAppearance="@style/GothamProReg.16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rvAreaActivity" />
-
-            <androidx.appcompat.widget.AppCompatCheckBox
-                android:id="@+id/chPolitic"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_24sdp"
-                android:button="@drawable/checkbox_application"
-                android:paddingHorizontal="@dimen/_16sdp"
-                android:text="@string/checkbox_app_2"
-                android:textAppearance="@style/GothamProReg.16sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/chPersonalInfo" />
+                android:text="@string/attempt_file" />
 
             <include
-                android:id="@+id/btSendApp"
-                layout="@layout/button_send_app"
-                android:layout_width="@dimen/_204sdp"
-                android:layout_height="@dimen/_204sdp"
-                android:layout_marginTop="@dimen/_64sdp"
-                android:layout_marginBottom="@dimen/_64sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/chPolitic" />
+                android:id="@+id/btFileOk"
+                layout="@layout/button_ok_app"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_32sdp" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+        </LinearLayout>
 
 
-</LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>

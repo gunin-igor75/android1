@@ -30,9 +30,9 @@ import ru.it_cron.android1.databinding.BlockCommunicationsCompanyBinding
 import ru.it_cron.android1.databinding.FragmentCompanyBinding
 import ru.it_cron.android1.domain.model.StateError
 import ru.it_cron.android1.navigation.Screens
+import ru.it_cron.android1.presentation.extension.dpToPx
 import ru.it_cron.android1.presentation.extension.sendEmail
 import ru.it_cron.android1.presentation.extension.sendRequest
-import ru.it_cron.android1.presentation.utils.dpToPx
 import ru.it_cron.android1.presentation.utils.makeLinks
 
 class CompanyFragment : Fragment() {

@@ -76,6 +76,10 @@
         <item name="android:textSize">@dimen/_20sdp</item>
     </style>
 
+    <style name="GothamProBold.18sp">
+        <item name="android:textSize">@dimen/_18sdp</item>
+    </style>
+
     <style name="GothamProBold.16sp">
         <item name="android:textSize">@dimen/_16sdp</item>
     </style>

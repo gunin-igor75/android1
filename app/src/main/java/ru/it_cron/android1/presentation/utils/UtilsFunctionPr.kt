@@ -6,7 +6,31 @@ import android.text.TextPaint
 import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.TextView
-import androidx.fragment.app.Fragment
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.runBlocking
+import ru.it_cron.android1.R
+import ru.it_cron.android1.presentation.extension.getExtension
+
+
+private const val TXT = "txt"
+private const val PNG = "png"
+private const val SVG = "svg"
+private const val JPEG = "jpeg"
+private const val BMP = "bmp"
+private const val PDF = "pdf"
+private const val DOC = "doc"
+private const val XLS = "xls"
+private const val XLSX = "xlsx"
+private const val ZIP = "zip"
+private const val RAR = "rar"
+private const val JAR = "jar"
+
+
+private const val TEXT_TYPE = "text/plain"
+private const val IMAGE_TYPE = "image/*"
+private const val APPLICATION_TYPE = "application/*"
+
 
 fun setupText(textView: TextView, list: List<String>): String {
     val result = StringBuilder()
@@ -58,7 +82,34 @@ fun makeLinks(
     return spannableString
 }
 
-fun Fragment.dpToPx(dpValue: Int): Int {
-    val dpRatio = resources.displayMetrics.density
-    return (dpValue * dpRatio).toInt()
+fun getMimeType(fileName: String): String {
+    val ext = fileName.getExtension()
+    return when (ext) {
+        TXT -> {
+            TEXT_TYPE
+        }
+
+        JPEG, PNG, SVG, BMP -> {
+            IMAGE_TYPE
+        }
+
+        else -> {
+            APPLICATION_TYPE
+        }
+    }
 }
+
+fun getColorIdFile(fileName: String): Int {
+    val ext = fileName.getExtension()
+    return when (ext) {
+        JPEG, PNG, SVG, BMP -> R.color.file_image
+        PDF -> R.color.file_pdf
+        DOC -> R.color.file_doc
+        ZIP, JAR, RAR -> R.color.file_archive
+        XLS, XLSX -> R.color.file_xls
+        TXT -> R.color.file_txt
+        else -> R.color.file_other
+    }
+}
+
+

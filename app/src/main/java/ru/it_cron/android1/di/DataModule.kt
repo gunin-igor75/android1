@@ -46,6 +46,6 @@ val dataModule = module {
         ReviewsRepositoryImpl(apiService = get())
     }
     single<AppRepository> {
-        AppRepositoryImpl()
+        AppRepositoryImpl(apiService = get())
     }
 }

@@ -10,9 +10,13 @@ import ru.it_cron.android1.domain.usecases.GetFiltersUseCase
 import ru.it_cron.android1.domain.usecases.GetReviewsUseCase
 import ru.it_cron.android1.domain.usecases.ReadOnBoardingStateUseCase
 import ru.it_cron.android1.domain.usecases.SaveOnBoardingStateUseCase
+import ru.it_cron.android1.domain.usecases.application.AddFileItemUseCase
+import ru.it_cron.android1.domain.usecases.application.DeleteFileItemUseCase
 import ru.it_cron.android1.domain.usecases.application.GetAreaActivityUseCase
 import ru.it_cron.android1.domain.usecases.application.GetBudgetsUseCase
+import ru.it_cron.android1.domain.usecases.application.GetFileItemsUseCase
 import ru.it_cron.android1.domain.usecases.application.GetServicesUseCase
+import ru.it_cron.android1.domain.usecases.application.IsCountFilesUseCase
 
 val domainModule = module {
     factory<SaveOnBoardingStateUseCase> {
@@ -48,5 +52,17 @@ val domainModule = module {
     }
     factory<GetAreaActivityUseCase> {
         GetAreaActivityUseCase(repository = get())
+    }
+    factory<DeleteFileItemUseCase> {
+        DeleteFileItemUseCase(repository = get())
+    }
+    factory<AddFileItemUseCase> {
+        AddFileItemUseCase(repository = get())
+    }
+    factory<GetFileItemsUseCase> {
+        GetFileItemsUseCase(repository = get())
+    }
+    factory<IsCountFilesUseCase> {
+        IsCountFilesUseCase(repository = get())
     }
 }

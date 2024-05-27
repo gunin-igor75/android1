@@ -140,4 +140,17 @@
     <string name="photo_title">Фотография</string>
     <string name="document_title">Документ</string>
     <string name="cancel_title">Cancel</string>
+    <string name="grant_permission">Please give permission to camera for this app</string>
+    <string name="temp_images_dir">temp_images</string>
+    <string name="temp_images">temp_image.jpg</string>
+    <string name="authorities">ru.it_cron.android1.fileProvider</string>
+    <string name="ops_title">Упс!</string>
+    <string name="file_warning">Файл не должен превышать 15 mb</string>
+    <string name="attempt_file">Попробуем еще раз?</string>
+    <string name="app_thank">Спасибо за вашу заявку!</string>
+    <string name="app_attach">Мы свяжемся с Вами в ближайшее время.</string>
+    <string name="app_call">А если у Вас «горит» и ждать нельзя, скорее звоните нам.</string>
+    <string name="phone_underline"><u>+7 (495) 006–13–57</u></string>
+    <string name="something_went_wrong">Что-то пошло не так...</string>
+    <string name="let_s_try_again_call">Попробуем еще раз? Или позвоните нам.</string>
 </resources>

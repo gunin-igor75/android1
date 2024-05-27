@@ -51,7 +51,11 @@ val appModule = module {
         ApplicationViewModel(
             getServicesUseCase = get(),
             getBudgetsUseCase = get(),
-            getAreaActivityUseCase = get()
+            getAreaActivityUseCase = get(),
+            deleteFileItemUseCase = get(),
+            addFileItemUseCase = get(),
+            getFileItemsUseCase = get(),
+            isCountFilesUseCase = get()
         )
     }
 
