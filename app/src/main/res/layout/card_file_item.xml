@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/_115sdp"
+    android:layout_height="@dimen/_80sdp"
+    android:layout_marginEnd="@dimen/_16sdp"
+    android:background="@drawable/card_view"
+    android:paddingStart="@dimen/_8sdp"
+    android:paddingTop="@dimen/_8sdp"
+    android:paddingEnd="@dimen/_4sdp"
+    android:paddingBottom="@dimen/_4sdp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvFileType"
+        style="@style/GothamProMed.12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="4dp"
+        android:textAllCaps="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@color/orange"
+        tools:text="PDF" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvFileName"
+                style="@style/GothamProMed.12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:textColor="@color/gray_light"
+                tools:text="Документ_1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvFileSize"
+                style="@style/GothamProReg.12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:textColor="@color/gray_light"
+                tools:text="2,8 MB" />
+        </LinearLayout>
+
+        <include
+            android:id="@+id/btRemoveFile"
+            layout="@layout/button_delete_file"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

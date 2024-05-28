@@ -20,7 +20,7 @@ import kotlinx.coroutines.delay
 import org.koin.android.ext.android.inject
 import ru.it_cron.android1.R
 import ru.it_cron.android1.databinding.FragmentImagesBinding
-import ru.it_cron.android1.domain.model.ContainerImage
+import ru.it_cron.android1.domain.model.filter.ContainerImage
 
 class ImagesFragment : Fragment() {
 

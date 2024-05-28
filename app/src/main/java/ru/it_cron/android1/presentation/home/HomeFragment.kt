@@ -66,7 +66,7 @@ class HomeFragment : Fragment() {
                 CustomAnimated.animatedAlpha(
                     btSendRequest,
                 ) {
-                    /*TODO Send Request realisation*/
+                    router.navigateTo(Screens.openApplicationFragment())
                 }
             }
         }

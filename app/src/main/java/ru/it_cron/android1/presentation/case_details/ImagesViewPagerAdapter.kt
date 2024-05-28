@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import ru.it_cron.android1.databinding.SplashItemBinding
-import ru.it_cron.android1.domain.model.ContainerImage
+import ru.it_cron.android1.domain.model.filter.ContainerImage
 
 class ImagesViewPagerAdapter(
     private val containerData: ContainerImage,

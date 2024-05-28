@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.it_cron.android1.databinding.FilterItemDisabledBinding
 import ru.it_cron.android1.databinding.FilterItemEnabledBinding
 import ru.it_cron.android1.databinding.TitleFilterItemBinding
-import ru.it_cron.android1.domain.model.TypeItem
+import ru.it_cron.android1.domain.model.filter.TypeItem
 
 class FilterAdapter : ListAdapter<TypeItem, RecyclerView.ViewHolder>(TypeItemDiffCallBack) {
 

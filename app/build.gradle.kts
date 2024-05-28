@@ -80,6 +80,9 @@ dependencies {
     //glide
     implementation(libs.glide)
 
+    //concatadapter
+    implementation(libs.concatadapter.core)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

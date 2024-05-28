@@ -4,7 +4,7 @@ import android.graphics.Color
 import ru.it_cron.android1.data.network.dto.case_dto.DataDetailsCaseDto
 import ru.it_cron.android1.data.network.dto.case_dto.PlatformsDto
 import ru.it_cron.android1.data.network.dto.case_dto.TechnologiesDto
-import ru.it_cron.android1.domain.model.CaseDetails
+import ru.it_cron.android1.domain.model.cases.CaseDetails
 
 private const val EMPTY = ""
 

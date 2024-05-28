@@ -1,6 +1,6 @@
 package ru.it_cron.android1.domain.usecases
 
-import ru.it_cron.android1.domain.model.Review
+import ru.it_cron.android1.domain.model.company.Review
 import ru.it_cron.android1.domain.repository.ReviewsRepository
 
 class GetReviewsUseCase(

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/_115sdp"
+    android:layout_height="@dimen/_80sdp"
+    android:layout_marginEnd="@dimen/_16sdp"
+    android:backgroundTint="@color/black_light">
+
+    <ImageView
+        android:id="@+id/ivFile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/image_file"
+        android:src="@drawable/ic_image_file" />
+
+    <include
+        android:id="@+id/btRemoveFile"
+        layout="@layout/button_delete_file"
+        android:layout_width="@dimen/_24sdp"
+        android:layout_height="@dimen/_24sdp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/_4sdp"
+        android:layout_marginBottom="@dimen/_4sdp" />
+</com.google.android.material.card.MaterialCardView>

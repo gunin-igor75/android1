@@ -7,7 +7,7 @@ import retrofit2.HttpException
 import ru.it_cron.android1.data.mappers.dataFiltersDtoToFiltersGroups
 import ru.it_cron.android1.data.model.DataResult
 import ru.it_cron.android1.data.network.api.ApiService
-import ru.it_cron.android1.domain.model.FiltersGroup
+import ru.it_cron.android1.domain.model.filter.FiltersGroup
 import ru.it_cron.android1.domain.repository.FilterRepository
 import java.io.IOException
 

@@ -6,7 +6,26 @@ import android.text.TextPaint
 import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.TextView
-import androidx.fragment.app.Fragment
+import ru.it_cron.android1.R
+import ru.it_cron.android1.constant.BMP
+import ru.it_cron.android1.constant.DOC
+import ru.it_cron.android1.constant.JAR
+import ru.it_cron.android1.constant.JPEG
+import ru.it_cron.android1.constant.PDF
+import ru.it_cron.android1.constant.PNG
+import ru.it_cron.android1.constant.RAR
+import ru.it_cron.android1.constant.SVG
+import ru.it_cron.android1.constant.TXT
+import ru.it_cron.android1.constant.XLS
+import ru.it_cron.android1.constant.XLSX
+import ru.it_cron.android1.constant.ZIP
+import ru.it_cron.android1.presentation.extension.getExtension
+
+
+private const val TEXT_TYPE = "text/plain"
+private const val IMAGE_TYPE = "image/*"
+private const val APPLICATION_TYPE = "application/*"
+
 
 fun setupText(textView: TextView, list: List<String>): String {
     val result = StringBuilder()
@@ -43,6 +62,7 @@ fun makeLinks(
         }
 
         override fun onClick(widget: View) {
+            widget.cancelPendingInputEvents()
             listener.onClick(widget)
         }
     }
@@ -57,7 +77,34 @@ fun makeLinks(
     return spannableString
 }
 
-fun Fragment.dpToPx(dpValue: Int): Int {
-    val dpRatio = resources.displayMetrics.density
-    return (dpValue * dpRatio).toInt()
+fun getMimeType(fileName: String): String {
+    val ext = fileName.getExtension()
+    return when (ext) {
+        TXT -> {
+            TEXT_TYPE
+        }
+
+        JPEG, PNG, SVG, BMP -> {
+            IMAGE_TYPE
+        }
+
+        else -> {
+            APPLICATION_TYPE
+        }
+    }
 }
+
+fun getColorIdFile(fileName: String): Int {
+    val ext = fileName.getExtension()
+    return when (ext) {
+        JPEG, PNG, SVG, BMP -> R.color.file_image
+        PDF -> R.color.file_pdf
+        DOC -> R.color.file_doc
+        ZIP, JAR, RAR -> R.color.file_archive
+        XLS, XLSX -> R.color.file_xls
+        TXT -> R.color.file_txt
+        else -> R.color.file_other
+    }
+}
+
+

@@ -9,10 +9,19 @@
     <color name="white">#FFFFFFFF</color>
     <color name="black_light">#FF131213</color>
     <color name="orange">#FFFB6542</color>
-    <color name="grat_light">#FFE0E0E0</color>
+    <color name="white_dark">#FFE0E0E0</color>
     <color name="gray">#FF5A5959</color>
     <color name="trans_0_5">#7F000000</color>
     <color name="trans_0_75">#BF000000</color>
     <color name="case_image_color">#FF69488D</color>
     <color name="text_company">#FF131212</color>
+    <color name="gray_light">#FFBDBDBD</color>
+    <color name="file_pdf">#FFFB6542</color>
+    <color name="file_doc">#FF4084C8</color>
+    <color name="file_xls">#FF4CAF50</color>
+    <color name="file_txt">#FF616161</color>
+    <color name="file_archive">#FFF1B322</color>
+    <color name="file_image">#FF945DED</color>
+    <color name="file_other">#FF5D53FF</color>
+    <color name="page">#FFF5F5F5</color>
 </resources>

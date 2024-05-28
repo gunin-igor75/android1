@@ -8,7 +8,7 @@ import retrofit2.HttpException
 import ru.it_cron.android1.data.mappers.dataDtoCasesToCases
 import ru.it_cron.android1.data.model.DataResult
 import ru.it_cron.android1.data.network.api.ApiService
-import ru.it_cron.android1.domain.model.Case
+import ru.it_cron.android1.domain.model.cases.Case
 import ru.it_cron.android1.domain.repository.CasesRepository
 
 class CasesRepositoryImpl(

@@ -14,10 +14,10 @@ import kotlinx.coroutines.launch
 import ru.it_cron.android1.choice.ChoiceFilters
 import ru.it_cron.android1.choice.ChoiceState
 import ru.it_cron.android1.data.model.DataResult
-import ru.it_cron.android1.domain.model.FiltersGroup
+import ru.it_cron.android1.domain.model.filter.FiltersGroup
 import ru.it_cron.android1.domain.model.StateError
 import ru.it_cron.android1.domain.model.StateScreen
-import ru.it_cron.android1.domain.model.TypeItem
+import ru.it_cron.android1.domain.model.filter.TypeItem
 import ru.it_cron.android1.domain.usecases.GetFiltersUseCase
 
 class FiltersViewModel(

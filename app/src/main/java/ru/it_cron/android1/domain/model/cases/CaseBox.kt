@@ -1,8 +1,7 @@
-package ru.it_cron.android1.domain.model
+package ru.it_cron.android1.domain.model.cases
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import ru.it_cron.android1.domain.model.Case
 
 @Parcelize
 data class CaseBox(
