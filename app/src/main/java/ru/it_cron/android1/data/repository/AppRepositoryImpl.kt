@@ -71,8 +71,9 @@ class AppRepositoryImpl(
     private val eventChange: MutableSharedFlow<Unit> = MutableSharedFlow(replay = 1)
 
     private val fileItemFlow: Flow<List<FileItem>> = flow {
-        eventChange.onStart { emit(Unit) }
-        eventChange.collect { emit(fileItems) }
+        eventChange.onStart {
+            emit(Unit)
+        }.collect { emit(fileItems) }
     }
 
     private val _isCountFiles: MutableStateFlow<Boolean> = MutableStateFlow(false)
