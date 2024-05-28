@@ -14,9 +14,9 @@ import kotlinx.coroutines.launch
 import ru.it_cron.android1.choice.ChoiceFilters
 import ru.it_cron.android1.choice.ChoiceState
 import ru.it_cron.android1.data.model.DataResult
-import ru.it_cron.android1.domain.model.cases.Case
 import ru.it_cron.android1.domain.model.StateError
 import ru.it_cron.android1.domain.model.StateScreen
+import ru.it_cron.android1.domain.model.cases.Case
 import ru.it_cron.android1.domain.usecases.GetCasesUseCase
 
 class CasesViewModel(

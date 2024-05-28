@@ -3,10 +3,13 @@ package ru.it_cron.android1.di
 import com.bumptech.glide.Glide
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
-import ru.it_cron.android1.choice.ChoiceAreaActivityDefault
-import ru.it_cron.android1.choice.ChoiceBudgetDefault
-import ru.it_cron.android1.choice.ChoiceServicesDefault
+import ru.it_cron.android1.di.ChoiceType.CHOICE_AREA_DEFAULT
+import ru.it_cron.android1.di.ChoiceType.CHOICE_BUDGET_DEFAULT
+import ru.it_cron.android1.di.ChoiceType.CHOICE_FILTER_DEFAULT
+import ru.it_cron.android1.di.ChoiceType.CHOICE_SERVICE_DEFAULT
+import ru.it_cron.android1.presentation.application.ApplicationFragment
 import ru.it_cron.android1.presentation.application.ApplicationViewModel
 import ru.it_cron.android1.presentation.case_details.CaseDetailsViewModel
 import ru.it_cron.android1.presentation.cases.CasesViewModel
@@ -28,7 +31,7 @@ val appModule = module {
     viewModel<CasesViewModel> {
         CasesViewModel(
             getCasesUseCase = get(),
-            choiceFilters = get()
+            choiceFilters = get(named(CHOICE_FILTER_DEFAULT))
         )
     }
 
@@ -39,7 +42,7 @@ val appModule = module {
     viewModel<FiltersViewModel> {
         FiltersViewModel(
             getFiltersUseCase = get(),
-            choiceFilters = get()
+            choiceFilters = get(named(CHOICE_FILTER_DEFAULT))
         )
     }
 
@@ -57,7 +60,10 @@ val appModule = module {
             getFileItemsUseCase = get(),
             isCountFilesUseCase = get(),
             sendAppUseCase = get(),
-            clearFileItemsUseCase = get()
+            clearFileItemsUseCase = get(),
+            choiceServices = get(named(CHOICE_SERVICE_DEFAULT)),
+            choiceBudget = get(named(CHOICE_BUDGET_DEFAULT)),
+            choiceAreaActivity = get(named(CHOICE_AREA_DEFAULT))
         )
     }
 
@@ -65,13 +71,22 @@ val appModule = module {
         Glide.with(androidContext())
     }
 
-    scope<ApplicationViewModel> {
-        scoped { ChoiceBudgetDefault() }
-    }
-    scope<ApplicationViewModel> {
-        scoped { ChoiceServicesDefault() }
-    }
-    scope<ApplicationViewModel> {
-        scoped { ChoiceAreaActivityDefault() }
+    scope<ApplicationFragment> {
+        viewModel {
+            ApplicationViewModel(
+                getServicesUseCase = get(),
+                getBudgetsUseCase = get(),
+                getAreaActivityUseCase = get(),
+                deleteFileItemUseCase = get(),
+                addFileItemUseCase = get(),
+                getFileItemsUseCase = get(),
+                isCountFilesUseCase = get(),
+                sendAppUseCase = get(),
+                clearFileItemsUseCase = get(),
+                choiceServices = get(named(CHOICE_SERVICE_DEFAULT)),
+                choiceBudget = get(named(CHOICE_BUDGET_DEFAULT)),
+                choiceAreaActivity = get(named(CHOICE_AREA_DEFAULT))
+            )
+        }
     }
 }

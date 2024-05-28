@@ -13,8 +13,8 @@ import ru.it_cron.android1.data.repository.OnBoardingRepositoryImpl
 import ru.it_cron.android1.data.repository.ReviewsRepositoryImpl
 import ru.it_cron.android1.domain.model.cases.Case
 import ru.it_cron.android1.domain.model.cases.CaseDetails
-import ru.it_cron.android1.domain.model.filter.FiltersGroup
 import ru.it_cron.android1.domain.model.company.Review
+import ru.it_cron.android1.domain.model.filter.FiltersGroup
 import ru.it_cron.android1.domain.repository.AccessRepository
 import ru.it_cron.android1.domain.repository.AppRepository
 import ru.it_cron.android1.domain.repository.CaseDetailsRepository

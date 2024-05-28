@@ -9,9 +9,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import ru.it_cron.android1.data.model.DataResult
-import ru.it_cron.android1.domain.model.cases.CaseDetails
 import ru.it_cron.android1.domain.model.StateError
 import ru.it_cron.android1.domain.model.StateScreen
+import ru.it_cron.android1.domain.model.cases.CaseDetails
 import ru.it_cron.android1.domain.usecases.GetCaseDetailsUseCase
 
 class CaseDetailsViewModel(

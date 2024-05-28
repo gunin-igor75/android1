@@ -18,4 +18,6 @@ interface ChoiceFilters<T : Any> {
 
     fun getEnabledId(): Set<String>
 
+    fun isEmpty(): Boolean
+
 }

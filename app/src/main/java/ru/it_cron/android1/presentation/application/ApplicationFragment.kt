@@ -350,11 +350,8 @@ class ApplicationFragment : Fragment() {
 
     private fun setupRecyclerViewServicesBudgetAreaActivity() {
         binding.rvServices.adapter = serviceAdapter
-        binding.rvServices.suppressLayout(false)
         binding.rvBudgets.adapter = budgetAdapter
-        binding.rvBudgets.suppressLayout(false)
         binding.rvAreaActivity.adapter = areaActivityAdapter
-        binding.rvAreaActivity.suppressLayout(false)
         binding.inTask.rvFiles.adapter = fileItemAdapter
 
         viewModel.services.observe(viewLifecycleOwner) {

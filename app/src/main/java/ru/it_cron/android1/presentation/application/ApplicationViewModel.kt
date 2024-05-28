@@ -9,12 +9,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
-import org.koin.core.component.KoinScopeComponent
-import org.koin.core.component.createScope
-import org.koin.core.scope.Scope
-import ru.it_cron.android1.choice.ChoiceAreaActivityDefault
-import ru.it_cron.android1.choice.ChoiceBudgetDefault
-import ru.it_cron.android1.choice.ChoiceServicesDefault
+import ru.it_cron.android1.choice.ChoiceFilters
 import ru.it_cron.android1.choice.ChoiceState
 import ru.it_cron.android1.data.model.DataResult
 import ru.it_cron.android1.data.model.RequestApp
@@ -42,12 +37,11 @@ class ApplicationViewModel(
     private val isCountFilesUseCase: IsCountFilesUseCase,
     private val sendAppUseCase: SendAppUseCase,
     private val clearFileItemsUseCase: ClearFileItemsUseCase,
-) : ViewModel(), KoinScopeComponent {
+    private val choiceServices: ChoiceFilters<String>,
+    private val choiceBudget: ChoiceFilters<String>,
+    private val choiceAreaActivity: ChoiceFilters<String>,
+) : ViewModel() {
 
-    override val scope: Scope = createScope(this)
-    private val choiceServices by scope.inject<ChoiceServicesDefault>()
-    private val choiceBudget by scope.inject<ChoiceBudgetDefault>()
-    private val choiceAreaActivity by scope.inject<ChoiceAreaActivityDefault>()
 
     private var _services = MutableLiveData<List<AppItem>>()
     val services: LiveData<List<AppItem>> = _services
@@ -130,11 +124,6 @@ class ApplicationViewModel(
         choiceBudget.clearAll()
         choiceAreaActivity.clearAll()
         clearFileItemsUseCase()
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        scope.close()
     }
 
     fun addFileItem(fileItem: FileItem) {

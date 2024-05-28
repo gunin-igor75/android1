@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -70,17 +71,13 @@ class AppRepositoryImpl(
     private val eventChange: MutableSharedFlow<Unit> = MutableSharedFlow(replay = 1)
 
     private val fileItemFlow: Flow<List<FileItem>> = flow {
-        eventChange.emit(Unit)
-        eventChange.collect {
-            emit(fileItems)
-        }
+        eventChange.onStart { emit(Unit) }
+        eventChange.collect { emit(fileItems) }
     }
 
-    private val _isCountFiles: MutableStateFlow<Boolean> =
-        MutableStateFlow(false)
+    private val _isCountFiles: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
-    private val isCountFiles: StateFlow<Boolean>
-        get() = _isCountFiles.asStateFlow()
+    private val isCountFiles: StateFlow<Boolean> = _isCountFiles.asStateFlow()
 
     override fun getFileItems(): Flow<List<FileItem>> {
         return fileItemFlow
@@ -139,8 +136,7 @@ class AppRepositoryImpl(
                     DataResult.Success(response.data)
                 } else {
                     val errorBody = ErrorBody(
-                        message = response.errorDto.message,
-                        code = response.errorDto.code
+                        message = response.errorDto.message, code = response.errorDto.code
                     )
                     Log.e(TAG, errorBody.toString())
                     DataResult.Error(error = response.errorDto.message)
@@ -161,7 +157,8 @@ class AppRepositoryImpl(
         val byteArray = fileItem.byteArray
             ?: throw IllegalStateException("File ${fileItem.nameFile} byteArray is null")
         return MultipartBody.Part.createFormData(
-            nameContent, fileItem.nameFile,
+            nameContent,
+            fileItem.nameFile,
             byteArray.toRequestBody(fileItem.mimeType.toMediaTypeOrNull(), 0, byteArray.size)
         )
     }
