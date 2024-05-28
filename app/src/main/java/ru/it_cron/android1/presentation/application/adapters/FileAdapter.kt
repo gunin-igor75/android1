@@ -45,25 +45,12 @@ class FileAdapter(
         when (item.isPhoto) {
             true -> {
                 val holderPhoto = holder as PhotoViewHolder
-                with(holderPhoto.binding) {
-                    ivFile.setImageURI(item.uri)
-                }
-                holder.binding.btRemoveFile.btRemove.setOnClickListener {
-                    fileItemOnClickListener?.onClickItem(item)
-                }
+                holderPhoto.bind(item)
             }
 
             false -> {
                 val holderFile = holder as FileViewHolder
-                with(holderFile.binding) {
-                    tvFileType.text = item.extension
-                    tvFileName.text = item.getName()
-                    tvFileSize.text = item.getStringSize()
-                    tvFileType.background = ContextCompat.getDrawable(context, item.colorId)
-                }
-                holder.binding.btRemoveFile.btRemove.setOnClickListener {
-                    fileItemOnClickListener?.onClickItem(item)
-                }
+                holderFile.bind(item)
             }
         }
     }
@@ -88,11 +75,32 @@ class FileAdapter(
         const val PHOTO_TYPE = 900
     }
 
-    class FileViewHolder(val binding: CardFileItemBinding) :
-        RecyclerView.ViewHolder(binding.root)
+    inner class FileViewHolder(val binding: CardFileItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(fileItem: FileItem) {
+            with(binding) {
+                tvFileType.text = fileItem.extension
+                tvFileName.text = fileItem.getName()
+                tvFileSize.text = fileItem.getStringSize()
+                tvFileType.background = ContextCompat.getDrawable(context, fileItem.colorId)
+            }
+            binding.btRemoveFile.btRemove.setOnClickListener {
+                fileItemOnClickListener?.onClickItem(fileItem)
+            }
+        }
+    }
 
-    class PhotoViewHolder(val binding: CardImageItemBinding) :
-        RecyclerView.ViewHolder(binding.root)
+    inner class PhotoViewHolder(val binding: CardImageItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(fileItem: FileItem) {
+            with(binding) {
+                ivFile.setImageURI(fileItem.uri)
+            }
+            binding.btRemoveFile.btRemove.setOnClickListener {
+                fileItemOnClickListener?.onClickItem(fileItem)
+            }
+        }
+    }
 
     interface FileItemOnClickListener {
         fun onClickItem(fileItem: FileItem)
