@@ -176,4 +176,6 @@
     <string name="ratings">Рейтинги</string>
     <string name="newsletter">Рассылка</string>
     <string name="advertising">Реклама</string>
+    <string name="menu_share">menu_share</string>
+    <string name="image_logo_contacts">image_logo_contacts</string>
 </resources>
