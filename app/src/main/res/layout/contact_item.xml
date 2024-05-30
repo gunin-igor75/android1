@@ -19,5 +19,5 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:textColor="@color/black"
-        tools:text="@string/schedule_title" />
+        tools:text="@string/schedule_title_thur" />
 </com.google.android.material.card.MaterialCardView>

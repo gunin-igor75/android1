@@ -27,6 +27,7 @@ import ru.it_cron.android1.domain.usecases.application.GetFileItemsUseCase
 import ru.it_cron.android1.domain.usecases.application.GetServicesUseCase
 import ru.it_cron.android1.domain.usecases.application.IsCountFilesUseCase
 import ru.it_cron.android1.domain.usecases.application.SendAppUseCase
+import ru.it_cron.android1.domain.usecases.contacts.GetDaySItemsUseCase
 
 
 val domainModule = module {
@@ -95,5 +96,7 @@ val domainModule = module {
     factory<ClearFileItemsUseCase> {
         ClearFileItemsUseCase(repository = get())
     }
-
+    factory<GetDaySItemsUseCase> {
+        GetDaySItemsUseCase(repository = get())
+    }
 }
