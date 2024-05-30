@@ -4,9 +4,14 @@ import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
 import ru.it_cron.android1.constant.BMP
 import ru.it_cron.android1.constant.DOC
 import ru.it_cron.android1.constant.JAR
@@ -112,4 +117,46 @@ fun String.getExtension(): String {
         APP
     }
 }
+
+fun <T> Flow<T>.mutableStateIn(
+    scope: CoroutineScope,
+    initValue: T,
+): MutableStateFlow<T> {
+    val flow = MutableStateFlow(initValue)
+    scope.launch {
+        this@mutableStateIn.collect(flow)
+    }
+    return flow
+}
+
+fun <T> Flow<T>.mutableLiveDataIn(
+    scope: CoroutineScope,
+): MutableLiveData<T> {
+    val liveData = MutableLiveData<T>()
+    scope.launch {
+        this@mutableLiveDataIn.collect {
+            liveData.value = it
+        }
+    }
+    return liveData
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

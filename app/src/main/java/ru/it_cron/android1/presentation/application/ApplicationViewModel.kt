@@ -26,20 +26,22 @@ import ru.it_cron.android1.domain.usecases.application.GetFileItemsUseCase
 import ru.it_cron.android1.domain.usecases.application.GetServicesUseCase
 import ru.it_cron.android1.domain.usecases.application.IsCountFilesUseCase
 import ru.it_cron.android1.domain.usecases.application.SendAppUseCase
+import ru.it_cron.android1.presentation.extension.mutableLiveDataIn
+import ru.it_cron.android1.presentation.extension.mutableStateIn
 
 class ApplicationViewModel(
-    private val getServicesUseCase: GetServicesUseCase,
-    private val getBudgetsUseCase: GetBudgetsUseCase,
-    private val getAreaActivityUseCase: GetAreaActivityUseCase,
     private val deleteFileItemUseCase: DeleteFileItemUseCase,
     private val addFileItemUseCase: AddFileItemUseCase,
-    private val getFileItemsUseCase: GetFileItemsUseCase,
-    private val isCountFilesUseCase: IsCountFilesUseCase,
     private val sendAppUseCase: SendAppUseCase,
     private val clearFileItemsUseCase: ClearFileItemsUseCase,
     private val choiceServices: ChoiceFilters<String>,
     private val choiceBudget: ChoiceFilters<String>,
     private val choiceAreaActivity: ChoiceFilters<String>,
+    getServicesUseCase: GetServicesUseCase,
+    getBudgetsUseCase: GetBudgetsUseCase,
+    getAreaActivityUseCase: GetAreaActivityUseCase,
+    getFileItemsUseCase: GetFileItemsUseCase,
+    isCountFilesUseCase: IsCountFilesUseCase,
 ) : ViewModel() {
 
 
@@ -53,18 +55,29 @@ class ApplicationViewModel(
     val areaActivity: LiveData<List<AppItem>> = _areaActivity
 
     private var _serviceFlow: MutableStateFlow<MutableList<AppItem>> =
-        MutableStateFlow(mutableListOf())
+        getServicesUseCase().mutableStateIn(
+            viewModelScope,
+            mutableListOf()
+        )
 
     private var _budgetFlow: MutableStateFlow<MutableList<AppItem>> =
-        MutableStateFlow(mutableListOf())
+        getBudgetsUseCase().mutableStateIn(
+            viewModelScope,
+            mutableListOf()
+        )
 
     private var _areaActivityFlow: MutableStateFlow<MutableList<AppItem>> =
-        MutableStateFlow(mutableListOf())
+        getAreaActivityUseCase().mutableStateIn(
+            viewModelScope,
+            mutableListOf()
+        )
 
-    private var _fileItems: MutableLiveData<List<FileItem>> = MutableLiveData()
+    private var _fileItems: MutableLiveData<List<FileItem>> =
+        getFileItemsUseCase().mutableLiveDataIn(viewModelScope)
     val fileItems: LiveData<List<FileItem>> = _fileItems
 
-    private var _isFilesMaxCount: MutableLiveData<Boolean> = MutableLiveData()
+    private var _isFilesMaxCount: MutableLiveData<Boolean> =
+        isCountFilesUseCase().mutableLiveDataIn(viewModelScope)
     val isFilesMaxCount: LiveData<Boolean> = _isFilesMaxCount
 
     private var _isFileMaxSize: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -97,14 +110,9 @@ class ApplicationViewModel(
     val answer = answerChannel.receiveAsFlow()
 
     init {
-        getServices()
-        getBudget()
-        getAreaActivity()
         combineFlowService()
         combineFlowBudget()
         combineFlowAreaActivity()
-        getFileItems()
-        getIsFilesMaxCount()
     }
 
     fun toggleService(item: String) {
@@ -199,30 +207,6 @@ class ApplicationViewModel(
         _isFileMaxSize.value = value
     }
 
-    private fun getServices() {
-        viewModelScope.launch {
-            getServicesUseCase().collect {
-                _serviceFlow.value = it
-            }
-        }
-    }
-
-    private fun getBudget() {
-        viewModelScope.launch {
-            getBudgetsUseCase().collect {
-                _budgetFlow.value = it
-            }
-        }
-    }
-
-    private fun getAreaActivity() {
-        viewModelScope.launch {
-            getAreaActivityUseCase().collect {
-                _areaActivityFlow.value = it
-            }
-        }
-    }
-
     private fun combineFlowService() {
         viewModelScope.launch {
             val combineFlow = combine(
@@ -261,23 +245,6 @@ class ApplicationViewModel(
             combineFlow.collect {
                 _areaActivity.value = it
                 _areaActivityState.value = !choiceAreaActivity.isEmpty()
-            }
-        }
-    }
-
-    private fun getIsFilesMaxCount() {
-        viewModelScope.launch {
-            isCountFilesUseCase().collect {
-                _isFilesMaxCount.value = it
-            }
-        }
-    }
-
-
-    private fun getFileItems() {
-        viewModelScope.launch {
-            getFileItemsUseCase().collect {
-                _fileItems.value = it
             }
         }
     }
