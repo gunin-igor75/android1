@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:parentTag="android.widget.LinearLayout">
 
@@ -19,11 +20,21 @@
         android:lineSpacingMultiplier="1.2"
         android:text="@string/location_address" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_200sdp"
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16sdp"
-        android:contentDescription="@string/image_location_it_cron"
-        android:src="@drawable/im_location_it_cron" />
+        app:cardCornerRadius="@dimen/_10sdp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_200sdp"
+            android:contentDescription="@string/image_location_it_cron"
+            android:scaleType="centerCrop"
+            android:src="@drawable/im_location_it_cron" />
+
+    </com.google.android.material.card.MaterialCardView>
+
 
 </merge>
