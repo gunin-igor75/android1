@@ -5,9 +5,9 @@
     android:layout_height="wrap_content"
     android:backgroundTint="@color/white"
     app:cardCornerRadius="10dp"
-    app:contentPaddingBottom="@dimen/_32sdp"
-    app:contentPaddingLeft="@dimen/_16sdp"
-    app:contentPaddingTop="@dimen/_32sdp">
+    app:contentPaddingBottom="32dp"
+    app:contentPaddingLeft="16dp"
+    app:contentPaddingTop="32dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
             style="@style/GothamProBold.24sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_24sdp"
+            android:layout_marginTop="24dp"
             android:text="@string/facebook"
             android:textColor="@color/orange"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
             style="@style/GothamProBold.24sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_24sdp"
+            android:layout_marginTop="24dp"
             android:text="@string/telegram"
             android:textColor="@color/orange"
             app:layout_constraintStart_toStartOf="parent"

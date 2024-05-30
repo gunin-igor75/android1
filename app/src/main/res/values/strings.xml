@@ -178,4 +178,10 @@
     <string name="advertising">Реклама</string>
     <string name="menu_share">menu_share</string>
     <string name="image_logo_contacts">image_logo_contacts</string>
+    <string name="schedule_work">График работы</string>
+    <string name="schedule_title">Четверг: <b>09:00 – 18:00</b></string>
+    <string name="location_title">Расположение</string>
+    <string name="location_address">г. Москва, ул. Мосфильмовская, д. 35, с. 2, офис 301</string>
+    <string name="image_location_it_cron">image location it cron</string>
+    <string name="requisites">Реквизиты</string>
 </resources>

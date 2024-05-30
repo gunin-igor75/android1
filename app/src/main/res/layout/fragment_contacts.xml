@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="ru.it_cron.android1.presentation.contacts.ContactsFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -13,27 +12,116 @@
         android:layout_height="wrap_content"
         app:navigationIcon="@drawable/ic_arrow_left"
         app:title="@string/contacts"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:titleTextAppearance="@style/ToolBar" />
+
+    <ImageView
+        android:id="@+id/ivDecor1"
+        android:layout_width="@dimen/_119sdp"
+        android:layout_height="@dimen/_119sdp"
+        android:layout_marginTop="@dimen/_32sdp"
+        android:contentDescription="@string/image_ellipse_description"
+        android:scaleType="fitStart"
+        android:src="@drawable/im_ellipse_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tbContacts" />
+
+    <ImageView
+        android:id="@+id/ivDecor2"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:contentDescription="@string/image_ellipse_description"
+        android:scaleType="fitEnd"
+        android:src="@drawable/im_ellipse_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivDecor1" />
+
+    <ImageView
+        android:id="@+id/ivDecor3"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_marginTop="@dimen/_150sdp"
+        android:contentDescription="@string/image_ellipse_description"
+        android:scaleType="fitStart"
+        android:src="@drawable/im_ellipse_3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivDecor2" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_16sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tbContacts">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_16sdp">
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_16sdp">
 
             <include
                 android:id="@+id/inLinks"
                 layout="@layout/block_link__contacts"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="wrap_content" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/GothamProReg.24sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_64sdp"
+                android:text="@string/schedule_work" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvScheduleWork"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_24sdp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="6"
+                tools:listitem="@layout/contact_item" />
+
+            <include layout="@layout/block_location_contacts" />
+
+            <include layout="@layout/block_requisites_contacts" />
+
+            <include
+                android:id="@+id/inJoinTeamContacts"
+                layout="@layout/block_join_team_contacts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_64sdp" />
+
+            <include
+                android:id="@+id/inBlockClientCompany"
+                layout="@layout/block_contact_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_64sdp" />
+
+            <include
+                android:id="@+id/btSendApp"
+                layout="@layout/button_send_app"
+                android:layout_width="@dimen/_204sdp"
+                android:layout_height="@dimen/_204sdp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_64sdp" />
+
+            <include
+                android:id="@+id/inCommunicationsAddress"
+                layout="@layout/block_communications_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_64sdp" />
+
+        </LinearLayout>
     </ScrollView>
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
