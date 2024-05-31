@@ -8,7 +8,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.github.terrakok.cicerone.Router
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.it_cron.android1.R
@@ -58,7 +61,20 @@ class ContactsFragment : Fragment() {
         onClickBlockClientCompany()
         onClickBlockCommunicationAddress()
         sendApplication()
+        onScrollScreen()
+    }
 
+    private fun onScrollScreen() {
+        binding.nsContacts.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            if (scrollY != oldScrollY && binding.tbContacts.alpha != ALPHA_SCROLL) {
+                binding.tbContacts.alpha = ALPHA_SCROLL
+            } else {
+                viewLifecycleOwner.lifecycleScope.launch {
+                    delay(DELAY_SCROLL)
+                    binding.tbContacts.alpha = ALPHA_NOT_SCROLL
+                }
+            }
+        }
     }
 
     private fun setupMenu() {
@@ -157,6 +173,9 @@ class ContactsFragment : Fragment() {
 
     companion object {
         private const val PHRASE = "hr@it-cron.ru"
+        private const val ALPHA_SCROLL = 0.5F
+        private const val ALPHA_NOT_SCROLL = 1F
+        private const val DELAY_SCROLL = 1000L
 
         @JvmStatic
         fun newInstance() = ContactsFragment()
