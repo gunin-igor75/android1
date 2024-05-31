@@ -15,7 +15,7 @@
 
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvCommunicationsInstagram"
+            android:id="@+id/tvInstagram"
             style="@style/GothamProBold.24sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvCommunicationsFacebook"
+            android:id="@+id/tvFacebook"
             style="@style/GothamProBold.24sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,10 +33,10 @@
             android:text="@string/facebook"
             android:textColor="@color/orange"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCommunicationsInstagram" />
+            app:layout_constraintTop_toBottomOf="@+id/tvInstagram" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvCommunicationsTelegram"
+            android:id="@+id/tvTelegram"
             style="@style/GothamProBold.24sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
             android:text="@string/telegram"
             android:textColor="@color/orange"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCommunicationsFacebook" />
+            app:layout_constraintTop_toBottomOf="@+id/tvFacebook" />
 
         <ImageView
             android:layout_width="@dimen/_69sdp"

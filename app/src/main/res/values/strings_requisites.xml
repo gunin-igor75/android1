@@ -30,4 +30,34 @@
     <string name="requisites_ks_value">30101810200000000593</string>
     <string name="requisites_general_manager_value">Пухов Александр Сергеевич</string>
 
+    <string-array name="requisites_array">
+        <item>@string/requisites_name_full</item>
+        <item>@string/requisites_name_full_value</item>
+        <item>@string/requisites_name_short</item>
+        <item>@string/requisites_name_short_value</item>
+        <item>@string/requisites_name_english</item>
+        <item>@string/requisites_name_english_value</item>
+        <item>@string/requisites_legal_address</item>
+        <item>@string/requisites_legal_address_value</item>
+        <item>@string/requisites_malling_address</item>
+        <item>@string/requisites_malling_address_value</item>
+        <item>@string/requisites_inn</item>
+        <item>@string/requisites_inn_value</item>
+        <item>@string/requisites_kpp</item>
+        <item>@string/requisites_kpp_value</item>
+        <item>@string/requisites_ogrn</item>
+        <item>@string/requisites_ogrn_value</item>
+        <item>@string/requisites_okpo</item>
+        <item>@string/requisites_okpo_value</item>
+        <item>@string/requisites_rs</item>
+        <item>@string/requisites_rs_value</item>
+        <item>@string/requisites_bank</item>
+        <item>@string/requisites_bank_value</item>
+        <item>@string/requisites_bik</item>
+        <item>@string/requisites_bik_value</item>
+        <item>@string/requisites_ks</item>
+        <item>@string/requisites_ks_value</item>
+        <item>@string/requisites_general_manager</item>
+        <item>@string/requisites_general_manager_value</item>
+    </string-array>
 </resources>

@@ -1,5 +1,6 @@
 package ru.it_cron.android1.presentation.extension
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
@@ -35,6 +36,7 @@ private const val KEY_LAUNCH = "launch"
 private const val VALUE_TRUE = "true"
 private const val TAG = "NetworkLoader"
 private const val APP = "app"
+private const val TEXT_TYPE_SHARE = "text/plain"
 private val exrList = listOf(
     TXT, PNG, SVG, JPEG, BMP, PDF,
     DOC, XLS, XLSX, ZIP, RAR, JAR
@@ -62,7 +64,7 @@ fun Fragment.sendEmail(
     try {
         val intent = Intent(Intent.ACTION_SENDTO).apply {
             data = Uri.parse(URL_GMAIL)
-            putExtra(Intent.EXTRA_EMAIL, addresses)
+            putExtra(Intent.EXTRA_EMAIL, arrayOf(addresses))
         }
         startActivity(intent)
     } catch (e: Exception) {
@@ -98,6 +100,24 @@ fun Fragment.callPhone(
     val call = Uri.parse("tel:$phoneNumber")
     val intent = Intent(Intent.ACTION_DIAL, call)
     startActivity(intent)
+}
+
+fun Fragment.shareIn(
+    text: String,
+) {
+    val clazz = this::class.java
+    val tag = clazz.simpleName
+    val sendIntent: Intent = Intent().apply {
+        action = Intent.ACTION_SEND
+        putExtra(Intent.EXTRA_TEXT, text)
+        type = TEXT_TYPE_SHARE
+    }
+    val shareIntent = Intent.createChooser(sendIntent, null)
+    try {
+        startActivity(shareIntent)
+    } catch (e: ActivityNotFoundException) {
+        Log.d(tag, e.message.toString())
+    }
 }
 
 fun <T> RequestBuilder<T>.roundCorners(cornerRadius: Int) =

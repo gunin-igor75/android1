@@ -1,6 +1,5 @@
 package ru.it_cron.android1.data.repository
 
-import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -53,7 +52,6 @@ class ContactsRepositoryImpl(
                     item
                 }
             }
-            Log.d(TAG, index.toString())
             emit(daysItems)
         }
     }
@@ -103,9 +101,7 @@ class ContactsRepositoryImpl(
     }
 
     private companion object {
-        private const val PERIOD = 216_000_000L
-        private const val TEST_PERIOD = 3000L
-        private const val TAG = "ContactsRepositoryImpl"
+        private const val PERIOD = 60_000L
         private const val TIME_ZONE = "Europe/Moscow"
     }
 }
