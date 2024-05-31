@@ -1,7 +1,7 @@
 package ru.it_cron.android1.domain.model.contacts
 
-data class DayWeekItem(
-    val day: TypeDay,
+data class DayItem(
+    val typeDay: TypeDay,
     val resId: Int,
     val isCurrent: Boolean,
 )

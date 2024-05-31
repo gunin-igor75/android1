@@ -185,7 +185,7 @@
     <string name="requisites">Реквизиты</string>
     <string name="schedule_title_mon">Понедельник: <b>09:00 – 18:00</b></string>
     <string name="schedule_title_tues">Вторник: <b>09:00 – 18:00</b></string>
-    <string name="schedule_title_wed">Средв: <b>09:00 – 18:00</b></string>
+    <string name="schedule_title_wed">Среда: <b>09:00 – 18:00</b></string>
     <string name="schedule_title_thur">Четверг: <b>09:00 – 18:00</b></string>
     <string name="schedule_title_fr">Пятница: <b>09:00 – 18:00</b></string>
     <string name="schedule_title_day_of">Сб – Вс: <b>Выходной</b></string>

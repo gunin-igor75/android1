@@ -14,6 +14,8 @@ import ru.it_cron.android1.presentation.application.ApplicationViewModel
 import ru.it_cron.android1.presentation.case_details.CaseDetailsViewModel
 import ru.it_cron.android1.presentation.cases.CasesViewModel
 import ru.it_cron.android1.presentation.company.CompanyViewModel
+import ru.it_cron.android1.presentation.contacts.ContactsFragment
+import ru.it_cron.android1.presentation.contacts.ContactsViewModel
 import ru.it_cron.android1.presentation.filter.FiltersViewModel
 import ru.it_cron.android1.presentation.main.MainViewModel
 import ru.it_cron.android1.presentation.onboarding.OnBoardingViewModel
@@ -87,6 +89,14 @@ val appModule = module {
                 choiceBudget = get(named(CHOICE_BUDGET_DEFAULT)),
                 choiceAreaActivity = get(named(CHOICE_AREA_DEFAULT))
             )
+        }
+    }
+    viewModel<ContactsViewModel> {
+        ContactsViewModel(getDaySItemsUseCase = get())
+    }
+    scope<ContactsFragment> {
+        viewModel {
+            ContactsViewModel(getDaySItemsUseCase = get())
         }
     }
 }
