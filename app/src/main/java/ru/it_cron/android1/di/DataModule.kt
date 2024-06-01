@@ -4,29 +4,38 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import org.koin.android.ext.koin.androidContext
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import ru.it_cron.android1.data.network.api.ApiFactory
 import ru.it_cron.android1.data.network.api.ApiService
 import ru.it_cron.android1.data.repository.AccessRepositoryImpl
-import ru.it_cron.android1.data.repository.AppRepositoryImpl
 import ru.it_cron.android1.data.repository.CaseDetailsRepositoryImp
 import ru.it_cron.android1.data.repository.CasesRepositoryImpl
 import ru.it_cron.android1.data.repository.ContactsRepositoryImpl
 import ru.it_cron.android1.data.repository.FilterRepositoryImp
 import ru.it_cron.android1.data.repository.OnBoardingRepositoryImpl
 import ru.it_cron.android1.data.repository.ReviewsRepositoryImpl
+import ru.it_cron.android1.data.repository.application.AppRepositoryImpl
+import ru.it_cron.android1.data.repository.application.AreaActivityRepositoryImpl
+import ru.it_cron.android1.data.repository.application.BudgetRepositoryImpl
+import ru.it_cron.android1.data.repository.application.FileItemsRepositoryImpl
+import ru.it_cron.android1.data.repository.application.ServicesRepositoryImpl
+import ru.it_cron.android1.di.AppItemType.BUDGET
+import ru.it_cron.android1.di.AppItemType.SERVICE
 import ru.it_cron.android1.domain.model.cases.Case
 import ru.it_cron.android1.domain.model.cases.CaseDetails
 import ru.it_cron.android1.domain.model.company.Review
 import ru.it_cron.android1.domain.model.filter.FiltersGroup
 import ru.it_cron.android1.domain.repository.AccessRepository
-import ru.it_cron.android1.domain.repository.AppRepository
 import ru.it_cron.android1.domain.repository.CaseDetailsRepository
 import ru.it_cron.android1.domain.repository.CasesRepository
 import ru.it_cron.android1.domain.repository.ContactsRepository
 import ru.it_cron.android1.domain.repository.FilterRepository
 import ru.it_cron.android1.domain.repository.OnBoardingRepository
 import ru.it_cron.android1.domain.repository.ReviewsRepository
+import ru.it_cron.android1.domain.repository.application.AppRepository
+import ru.it_cron.android1.domain.repository.application.ChoiceItemRepository
+import ru.it_cron.android1.domain.repository.application.FileItemsRepository
 
 
 val dataModule = module {
@@ -54,8 +63,11 @@ val dataModule = module {
     single<AppRepository> {
         AppRepositoryImpl(
             apiService = get(),
-            context = androidContext()
         )
+    }
+
+    single<FileItemsRepository> {
+        FileItemsRepositoryImpl()
     }
 
     factory {
@@ -63,6 +75,15 @@ val dataModule = module {
     }
 
     single<ContactsRepository> {
-        ContactsRepositoryImpl(scope = get())
+        ContactsRepositoryImpl()
+    }
+    single<ChoiceItemRepository>(qualifier = named(SERVICE)) {
+        ServicesRepositoryImpl(context = androidContext())
+    }
+    single<ChoiceItemRepository>(qualifier = named(BUDGET)) {
+        BudgetRepositoryImpl(context = androidContext())
+    }
+    single<ChoiceItemRepository>(qualifier = named(AppItemType.AREA_ACTIVITY)) {
+        AreaActivityRepositoryImpl(context = androidContext())
     }
 }

@@ -1,5 +1,6 @@
 package ru.it_cron.android1.presentation.application.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -10,8 +11,10 @@ import ru.it_cron.android1.databinding.AppItemInActiveBinding
 import ru.it_cron.android1.databinding.TitleFilterItemBinding
 import ru.it_cron.android1.domain.model.app.AppItem
 
-class ApplicationAdapter : ListAdapter<AppItem, RecyclerView.ViewHolder>(AppItemDiffCallBack) {
-    var serviceItemOnClickListener: ServiceItemOnClickListener? = null
+class ApplicationAdapter(
+    private val context: Context,
+) : ListAdapter<AppItem, RecyclerView.ViewHolder>(AppItemDiffCallBack) {
+    var itemOnClickListener: ItemOnClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
@@ -30,7 +33,7 @@ class ApplicationAdapter : ListAdapter<AppItem, RecyclerView.ViewHolder>(AppItem
                     parent,
                     false
                 )
-                ServiceEnabledViewHolder(view)
+                ItemEnabledViewHolder(view)
             }
 
             ITEM_DISABLED_TYPE -> {
@@ -50,20 +53,21 @@ class ApplicationAdapter : ListAdapter<AppItem, RecyclerView.ViewHolder>(AppItem
         when (val item = getItem(position)) {
             is AppItem.Header -> {
                 val currentHolder = holder as HeaderViewHolder
-                currentHolder.binding.tvTitleFilter.text = item.name
+                currentHolder.binding.tvTitleFilter.text =
+                    context.resources.getString(item.resIdName)
             }
 
             is AppItem.App -> {
-                if (holder is ServiceEnabledViewHolder) {
-                    holder.binding.tvAppName.text = item.name
+                if (holder is ItemEnabledViewHolder) {
+                    holder.binding.tvAppName.text = context.resources.getString(item.resIdName)
                     holder.binding.root.setOnClickListener {
-                        serviceItemOnClickListener?.onClickItem(item.name)
+                        itemOnClickListener?.onClickItem(item.resIdName)
                     }
                 }
                 if (holder is ServiceDisabledViewHolder) {
-                    holder.binding.tvAppName.text = item.name
+                    holder.binding.tvAppName.text = context.resources.getString(item.resIdName)
                     holder.binding.root.setOnClickListener {
-                        serviceItemOnClickListener?.onClickItem(item.name)
+                        itemOnClickListener?.onClickItem(item.resIdName)
                     }
                 }
             }
@@ -99,13 +103,13 @@ class ApplicationAdapter : ListAdapter<AppItem, RecyclerView.ViewHolder>(AppItem
     class HeaderViewHolder(val binding: TitleFilterItemBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    class ServiceEnabledViewHolder(val binding: AppItemActiveBinding) :
+    class ItemEnabledViewHolder(val binding: AppItemActiveBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     class ServiceDisabledViewHolder(val binding: AppItemInActiveBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    interface ServiceItemOnClickListener {
-        fun onClickItem(name: String)
+    interface ItemOnClickListener {
+        fun onClickItem(resIdName: Int)
     }
 }

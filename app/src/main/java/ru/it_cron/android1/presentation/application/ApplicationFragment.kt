@@ -63,13 +63,13 @@ class ApplicationFragment : Fragment() {
     private val viewModel by viewModel<ApplicationViewModel>()
 
     private val serviceAdapter by lazy {
-        ApplicationAdapter()
+        ApplicationAdapter(requireContext())
     }
     private val budgetAdapter by lazy {
-        ApplicationAdapter()
+        ApplicationAdapter(requireContext())
     }
     private val areaActivityAdapter by lazy {
-        ApplicationAdapter()
+        ApplicationAdapter(requireContext())
     }
 
     private val fileItemAdapter by lazy {
@@ -374,24 +374,27 @@ class ApplicationFragment : Fragment() {
     }
 
     private fun onClickAdaptersItem() {
-        serviceAdapter.serviceItemOnClickListener =
-            object : ApplicationAdapter.ServiceItemOnClickListener {
-                override fun onClickItem(name: String) {
-                    viewModel.toggleService(name)
+        serviceAdapter.itemOnClickListener =
+            object : ApplicationAdapter.ItemOnClickListener {
+                override fun onClickItem(resIdName: Int) {
+                    viewModel.toggleService(resIdName)
                 }
+
             }
-        budgetAdapter.serviceItemOnClickListener =
-            object : ApplicationAdapter.ServiceItemOnClickListener {
-                override fun onClickItem(name: String) {
-                    viewModel.toggleBudget(name)
+        budgetAdapter.itemOnClickListener =
+            object : ApplicationAdapter.ItemOnClickListener {
+                override fun onClickItem(resIdName: Int) {
+                    viewModel.toggleBudget(resIdName)
                 }
+
             }
 
-        areaActivityAdapter.serviceItemOnClickListener =
-            object : ApplicationAdapter.ServiceItemOnClickListener {
-                override fun onClickItem(name: String) {
-                    viewModel.toggleAreaActivity(name)
+        areaActivityAdapter.itemOnClickListener =
+            object : ApplicationAdapter.ItemOnClickListener {
+                override fun onClickItem(resIdName: Int) {
+                    viewModel.toggleAreaActivity(resIdName)
                 }
+
             }
         fileItemAdapter.fileItemOnClickListener =
             object : FileAdapter.FileItemOnClickListener {
