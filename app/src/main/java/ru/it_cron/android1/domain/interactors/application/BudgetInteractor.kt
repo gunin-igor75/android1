@@ -5,7 +5,7 @@ import ru.it_cron.android1.domain.usecases.application.budgets.GetBudgetsItemUse
 import ru.it_cron.android1.domain.usecases.application.budgets.GetSelectedBudgetsUseCase
 import ru.it_cron.android1.domain.usecases.application.budgets.ToggleBudgetsUseCase
 
-class BudgetInterActor(
+class BudgetInteractor(
     val items: GetBudgetsItemUseCase,
     val selectedItems: GetSelectedBudgetsUseCase,
     val toggle: ToggleBudgetsUseCase,

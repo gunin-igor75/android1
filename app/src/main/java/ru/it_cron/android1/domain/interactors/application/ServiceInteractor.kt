@@ -5,7 +5,7 @@ import ru.it_cron.android1.domain.usecases.application.services.GetSelectedServi
 import ru.it_cron.android1.domain.usecases.application.services.GetServicesItemUseCase
 import ru.it_cron.android1.domain.usecases.application.services.ToggleServiceUseCase
 
-class ServiceInterActor(
+class ServiceInteractor(
     val items: GetServicesItemUseCase,
     val selectedItems: GetSelectedServicesUseCase,
     val toggle: ToggleServiceUseCase,

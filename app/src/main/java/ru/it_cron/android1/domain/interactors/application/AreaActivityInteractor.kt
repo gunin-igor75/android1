@@ -5,7 +5,7 @@ import ru.it_cron.android1.domain.usecases.application.areaActivity.GetAreaActiv
 import ru.it_cron.android1.domain.usecases.application.areaActivity.GetSelectedAreaActivityUseCase
 import ru.it_cron.android1.domain.usecases.application.areaActivity.ToggleAreaActivityUseCase
 
-class AreaActivityInterActor(
+class AreaActivityInteractor(
     val items: GetAreaActivityItemUseCase,
     val selectedItems: GetSelectedAreaActivityUseCase,
     val toggle: ToggleAreaActivityUseCase,

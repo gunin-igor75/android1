@@ -6,7 +6,7 @@ import ru.it_cron.android1.domain.usecases.application.files.DeleteFileItemUseCa
 import ru.it_cron.android1.domain.usecases.application.files.GetFileItemsUseCase
 import ru.it_cron.android1.domain.usecases.application.files.IsCountFilesUseCase
 
-class FileItemsInterActor(
+class FileItemsInteractor(
     val fileItems: GetFileItemsUseCase,
     val addFileItem: AddFileItemUseCase,
     val deleteFileItem: DeleteFileItemUseCase,

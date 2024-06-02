@@ -12,10 +12,10 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import ru.it_cron.android1.data.model.DataResult
 import ru.it_cron.android1.data.model.RequestApp
-import ru.it_cron.android1.domain.interactors.application.AreaActivityInterActor
-import ru.it_cron.android1.domain.interactors.application.BudgetInterActor
-import ru.it_cron.android1.domain.interactors.application.FileItemsInterActor
-import ru.it_cron.android1.domain.interactors.application.ServiceInterActor
+import ru.it_cron.android1.domain.interactors.application.AreaActivityInteractor
+import ru.it_cron.android1.domain.interactors.application.BudgetInteractor
+import ru.it_cron.android1.domain.interactors.application.FileItemsInteractor
+import ru.it_cron.android1.domain.interactors.application.ServiceInteractor
 import ru.it_cron.android1.domain.model.app.AppItem
 import ru.it_cron.android1.domain.model.app.ContainerApp
 import ru.it_cron.android1.domain.model.app.FileItem
@@ -23,10 +23,10 @@ import ru.it_cron.android1.domain.model.app.StateScreenApp
 import ru.it_cron.android1.domain.usecases.application.SendAppUseCase
 
 class ApplicationViewModel(
-    private val serviceInterActor: ServiceInterActor,
-    private val budgetInterActor: BudgetInterActor,
-    private val areaActivityInterActor: AreaActivityInterActor,
-    private val fileItemsInterActor: FileItemsInterActor,
+    private val serviceInterActor: ServiceInteractor,
+    private val budgetInterActor: BudgetInteractor,
+    private val areaActivityInterActor: AreaActivityInteractor,
+    private val fileItemsInterActor: FileItemsInteractor,
     private val sendAppUseCase: SendAppUseCase,
 ) : ViewModel() {
     val services: LiveData<List<AppItem>> = serviceInterActor.items().asLiveData()

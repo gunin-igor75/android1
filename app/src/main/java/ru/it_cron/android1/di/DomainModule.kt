@@ -7,10 +7,10 @@ import ru.it_cron.android1.choice.ChoiceFiltersDefault
 import ru.it_cron.android1.di.AppItemType.AREA_ACTIVITY
 import ru.it_cron.android1.di.AppItemType.BUDGET
 import ru.it_cron.android1.di.AppItemType.SERVICE
-import ru.it_cron.android1.domain.interactors.application.AreaActivityInterActor
-import ru.it_cron.android1.domain.interactors.application.BudgetInterActor
-import ru.it_cron.android1.domain.interactors.application.FileItemsInterActor
-import ru.it_cron.android1.domain.interactors.application.ServiceInterActor
+import ru.it_cron.android1.domain.interactors.application.AreaActivityInteractor
+import ru.it_cron.android1.domain.interactors.application.BudgetInteractor
+import ru.it_cron.android1.domain.interactors.application.FileItemsInteractor
+import ru.it_cron.android1.domain.interactors.application.ServiceInteractor
 import ru.it_cron.android1.domain.usecases.CheckAvailableUseCase
 import ru.it_cron.android1.domain.usecases.GetCaseDetailsUseCase
 import ru.it_cron.android1.domain.usecases.GetCasesUseCase
@@ -93,8 +93,8 @@ val domainModule = module {
         ClearAllServiceUseCase(repository = get(named(SERVICE)))
     }
 
-    factory<ServiceInterActor> {
-        ServiceInterActor(
+    factory<ServiceInteractor> {
+        ServiceInteractor(
             items = get(),
             selectedItems = get(),
             toggle = get(),
@@ -120,8 +120,8 @@ val domainModule = module {
         ClearAllBudgetUseCase(repository = get(named(BUDGET)))
     }
 
-    factory<BudgetInterActor> {
-        BudgetInterActor(
+    factory<BudgetInteractor> {
+        BudgetInteractor(
             items = get(),
             selectedItems = get(),
             toggle = get(),
@@ -147,8 +147,8 @@ val domainModule = module {
         ClearAllAreaActivityUseCase(repository = get(named(AREA_ACTIVITY)))
     }
 
-    factory<AreaActivityInterActor> {
-        AreaActivityInterActor(
+    factory<AreaActivityInteractor> {
+        AreaActivityInteractor(
             items = get(),
             selectedItems = get(),
             toggle = get(),
@@ -173,8 +173,8 @@ val domainModule = module {
     factory<IsCountFilesUseCase> {
         IsCountFilesUseCase(repository = get())
     }
-    factory<FileItemsInterActor> {
-        FileItemsInterActor(
+    factory<FileItemsInteractor> {
+        FileItemsInteractor(
             fileItems = get(),
             addFileItem = get(),
             deleteFileItem = get(),
