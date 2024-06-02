@@ -118,13 +118,13 @@ class CompanyFragment : Fragment() {
 
         val blockCommunicationsBinding = BlockCommunicationsCompanyBinding.bind(binding.root)
         with(blockCommunicationsBinding) {
-            tvCommunicationsInstagram.setOnClickListener {
+            tvInstagram.setOnClickListener {
                 sendRequest(URL_INSTAGRAM, PN_INSTAGRAM)
             }
-            tvCommunicationsFacebook.setOnClickListener {
+            tvFacebook.setOnClickListener {
                 sendRequest(URL_FACEBOOK, PN_FACEBOOK)
             }
-            tvCommunicationsTelegram.setOnClickListener {
+            tvTelegram.setOnClickListener {
                 sendRequest(URL_TELEGRAM, PN_TELEGRAM)
             }
         }

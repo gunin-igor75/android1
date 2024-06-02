@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+
+    tools:parentTag="android.widget.LinearLayout">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.24sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_64sdp"
+        android:text="@string/requisites" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:text="@string/requisites_name_full"
+        android:textColor="@color/gray_light" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/requisites_name_full_value" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/requisites_name_short"
+        android:textColor="@color/gray_light" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/requisites_name_short_value" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/requisites_name_english"
+        android:textColor="@color/gray_light" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/requisites_name_english_value" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/requisites_legal_address"
+        android:textColor="@color/gray_light" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/requisites_legal_address_value" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/requisites_malling_address"
+        android:textColor="@color/gray_light" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/requisites_malling_address_value" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/requisites_inn"
+        android:textColor="@color/gray_light" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/requisites_inn_value" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/requisites_kpp"
+        android:textColor="@color/gray_light" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/requisites_kpp_value" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/requisites_ogrn"
+        android:textColor="@color/gray_light" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/requisites_ogrn_value" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/requisites_okpo"
+        android:textColor="@color/gray_light" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/requisites_okpo_value" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/requisites_rs"
+        android:textColor="@color/gray_light" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/requisites_rs_value" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/requisites_bank"
+        android:textColor="@color/gray_light" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/requisites_bank_value" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/requisites_bik"
+        android:textColor="@color/gray_light" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/requisites_bik_value" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/requisites_ks"
+        android:textColor="@color/gray_light" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/requisites_ks_value" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.14sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/requisites_general_manager"
+        android:textColor="@color/gray_light" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/requisites_general_manager_value" />
+
+</merge>

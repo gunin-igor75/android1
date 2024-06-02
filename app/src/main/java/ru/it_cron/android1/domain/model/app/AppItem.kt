@@ -2,18 +2,18 @@ package ru.it_cron.android1.domain.model.app
 
 
 sealed interface AppItem {
-    fun getNames(): String
+    fun getNames(): Int
 
     data class Header(
-        val name: String,
+        val resIdName: Int,
     ) : AppItem {
-        override fun getNames() = name
+        override fun getNames() = resIdName
     }
 
     data class App(
-        val name: String,
+        val resIdName: Int,
         val isEnabled: Boolean = false,
     ) : AppItem {
-        override fun getNames() = name
+        override fun getNames() = resIdName
     }
 }

@@ -151,7 +151,7 @@
     </style>
 
     <style name="ToolBar">
-        <item name="android:textSize">32sp</item>
+        <item name="android:textSize">@dimen/_32sdp</item>
         <item name="android:textColor">@color/white</item>
         <item name="fontFamily">@font/gotham_pro_bol</item>
     </style>

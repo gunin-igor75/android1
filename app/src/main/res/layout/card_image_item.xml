@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/_115sdp"
     android:layout_height="@dimen/_80sdp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginEnd="@dimen/_16sdp"
     android:backgroundTint="@color/black_light">
 
@@ -10,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:contentDescription="@string/image_file"
-        android:src="@drawable/ic_image_file" />
+        android:scaleType="centerCrop"
+        tools:src="@drawable/ic_image_file" />
 
     <include
         android:id="@+id/btRemoveFile"

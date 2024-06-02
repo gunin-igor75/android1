@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/white"
+    app:cardCornerRadius="10dp"
+    app:contentPaddingBottom="@dimen/_40sdp"
+    app:contentPaddingLeft="@dimen/_20sdp"
+    app:contentPaddingRight="@dimen/_20sdp"
+    app:contentPaddingTop="@dimen/_40sdp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvJoinTeamTitle"
+            style="@style/GothamProBold.24sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingMultiplier="1.2"
+            android:text="@string/join_team"
+            android:textColor="@color/orange" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvJoinTeamSlogan"
+            style="@style/GothamProReg.16sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:lineSpacingMultiplier="1.2"
+            android:text="@string/slogan_team"
+            android:textColor="@color/text_company" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

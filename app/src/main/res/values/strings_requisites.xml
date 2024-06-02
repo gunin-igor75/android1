@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="requisites_name_full">Полное наименование</string>
+    <string name="requisites_name_short">Сокращенное наименование</string>
+    <string name="requisites_name_english">Англоязычное наименование</string>
+    <string name="requisites_legal_address">Юридический адрес</string>
+    <string name="requisites_malling_address">Почтовый адрес</string>
+    <string name="requisites_inn">ИНН</string>
+    <string name="requisites_kpp">КПП</string>
+    <string name="requisites_ogrn">ОГРН</string>
+    <string name="requisites_okpo">ОКПО</string>
+    <string name="requisites_rs">Р/С</string>
+    <string name="requisites_bank">Банк</string>
+    <string name="requisites_bik">БИК</string>
+    <string name="requisites_ks">К/С</string>
+    <string name="requisites_general_manager">Генеральный директор</string>
+
+    <string name="requisites_name_full_value">Общество с ограниченной ответственностью «АЙТИ КРОН»</string>
+    <string name="requisites_name_short_value">ООО «АЙТИ КРОН»</string>
+    <string name="requisites_name_english_value">«IT CRON» LLC</string>
+    <string name="requisites_legal_address_value">143025, Московская область, Одинцовский район, село Ромашково, улица Никольская, дом 4, корпус 2, квартира 24</string>
+    <string name="requisites_malling_address_value">119330, Москва, улица Мосфильмовская, дом 35, строение 2, офис 301</string>
+    <string name="requisites_inn_value">5032302910</string>
+    <string name="requisites_kpp_value">503201001</string>
+    <string name="requisites_ogrn_value">1195053004068</string>
+    <string name="requisites_okpo_value">35527637</string>
+    <string name="requisites_rs_value">40702810902720004052</string>
+    <string name="requisites_bank_value">АО “АЛЬФА-БАНК”, г.Москва</string>
+    <string name="requisites_bik_value">044525593</string>
+    <string name="requisites_ks_value">30101810200000000593</string>
+    <string name="requisites_general_manager_value">Пухов Александр Сергеевич</string>
+
+    <string-array name="requisites_array">
+        <item>@string/requisites_name_full</item>
+        <item>@string/requisites_name_full_value</item>
+        <item>@string/requisites_name_short</item>
+        <item>@string/requisites_name_short_value</item>
+        <item>@string/requisites_name_english</item>
+        <item>@string/requisites_name_english_value</item>
+        <item>@string/requisites_legal_address</item>
+        <item>@string/requisites_legal_address_value</item>
+        <item>@string/requisites_malling_address</item>
+        <item>@string/requisites_malling_address_value</item>
+        <item>@string/requisites_inn</item>
+        <item>@string/requisites_inn_value</item>
+        <item>@string/requisites_kpp</item>
+        <item>@string/requisites_kpp_value</item>
+        <item>@string/requisites_ogrn</item>
+        <item>@string/requisites_ogrn_value</item>
+        <item>@string/requisites_okpo</item>
+        <item>@string/requisites_okpo_value</item>
+        <item>@string/requisites_rs</item>
+        <item>@string/requisites_rs_value</item>
+        <item>@string/requisites_bank</item>
+        <item>@string/requisites_bank_value</item>
+        <item>@string/requisites_bik</item>
+        <item>@string/requisites_bik_value</item>
+        <item>@string/requisites_ks</item>
+        <item>@string/requisites_ks_value</item>
+        <item>@string/requisites_general_manager</item>
+        <item>@string/requisites_general_manager_value</item>
+    </string-array>
+</resources>

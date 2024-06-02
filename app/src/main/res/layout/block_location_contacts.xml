@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.24sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_64sdp"
+        android:text="@string/location_title" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_24sdp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/location_address" />
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        app:cardCornerRadius="@dimen/_10sdp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_200sdp"
+            android:contentDescription="@string/image_location_it_cron"
+            android:scaleType="centerCrop"
+            android:src="@drawable/im_location_it_cron" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+</merge>

@@ -1,11 +1,14 @@
 package ru.it_cron.android1.presentation.utils
 
+import android.annotation.SuppressLint
+import android.os.Build
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.TextPaint
 import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import ru.it_cron.android1.R
 import ru.it_cron.android1.constant.BMP
 import ru.it_cron.android1.constant.DOC
@@ -20,6 +23,8 @@ import ru.it_cron.android1.constant.XLS
 import ru.it_cron.android1.constant.XLSX
 import ru.it_cron.android1.constant.ZIP
 import ru.it_cron.android1.presentation.extension.getExtension
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 
 
 private const val TEXT_TYPE = "text/plain"
@@ -106,5 +111,3 @@ fun getColorIdFile(fileName: String): Int {
         else -> R.color.file_other
     }
 }
-
-
