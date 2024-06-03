@@ -82,6 +82,11 @@ dependencies {
     //glide
     implementation(libs.glide)
 
+    //firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.analytics)
+    implementation(libs.crashlytics)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
