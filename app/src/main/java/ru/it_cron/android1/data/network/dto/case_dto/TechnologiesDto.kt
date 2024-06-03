@@ -1,8 +1,0 @@
-package ru.it_cron.android1.data.network.dto.case_dto
-
-import com.google.gson.annotations.SerializedName
-
-data class TechnologiesDto(
-    @SerializedName("Id") val id: String,
-    @SerializedName("Name") val name: String,
-)

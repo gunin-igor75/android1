@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ru.it_cron.android1.presentation.contacts.ContactsFragment">
+    tools:context="ru.it_cron.intern1.presentation.contacts.ContactsFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/tbContacts"

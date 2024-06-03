@@ -189,4 +189,5 @@
     <string name="schedule_title_thur">Четверг: <b>09:00 – 18:00</b></string>
     <string name="schedule_title_fr">Пятница: <b>09:00 – 18:00</b></string>
     <string name="schedule_title_day_of">Сб – Вс: <b>Выходной</b></string>
+    <string name="error_test">error test</string>
 </resources>

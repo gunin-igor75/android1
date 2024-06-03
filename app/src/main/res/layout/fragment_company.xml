@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="ru.it_cron.android1.presentation.company.CompanyFragment">
+    tools:context="ru.it_cron.intern1.presentation.company.CompanyFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/tbCompany"

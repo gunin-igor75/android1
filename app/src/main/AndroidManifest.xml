@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
         <provider
-            android:authorities="ru.it_cron.android1.fileProvider"
+            android:authorities="ru.it_cron.intern1.fileProvider"
             android:name="androidx.core.content.FileProvider"
             android:exported="false"
             android:grantUriPermissions="true">

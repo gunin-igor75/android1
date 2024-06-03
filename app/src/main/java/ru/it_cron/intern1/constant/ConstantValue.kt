@@ -1,0 +1,22 @@
+package ru.it_cron.intern1.constant
+
+
+const val PN_TELEGRAM = "org.telegram.messenger"
+const val PN_FACEBOOK = "com.facebook.katana"
+const val PN_INSTAGRAM = "com.instagram.android"
+const val URL_TELEGRAM = "https://t.me/+NnhpGqJYWAU2MDIy"
+const val URL_FACEBOOK = "https://www.facebook.com/it.cron.ru/"
+const val URL_INSTAGRAM = "https://www.instagram.com/itcron/?hl=ru"
+const val URL_EMAIL = "hello@it-cron.ru"
+const val TXT = "txt"
+const val PNG = "png"
+const val SVG = "svg"
+const val JPEG = "jpeg"
+const val BMP = "bmp"
+const val PDF = "pdf"
+const val DOC = "doc"
+const val XLS = "xls"
+const val XLSX = "xlsx"
+const val ZIP = "zip"
+const val RAR = "rar"
+const val JAR = "jar"
