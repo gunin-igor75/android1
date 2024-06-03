@@ -3,6 +3,9 @@ package ru.it_cron.intern1.data.repository.application
 import android.content.Context
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onStart
 import ru.it_cron.intern1.R
@@ -34,6 +37,8 @@ class ServicesRepositoryImpl(
 
     private val setId = HashSet<Int>()
 
+    private val _setIdFlow: MutableStateFlow<Boolean> = MutableStateFlow(false)
+
     override fun itemsFlow(): Flow<List<AppItem>> = flow {
         eventChange.onStart { emit(Unit) }.collect {
             _services.replaceAll { item ->
@@ -51,6 +56,7 @@ class ServicesRepositoryImpl(
                     }
                 }
             }
+            _setIdFlow.value = setId.isNotEmpty()
             emit(services)
         }
     }
@@ -70,6 +76,10 @@ class ServicesRepositoryImpl(
     override fun clearAll() {
         setId.clear()
         notifyUpdate()
+    }
+
+    override fun isNotEmpty(): StateFlow<Boolean> {
+        return _setIdFlow.asStateFlow()
     }
 
     private fun check(resIdName: Int) {

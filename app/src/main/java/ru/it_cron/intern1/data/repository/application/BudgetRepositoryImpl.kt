@@ -3,6 +3,9 @@ package ru.it_cron.intern1.data.repository.application
 import android.content.Context
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onStart
 import ru.it_cron.intern1.R
@@ -29,6 +32,7 @@ class BudgetRepositoryImpl(
 
     private var resNamIdChecked = NOTHING_VALUE
 
+    private val _resNamIdCheckedFlow: MutableStateFlow<Boolean> = MutableStateFlow(false)
     override fun itemsFlow(): Flow<List<AppItem>> = flow {
         eventChange.onStart { emit(Unit) }
             .collect {
@@ -47,6 +51,7 @@ class BudgetRepositoryImpl(
                         }
                     }
                 }
+                _resNamIdCheckedFlow.value = resNamIdChecked != NOTHING_VALUE
                 emit(budgets)
             }
     }
@@ -65,6 +70,10 @@ class BudgetRepositoryImpl(
 
     override fun clearAll() {
         resNamIdChecked = NOTHING_VALUE
+    }
+
+    override fun isNotEmpty(): StateFlow<Boolean> {
+        return _resNamIdCheckedFlow.asStateFlow()
     }
 
     private fun check(resIdName: Int) {

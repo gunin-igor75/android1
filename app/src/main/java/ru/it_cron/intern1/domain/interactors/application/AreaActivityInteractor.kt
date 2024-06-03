@@ -3,6 +3,7 @@ package ru.it_cron.intern1.domain.interactors.application
 import ru.it_cron.intern1.domain.usecases.application.areaActivity.ClearAllAreaActivityUseCase
 import ru.it_cron.intern1.domain.usecases.application.areaActivity.GetAreaActivityItemUseCase
 import ru.it_cron.intern1.domain.usecases.application.areaActivity.GetSelectedAreaActivityUseCase
+import ru.it_cron.intern1.domain.usecases.application.areaActivity.IsNotEmptySelectedAreaActivityUseCase
 import ru.it_cron.intern1.domain.usecases.application.areaActivity.ToggleAreaActivityUseCase
 
 class AreaActivityInteractor(
@@ -10,4 +11,5 @@ class AreaActivityInteractor(
     val selectedItems: GetSelectedAreaActivityUseCase,
     val toggle: ToggleAreaActivityUseCase,
     val clearAll: ClearAllAreaActivityUseCase,
+    val isNotEmpty: IsNotEmptySelectedAreaActivityUseCase,
 )

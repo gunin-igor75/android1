@@ -42,9 +42,6 @@ class ApplicationViewModel(
     private var _isFileMaxSize: MutableLiveData<Boolean> = MutableLiveData(false)
     val isFileNaxSize: LiveData<Boolean> = _isFileMaxSize
 
-    private val _servicesState = MutableStateFlow(false)
-    private val _budgetState = MutableStateFlow(false)
-    private val _areaActivityState = MutableStateFlow(false)
     private val _taskState = MutableStateFlow(false)
     private val _nameState = MutableStateFlow(false)
     private val _companyState = MutableStateFlow(false)
@@ -53,9 +50,9 @@ class ApplicationViewModel(
     private val _personalInfoState = MutableStateFlow(false)
     private val _politicState = MutableStateFlow(false)
     val buttonSendAppIsActive = combine(
-        _servicesState,
-        _budgetState,
-        _areaActivityState,
+        serviceInterActor.isNotEmpty(),
+        budgetInterActor.isNotEmpty(),
+        areaActivityInterActor.isNotEmpty(),
         _taskState,
         _nameState,
         _companyState,

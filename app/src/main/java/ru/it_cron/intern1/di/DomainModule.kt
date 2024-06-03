@@ -22,10 +22,12 @@ import ru.it_cron.intern1.domain.usecases.application.SendAppUseCase
 import ru.it_cron.intern1.domain.usecases.application.areaActivity.ClearAllAreaActivityUseCase
 import ru.it_cron.intern1.domain.usecases.application.areaActivity.GetAreaActivityItemUseCase
 import ru.it_cron.intern1.domain.usecases.application.areaActivity.GetSelectedAreaActivityUseCase
+import ru.it_cron.intern1.domain.usecases.application.areaActivity.IsNotEmptySelectedAreaActivityUseCase
 import ru.it_cron.intern1.domain.usecases.application.areaActivity.ToggleAreaActivityUseCase
 import ru.it_cron.intern1.domain.usecases.application.budgets.ClearAllBudgetUseCase
 import ru.it_cron.intern1.domain.usecases.application.budgets.GetBudgetsItemUseCase
 import ru.it_cron.intern1.domain.usecases.application.budgets.GetSelectedBudgetsUseCase
+import ru.it_cron.intern1.domain.usecases.application.budgets.IsNotEmptySelectedBudgetUseCase
 import ru.it_cron.intern1.domain.usecases.application.budgets.ToggleBudgetsUseCase
 import ru.it_cron.intern1.domain.usecases.application.files.AddFileItemUseCase
 import ru.it_cron.intern1.domain.usecases.application.files.ClearFileItemsUseCase
@@ -35,6 +37,7 @@ import ru.it_cron.intern1.domain.usecases.application.files.IsCountFilesUseCase
 import ru.it_cron.intern1.domain.usecases.application.services.ClearAllServiceUseCase
 import ru.it_cron.intern1.domain.usecases.application.services.GetSelectedServicesUseCase
 import ru.it_cron.intern1.domain.usecases.application.services.GetServicesItemUseCase
+import ru.it_cron.intern1.domain.usecases.application.services.IsNotEmptySelectedServiceUseCase
 import ru.it_cron.intern1.domain.usecases.application.services.ToggleServiceUseCase
 import ru.it_cron.intern1.domain.usecases.contacts.GetDaySItemsUseCase
 
@@ -92,13 +95,17 @@ val domainModule = module {
     factory<ClearAllServiceUseCase> {
         ClearAllServiceUseCase(repository = get(named(SERVICE)))
     }
+    factory<IsNotEmptySelectedServiceUseCase> {
+        IsNotEmptySelectedServiceUseCase(repository = get(named(SERVICE)))
+    }
 
     factory<ServiceInteractor> {
         ServiceInteractor(
             items = get(),
             selectedItems = get(),
             toggle = get(),
-            clearAll = get()
+            clearAll = get(),
+            isNotEmpty = get()
         )
     }
 
@@ -120,12 +127,17 @@ val domainModule = module {
         ClearAllBudgetUseCase(repository = get(named(BUDGET)))
     }
 
+    factory<IsNotEmptySelectedBudgetUseCase> {
+        IsNotEmptySelectedBudgetUseCase(repository = get(named(BUDGET)))
+    }
+
     factory<BudgetInteractor> {
         BudgetInteractor(
             items = get(),
             selectedItems = get(),
             toggle = get(),
-            clearAll = get()
+            clearAll = get(),
+            isNotEmpty = get()
         )
     }
 
@@ -147,12 +159,17 @@ val domainModule = module {
         ClearAllAreaActivityUseCase(repository = get(named(AREA_ACTIVITY)))
     }
 
+    factory<IsNotEmptySelectedAreaActivityUseCase> {
+        IsNotEmptySelectedAreaActivityUseCase(repository = get(named(AREA_ACTIVITY)))
+    }
+
     factory<AreaActivityInteractor> {
         AreaActivityInteractor(
             items = get(),
             selectedItems = get(),
             toggle = get(),
-            clearAll = get()
+            clearAll = get(),
+            isNotEmpty = get()
         )
     }
 
