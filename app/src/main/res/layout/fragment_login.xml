@@ -3,12 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ru.it_cron.android1.presentation.login.LoginFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="ru.it_cron.intern1.presentation.login.LoginFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btError"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/black_light"
+        android:text="@string/error_test"
+        android:textColor="@color/white"
+        app:strokeColor="@color/gray"
+        app:strokeWidth="@dimen/_1sdp" />
 
 </FrameLayout>

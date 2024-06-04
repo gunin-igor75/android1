@@ -2,14 +2,16 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.parcelize)
+    alias(libs.plugins.firebase)
+    alias(libs.plugins.crashlytics)
 }
 
 android {
-    namespace = "ru.it_cron.android1"
+    namespace = "ru.it_cron.intern1"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "ru.it_cron.android1"
+        applicationId = "ru.it_cron.intern1"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -80,8 +82,10 @@ dependencies {
     //glide
     implementation(libs.glide)
 
-    //concatadapter
-    implementation(libs.concatadapter.core)
+    //firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.analytics)
+    implementation(libs.crashlytics)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

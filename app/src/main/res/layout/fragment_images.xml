@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context="ru.it_cron.android1.presentation.case_details.ImagesFragment">
+    tools:context="ru.it_cron.intern1.presentation.case_details.ImagesFragment">
 
     <LinearLayout
         android:id="@+id/llIndicators"
