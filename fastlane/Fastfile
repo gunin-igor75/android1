@@ -39,12 +39,11 @@ platform :android do
     )
     
     # 3. copy apk to BITRISE_DEPLOY_DIR
-    #artifact_path = lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]
-    #copy_artifacts(
-      #artifacts: [artifact_path],
-      #target_path: ENV["BITRISE_DEPLOY_DIR"]
-      #target_path: "/Users/siquell/Downloads/intern/"
-    #)
+    artifact_path = lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]
+    copy_artifacts(
+      artifacts: [artifact_path],
+      target_path: ENV["BITRISE_DEPLOY_DIR"]
+    )
     
     # 4. firebase upload
     firebase_app_distribution(
