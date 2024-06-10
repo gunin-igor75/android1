@@ -18,7 +18,7 @@
         app:navigationIcon="@drawable/ic_arrow_left"
         app:title="@string/filters"
         app:titleCentered="true"
-        app:titleTextAppearance="@style/ToolBar.Filter">
+        app:titleTextAppearance="@style/ToolBarFilter">
 
         <ImageView
             android:id="@+id/ivCleaner"

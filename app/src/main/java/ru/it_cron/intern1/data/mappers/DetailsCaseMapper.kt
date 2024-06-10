@@ -31,4 +31,4 @@ fun List<PlatformsDto>.mapPlatformsToString() = map { it.name }
 
 fun String.convertToColor() = Color.parseColor("#FF$this")
 
-fun String.transform() = replace("(", "- ").replace(")", "")
+fun String.transform() = replace("(", "\u2013 ").replace(")", "")

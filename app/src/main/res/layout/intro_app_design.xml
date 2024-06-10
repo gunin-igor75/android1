@@ -1,46 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/ivOnboarding"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_256sdp"
+        android:layout_height="@dimen/_168sdp"
         android:contentDescription="@string/image_onboarding_description"
-        app:layout_constraintBottom_toTopOf="@id/guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_gravity="center"
         tools:src="@drawable/onboarding_first" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvFirst"
-        style="@style/IntroTitle"
+        style="@style/GothamProBold.32sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/tvSecond"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline"
+        android:lineSpacingMultiplier="1.2"
+        android:textColor="@color/orange"
         app:layout_constraintVertical_chainStyle="packed"
         tools:text="@string/onboarding_first" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvSecond"
-        style="@style/IntroBody"
+        style="@style/GothamProReg.16sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvFirst"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:lineSpacingMultiplier="1.2"
         tools:text="@string/onboarding_first_descr" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -15,12 +15,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_app_allows_text"
-        style="@style/CaseHeaderTaskDescription"
+        style="@style/GothamProLight.16sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:lineSpacingMultiplier="1.2"
         app:layout_constraintStart_toEndOf="@id/iv_case_app_allows"
         app:layout_constraintTop_toTopOf="@id/iv_case_app_allows"
         tools:text="@string/app_allows_content" />

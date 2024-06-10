@@ -15,20 +15,38 @@
     tools:background="@color/case_image_color"
     tools:ignore="RtlSymmetry">
 
-    <ImageView
-        android:id="@+id/ivCase1"
-        android:layout_width="170dp"
-        android:layout_height="306dp"
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="@dimen/_170sdp"
+        android:layout_height="@dimen/_306sdp"
+        app:cardCornerRadius="15dp"
         android:contentDescription="@string/image_case_description"
-        tools:src="@drawable/case_image" />
+        tools:src="@drawable/case_image">
 
-    <ImageView
-        android:id="@+id/ivCase2"
-        android:layout_width="170dp"
-        android:layout_height="306dp"
-        android:layout_marginStart="30dp"
+        <ImageView
+            android:id="@+id/ivCase1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/image_case_description"
+            tools:src="@drawable/case_image" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="@dimen/_170sdp"
+        android:layout_height="@dimen/_306sdp"
+        android:layout_marginStart="@dimen/_30sdp"
         android:contentDescription="@string/image_case_description"
-        tools:src="@drawable/case_image" />
+        app:cardCornerRadius="15dp"
+        tools:src="@drawable/case_image">
+
+        <ImageView
+            android:id="@+id/ivCase2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/image_case_description"
+            tools:src="@drawable/case_image" />
+
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>
 

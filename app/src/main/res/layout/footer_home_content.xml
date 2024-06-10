@@ -16,8 +16,8 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btSendRequest"
         style="@style/HomeButton"
-        android:layout_width="@dimen/_108sdp"
-        android:layout_height="@dimen/_108sdp"
+        android:layout_width="@dimen/_104sdp"
+        android:layout_height="@dimen/_104sdp"
         android:background="@drawable/circle_bg_orange"
         android:text="@string/send_request"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,7 +25,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvEmail"
-        style="@style/HomeHeaderFooter"
+        style="@style/GeometriaReg.16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/email_text"

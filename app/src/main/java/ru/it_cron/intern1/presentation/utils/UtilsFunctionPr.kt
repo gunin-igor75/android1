@@ -31,9 +31,14 @@ fun setupText(textView: TextView, list: List<String>): String {
     val result = StringBuilder()
     var currentLine = ""
     for (world in list) {
-        if (!isTooLarge(textView, "$currentLine $world")) {
-            result.append(" ").append(world)
-            currentLine += " $world"
+        if (currentLine == "") {
+            currentLine = world
+            result.append(world)
+            continue
+        }
+        if (!isTooLarge(textView, "$currentLine  $world")) {
+            result.append("  ").append(world)
+            currentLine += "  $world"
         } else {
             result.append("\n").append(world)
             currentLine = world

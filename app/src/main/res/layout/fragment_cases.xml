@@ -16,12 +16,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_arrow_left"
         app:title="@string/cases"
-        app:titleTextAppearance="@style/ToolBar">
+        app:titleTextAppearance="@style/ToolBarCases">
 
         <TextView
             android:id="@+id/tvFilter"
             style="@style/IntroBody"
-            android:layout_width="120dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:ellipsize="end"
