@@ -1,14 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.reviews.ReviewsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/tbReviews"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_left"
+        app:title="@string/reviews"
+        app:titleTextAppearance="@style/GothamProBold.32sp" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/ivDecor1"
+        android:layout_width="@dimen/_119sdp"
+        android:layout_height="@dimen/_119sdp"
+        android:layout_marginTop="@dimen/_32sdp"
+        android:contentDescription="@string/image_ellipse_description"
+        android:scaleType="fitStart"
+        android:src="@drawable/im_ellipse_1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tbReviews" />
+
+    <ImageView
+        android:id="@+id/ivDecor2"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:contentDescription="@string/image_ellipse_description"
+        android:scaleType="fitEnd"
+        android:src="@drawable/im_ellipse_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivDecor1" />
+
+    <ImageView
+        android:id="@+id/ivDecor3"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:layout_marginTop="@dimen/_150sdp"
+        android:contentDescription="@string/image_ellipse_description"
+        android:scaleType="fitStart"
+        android:src="@drawable/im_ellipse_3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivDecor2" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsContacts"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_16sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tbReviews">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvReviews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/showMore"
+                style="@style/GothamProBold.24sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_32sdp"
+                android:gravity="center"
+                android:text="@string/show_more"
+                android:textColor="@color/orange" />
+
+            <include
+                android:id="@+id/inBlockClientCompany"
+                layout="@layout/block_contact_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_64sdp" />
+
+            <include
+                android:id="@+id/btSendApp"
+                layout="@layout/button_send_app"
+                android:layout_width="@dimen/_204sdp"
+                android:layout_height="@dimen/_204sdp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_64sdp" />
+
+            <include
+                android:id="@+id/inCommunicationsAddress"
+                layout="@layout/block_communications_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_64sdp" />
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
