@@ -143,7 +143,7 @@
     <string name="grant_permission">Please give permission to camera for this app</string>
     <string name="temp_images_dir">temp_images</string>
     <string name="temp_images">temp_image.jpg</string>
-    <string name="authorities">ru.it_cron.android1.fileProvider</string>
+    <string name="authorities">ru.it_cron.intern1.fileProvider</string>
     <string name="ops_title">Упс!</string>
     <string name="file_warning">Файл не должен превышать 15 mb</string>
     <string name="attempt_file">Попробуем еще раз?</string>
