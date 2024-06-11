@@ -16,12 +16,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_arrow_left"
         app:title="@string/cases"
-        app:titleTextAppearance="@style/ToolBar">
+        app:titleTextAppearance="@style/GothamProBold.32sp">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvFilter"
-            style="@style/IntroBody"
-            android:layout_width="120dp"
+            style="@style/GothamProReg.16sp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:ellipsize="end"

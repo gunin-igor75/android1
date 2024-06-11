@@ -21,6 +21,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.github.terrakok.cicerone.Router
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.textfield.TextInputEditText
@@ -118,7 +120,8 @@ class ApplicationFragment : Fragment() {
         createSpannableWordPhone()
         createSpannableWordPersonalInfo()
         createSpannableWordPolitic()
-        setupRecyclerViewServicesBudgetAreaActivity()
+        setupRecyclerViewApp()
+        setupSwipeListenerFileItem()
         onClickAdaptersItem()
         setupEditTextTask(
             binding.inTask.tilTask,
@@ -217,7 +220,6 @@ class ApplicationFragment : Fragment() {
         }
     }
 
-
     private fun launchBottomSheet() {
         binding.inTask.btAttachFile.setOnClickListener {
             bottomSheetDialog = BottomSheetDialog(
@@ -231,6 +233,7 @@ class ApplicationFragment : Fragment() {
             }
         }
     }
+
 
     private fun onClickViewBottomSheet(
         binding: BottomSheetAppBinding,
@@ -347,8 +350,8 @@ class ApplicationFragment : Fragment() {
         textInputEditText.addTextChangedListener(textWatcher)
     }
 
-
-    private fun setupRecyclerViewServicesBudgetAreaActivity() {
+    private fun setupRecyclerViewApp() {
+        binding.rvServices.isNestedScrollingEnabled = false
         binding.rvServices.adapter = serviceAdapter
         binding.rvBudgets.adapter = budgetAdapter
         binding.rvAreaActivity.adapter = areaActivityAdapter
@@ -371,6 +374,29 @@ class ApplicationFragment : Fragment() {
                 fileItemAdapter.submitList(it)
             }
         }
+    }
+
+    private fun setupSwipeListenerFileItem() {
+        val callBack = object : ItemTouchHelper.SimpleCallback(
+            0,
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder,
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val fileItem = fileItemAdapter.currentList[position]
+                viewModel.deleteFileItem(fileItem)
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(callBack)
+        itemTouchHelper.attachToRecyclerView(binding.inTask.rvFiles)
     }
 
     private fun onClickAdaptersItem() {

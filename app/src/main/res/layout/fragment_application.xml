@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             app:navigationIcon="@drawable/ic_arrow_left"
             app:title="@string/application"
-            app:titleTextAppearance="@style/ToolBar">
+            app:titleTextAppearance="@style/GothamProBold.32sp">
 
         </com.google.android.material.appbar.MaterialToolbar>
 

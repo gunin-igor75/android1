@@ -13,7 +13,7 @@ class CustomAnimated {
         private const val FIELD = "textColor"
         private const val COLOR_BEGIN = "#FFFFFFFF"
         private const val COLOR_END = "#FF5A5959"
-        private const val TIME_DELAY = 300L
+        private const val TIME_DELAY = 200L
         fun animatedColor(
             textView: TextView,
             action: () -> Unit,

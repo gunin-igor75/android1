@@ -6,7 +6,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvCases"
-        style="@style/HomeBodyTitle"
+        style="@style/GothamProReg.32sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/cases"
@@ -18,10 +18,10 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvCompany"
-        style="@style/HomeBodyTitle"
+        style="@style/GothamProReg.32sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_16sdp"
         android:text="@string/company"
         android:textSize="@dimen/_30ssp"
         app:layout_constraintBottom_toTopOf="@id/tvServices"
@@ -30,10 +30,10 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvServices"
-        style="@style/HomeBodyTitle"
+        style="@style/GothamProReg.32sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_16sdp"
         android:text="@string/services"
         android:textSize="@dimen/_30ssp"
         app:layout_constraintBottom_toTopOf="@id/tvContacts"
@@ -42,25 +42,14 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvContacts"
-        style="@style/HomeBodyTitle"
+        style="@style/GothamProReg.32sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_18sdp"
+        android:layout_marginTop="@dimen/_16sdp"
         android:text="@string/contacts"
         android:textSize="@dimen/_30ssp"
-        app:layout_constraintBottom_toTopOf="@id/tvLogin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvServices" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvLogin"
-        style="@style/HomeBodyTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_18sdp"
-        android:text="@string/personal_account"
-        android:textSize="@dimen/_30ssp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvContacts" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

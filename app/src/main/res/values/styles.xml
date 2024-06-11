@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+x
     <style name="GothamProReg">
         <item name="android:textColor">@color/white</item>
         <item name="fontFamily">@font/gotham_pro_reg</item>
+    </style>
+
+    <style name="GothamProReg.32sp">
+        <item name="android:textSize">@dimen/_32sdp</item>
     </style>
 
     <style name="GothamProReg.24sp">
@@ -49,6 +53,10 @@
 
     <style name="GothamProMed.12sp">
         <item name="android:textSize">@dimen/_12sdp</item>
+    </style>
+
+    <style name="GothamProMed.20sp">
+        <item name="android:textSize">@dimen/_20sdp</item>
     </style>
 
     <style name="GothamProBold">
@@ -97,27 +105,8 @@
         <item name="android:textSize">@dimen/_20sdp</item>
     </style>
 
-    <style name="HomeBodyTitle">
-        <item name="android:textColor">@color/white</item>
-        <item name="fontFamily">@font/gotham_pro_reg</item>
-    </style>
-
-    <style name="ErrorPageTitle">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">24sp</item>
-        <item name="fontFamily">@font/geometria_regular</item>
-    </style>
-
-    <style name="IntroTitle">
-        <item name="android:textColor">@color/orange</item>
-        <item name="android:textSize">32sp</item>
-        <item name="fontFamily">@font/gotham_pro_reg</item>
-    </style>
-
-    <style name="IntroBody">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">16sp</item>
-        <item name="fontFamily">@font/gotham_pro_reg</item>
+    <style name="GothamProLight.16sp">
+        <item name="android:textSize">@dimen/_16sdp</item>
     </style>
 
     <style name="IntroButton">
@@ -127,15 +116,39 @@
         <item name="fontFamily">@font/gotham_pro_reg</item>
     </style>
 
-    <style name="HomeHeaderBody">
+    <style name="GeometriaReg">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/geometria_regular</item>
+    </style>
+
+    <style name="GeometriaReg.32sp">
+        <item name="android:textSize">@dimen/_32sdp</item>
+    </style>
+
+    <style name="GeometriaReg.24sp">
+        <item name="android:textSize">@dimen/_24sdp</item>
+    </style>
+
+    <style name="GeometriaReg.16sp">
+        <item name="android:textSize">@dimen/_16sdp</item>
+    </style>
+
+    <style name="GeometriaMed">
         <item name="android:textColor">@color/white</item>
         <item name="fontFamily">@font/geometria_medium</item>
     </style>
 
-    <style name="HomeHeaderFooter">
-        <item name="android:textColor">@color/white</item>
+    <style name="GeometriaMed.12sp">
+        <item name="android:textSize">@dimen/_12sdp</item>
+    </style>
 
-        <item name="fontFamily">@font/geometria_medium</item>
+    <style name="GeometriaBold">
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/geometria_bold</item>
+    </style>
+
+    <style name="GeometriaBold.20sp">
+        <item name="android:textSize">@dimen/_20sdp</item>
     </style>
 
     <style name="HomeButton">
@@ -148,30 +161,6 @@
     <style name="IconSocial">
         <item name="android:layout_weight">@dimen/_48sdp</item>
         <item name="android:layout_height">@dimen/_48sdp</item>
-    </style>
-
-    <style name="ToolBar">
-        <item name="android:textSize">@dimen/_32sdp</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="fontFamily">@font/gotham_pro_bol</item>
-    </style>
-
-    <style name="CaseHeaderTitle">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">24sp</item>
-        <item name="fontFamily">@font/gotham_pro_reg</item>
-    </style>
-
-    <style name="tvPlatformsTitle">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">20sp</item>
-        <item name="fontFamily">@font/gotham_pro_med</item>
-    </style>
-
-    <style name="CaseHeaderTaskDescription">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">16sp</item>
-        <item name="fontFamily">@font/gotham_pro_light</item>
     </style>
 
     <style name="Widget.MaterialComponents.Button.OutlinedButton.Case">
@@ -190,18 +179,6 @@
         <item name="fontFamily">@font/gotham_pro_med</item>
     </style>
 
-    <style name="CaseContacts">
-        <item name="android:textColor">@color/white</item>
-        <item name="fontFamily">@font/geometria_bold</item>
-        <item name="android:textSize">20sp</item>
-    </style>
-
-    <style name="CaseEmail">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">32sp</item>
-        <item name="fontFamily">@font/geometria_regular</item>
-    </style>
-
     <style name="HomeButton.Case">
         <item name="android:textSize">24sp</item>
     </style>
@@ -210,9 +187,4 @@
         <item name="android:textSize">24sp</item>
     </style>
 
-    <style name="ToolBar.Filter">
-        <item name="android:textSize">20sp</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="fontFamily">@font/gotham_pro_bol</item>
-    </style>
 </resources>

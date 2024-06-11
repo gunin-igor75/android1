@@ -17,9 +17,9 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.it_cron.intern1.R
 import ru.it_cron.intern1.databinding.FragmentCasesBinding
-import ru.it_cron.intern1.domain.model.cases.CaseBox
 import ru.it_cron.intern1.domain.model.StateError
 import ru.it_cron.intern1.domain.model.StateScreen
+import ru.it_cron.intern1.domain.model.cases.CaseBox
 import ru.it_cron.intern1.navigation.Screens
 import ru.it_cron.intern1.presentation.cases.CasesAdapter.CaseOnClickListener
 

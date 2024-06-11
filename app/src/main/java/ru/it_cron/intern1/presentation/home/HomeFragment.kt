@@ -95,11 +95,6 @@ class HomeFragment : Fragment() {
                     router.navigateTo(Screens.openContactsFragment())
                 }
             }
-            tvLogin.setOnClickListener {
-                animatedColor(tvLogin) {
-                    router.navigateTo(Screens.openLoginFragment())
-                }
-            }
         }
     }
 

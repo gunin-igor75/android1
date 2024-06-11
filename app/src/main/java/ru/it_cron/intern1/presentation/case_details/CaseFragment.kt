@@ -2,6 +2,7 @@ package ru.it_cron.intern1.presentation.case_details
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,11 +26,11 @@ import ru.it_cron.intern1.databinding.BlockNextCaseBinding
 import ru.it_cron.intern1.databinding.BlockTaskCaseBinding
 import ru.it_cron.intern1.databinding.BlockTechnologyPlatformCaseBinding
 import ru.it_cron.intern1.databinding.FragmentCaseBinding
+import ru.it_cron.intern1.domain.model.StateError
+import ru.it_cron.intern1.domain.model.StateScreen
 import ru.it_cron.intern1.domain.model.cases.CaseBox
 import ru.it_cron.intern1.domain.model.cases.CaseDetails
 import ru.it_cron.intern1.domain.model.filter.ContainerImage
-import ru.it_cron.intern1.domain.model.StateError
-import ru.it_cron.intern1.domain.model.StateScreen
 import ru.it_cron.intern1.navigation.Screens
 import ru.it_cron.intern1.presentation.extension.openInternet
 import ru.it_cron.intern1.presentation.extension.roundCorners
@@ -208,9 +209,8 @@ class CaseFragment : Fragment() {
 
     private fun setupUiBlockTechnologiesPlatforms(caseDetails: CaseDetails) {
         val currentBinding = BlockTechnologyPlatformCaseBinding.bind(binding.root)
-
         with(currentBinding) {
-            cvTechnologyPlatform.setBackgroundColor(caseDetails.caseColorId)
+            cvTechnologyPlatform.setCardBackgroundColor(caseDetails.caseColorId)
             if (!checkAndSetupGone(
                     caseDetails.technologies.isEmpty(), tvTechnologyTitle, tvTechnologyContent
                 )

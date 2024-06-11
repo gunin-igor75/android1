@@ -8,9 +8,10 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBlockCaseTitle"
-        style="@style/CaseHeaderTitle"
+        style="@style/GothamProReg.24sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:lineSpacingMultiplier="1.2"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbApp"
@@ -40,7 +41,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBlockTaskTitle"
-        style="@style/tvPlatformsTitle"
+        style="@style/GothamProReg.20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -50,10 +51,11 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBlockTaskContent"
-        style="@style/CaseHeaderTaskDescription"
+        style="@style/GothamProLight.16sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:lineSpacingMultiplier="1.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvBlockTaskTitle"
         tools:text="@string/task_description" />

@@ -90,6 +90,8 @@ class MainActivity : AppCompatActivity() {
         viewModel.isCompleted.observe(this) { completed ->
             if (!completed) {
                 router.replaceScreen(Screens.openOnBoardingFragment())
+            } else {
+                router.replaceScreen(Screens.openHomeFragment())
             }
         }
     }
