@@ -1,6 +1,7 @@
 package ru.it_cron.intern1.presentation.reviews
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +32,10 @@ class ReviewsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Log.d("ReviewsFragment", reviews.toString())
+    }
     companion object {
         private const val REVIEWS = "reviews"
 

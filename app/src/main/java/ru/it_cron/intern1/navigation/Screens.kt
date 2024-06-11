@@ -2,6 +2,7 @@ package ru.it_cron.intern1.navigation
 
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import ru.it_cron.intern1.domain.model.cases.CaseBox
+import ru.it_cron.intern1.domain.model.company.Review
 import ru.it_cron.intern1.domain.model.filter.ContainerImage
 import ru.it_cron.intern1.presentation.application.ApplicationFragment
 import ru.it_cron.intern1.presentation.application.ErrorAppFragment
@@ -18,6 +19,7 @@ import ru.it_cron.intern1.presentation.filter.FilterFragment
 import ru.it_cron.intern1.presentation.home.HomeFragment
 import ru.it_cron.intern1.presentation.login.LoginFragment
 import ru.it_cron.intern1.presentation.onboarding.AppIntro
+import ru.it_cron.intern1.presentation.reviews.ReviewsFragment
 import ru.it_cron.intern1.presentation.services.ServicesFragment
 
 object Screens {
@@ -81,5 +83,8 @@ object Screens {
     }
     fun openSendAppOkFragment() = FragmentScreen{
         SendAppOkFragment.newInstance()
+    }
+    fun openReviewsFragment(reviews: List<Review>) = FragmentScreen{
+        ReviewsFragment.newInstance(reviews)
     }
 }

@@ -29,6 +29,7 @@ import ru.it_cron.intern1.constant.URL_TELEGRAM
 import ru.it_cron.intern1.databinding.BlockCommunicationsCompanyBinding
 import ru.it_cron.intern1.databinding.FragmentCompanyBinding
 import ru.it_cron.intern1.domain.model.StateError
+import ru.it_cron.intern1.domain.model.company.Review
 import ru.it_cron.intern1.navigation.Screens
 import ru.it_cron.intern1.presentation.extension.dpToPx
 import ru.it_cron.intern1.presentation.extension.sendEmail
@@ -44,8 +45,7 @@ class CompanyFragment : Fragment() {
 
     private val viewModel by viewModel<CompanyViewModel>()
 
-    private
-    val glide by inject<RequestManager>()
+    private val glide by inject<RequestManager>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,10 +61,11 @@ class CompanyFragment : Fragment() {
         onClickMenuListener()
         onClickBack()
         createSpannableWord()
-        onClickViewListener()
+        onClickCommunicationsListener()
         observeViewModelError()
         observeViewModelReviews()
         sendApplication()
+
     }
 
     private fun sendApplication() {
@@ -74,21 +75,23 @@ class CompanyFragment : Fragment() {
     }
 
     private fun observeViewModelReviews() {
-        viewModel.reviews.observe(viewLifecycleOwner) {
-            if (it.isEmpty()) {
+        viewModel.reviews.observe(viewLifecycleOwner) { reviews ->
+            if (reviews.isEmpty()) {
                 binding.inReviews.clReviews.visibility = View.GONE
             } else {
+                onClickReviewsListener(reviews)
                 binding.inReviews.clReviews.visibility = View.VISIBLE
                 binding.inReviews.vpReviews.adapter = ReviewsViewPagerAdapter(
-                    reviews = it,
+                    reviews = reviews,
                     glide = glide
                 )
-                setupReviewsIndicators(it.size)
+                setupReviewsIndicators(reviews.size)
                 settingViewPager()
             }
         }
 
     }
+
 
     private fun settingViewPager() {
         binding.inReviews.vpReviews.registerOnPageChangeCallback(object : OnPageChangeCallback() {
@@ -114,7 +117,7 @@ class CompanyFragment : Fragment() {
         }
     }
 
-    private fun onClickViewListener() {
+    private fun onClickCommunicationsListener() {
 
         val blockCommunicationsBinding = BlockCommunicationsCompanyBinding.bind(binding.root)
         with(blockCommunicationsBinding) {
@@ -159,10 +162,10 @@ class CompanyFragment : Fragment() {
         )
     }
 
-
     private fun setupMenu() {
         binding.tbCompany.inflateMenu(R.menu.fragment_company)
     }
+
 
     private fun onClickMenuListener() {
         binding.tbCompany.setOnMenuItemClickListener { menu ->
@@ -238,6 +241,12 @@ class CompanyFragment : Fragment() {
                     )
                 }
             }
+        }
+    }
+
+    private fun onClickReviewsListener(reviews: List<Review>) {
+        binding.inReviews.llSeeAll.setOnClickListener {
+            router.navigateTo(Screens.openReviewsFragment(reviews))
         }
     }
 
