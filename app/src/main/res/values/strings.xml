@@ -192,4 +192,5 @@
     <string name="error_test">error test</string>
     <string name="reviews">Отзывы</string>
     <string name="show_more"><u>Показать еще</u></string>
+    <string name="read_full">Читать полностью</string>
 </resources>

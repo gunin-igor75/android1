@@ -92,6 +92,10 @@ x
         <item name="android:textSize">@dimen/_16sdp</item>
     </style>
 
+    <style name="GothamProBold.14sp">
+        <item name="android:textSize">@dimen/_14sdp</item>
+    </style>
+
     <style name="GothamProBold.12sp">
         <item name="android:textSize">@dimen/_12sdp</item>
     </style>

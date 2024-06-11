@@ -76,10 +76,10 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/showMore"
                 style="@style/GothamProBold.24sp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_32sdp"
-                android:gravity="center"
+                android:layout_gravity="center"
                 android:text="@string/show_more"
                 android:textColor="@color/orange" />
 
