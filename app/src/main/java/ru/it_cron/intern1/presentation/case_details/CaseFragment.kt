@@ -1,8 +1,6 @@
 package ru.it_cron.intern1.presentation.case_details
 
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +30,7 @@ import ru.it_cron.intern1.domain.model.cases.CaseBox
 import ru.it_cron.intern1.domain.model.cases.CaseDetails
 import ru.it_cron.intern1.domain.model.filter.ContainerImage
 import ru.it_cron.intern1.navigation.Screens
+import ru.it_cron.intern1.presentation.extension.getParcelableProvider
 import ru.it_cron.intern1.presentation.extension.openInternet
 import ru.it_cron.intern1.presentation.extension.roundCorners
 import ru.it_cron.intern1.presentation.extension.sendEmail
@@ -47,13 +46,9 @@ class CaseFragment : Fragment() {
 
 
     private val caseBox: CaseBox by lazy {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            arguments?.getParcelable(CASE_BOX, CaseBox::class.java) as CaseBox
-        } else {
-            arguments?.getParcelable(CASE_BOX) ?: throw IllegalArgumentException(
+            arguments?.getParcelableProvider(CASE_BOX) ?: throw IllegalArgumentException(
                 "CaseBox s null"
             )
-        }
     }
     private val viewModel: CaseDetailsViewModel by viewModel()
 
