@@ -6,11 +6,12 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvContactsInfoTitle"
-        style="@style/CaseContacts"
+        style="@style/GeometriaBold.20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/contacts_info"
         android:textAlignment="center"
+        android:lineSpacingMultiplier="1.2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,7 +28,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvContactsInfoEmail"
-        style="@style/CaseEmail"
+        style="@style/GeometriaReg.32sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"

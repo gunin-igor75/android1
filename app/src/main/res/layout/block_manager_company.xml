@@ -83,6 +83,7 @@
         android:paddingHorizontal="@dimen/padding_app"
         android:text="@string/puchow_job_paragraph2"
         android:textColor="@color/text_company"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAvatarJobParagraph1" />
 

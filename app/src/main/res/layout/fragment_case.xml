@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         app:navigationIcon="@drawable/ic_arrow_left"
         app:title="@string/case_title"
-        app:titleTextAppearance="@style/ToolBarCases">
+        app:titleTextAppearance="@style/GothamProBold.32sp">
 
     </com.google.android.material.appbar.MaterialToolbar>
 
@@ -34,9 +34,9 @@
                 layout="@layout/block_images_case" />
 
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvAppAllows"
-                style="@style/CaseHeaderTitle"
+                style="@style/GothamProReg.24sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
@@ -81,7 +81,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvGoToHome"
-                style="@style/CaseEmail"
+                style="@style/GeometriaReg.32sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="64dp"

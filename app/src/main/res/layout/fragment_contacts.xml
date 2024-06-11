@@ -14,7 +14,7 @@
         app:title="@string/contacts"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:titleTextAppearance="@style/ToolBarCases" />
+        app:titleTextAppearance="@style/GothamProBold.32sp" />
 
     <ImageView
         android:id="@+id/ivDecor1"

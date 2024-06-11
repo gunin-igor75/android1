@@ -27,14 +27,14 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTechnologyTitle"
-                style="@style/tvPlatformsTitle"
+                style="@style/GothamProMed.20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/technology" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTechnologyContent"
-                style="@style/CaseHeaderTaskDescription"
+                style="@style/GothamProLight.16sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -43,7 +43,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvPlatformsTitle"
-                style="@style/tvPlatformsTitle"
+                style="@style/GothamProMed.20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -51,7 +51,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvPlatformsContent"
-                style="@style/CaseHeaderTaskDescription"
+                style="@style/GothamProLight.16sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
