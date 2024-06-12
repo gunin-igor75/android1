@@ -14,7 +14,7 @@ class CustomAnimated {
         private const val COLOR_BEGIN = "#FFFFFFFF"
         private const val COLOR_END = "#FF5A5959"
         private const val TIME_DELAY = 200L
-        private const val TIME_DELAY_TEXT = 500L
+        private const val TIME_DELAY_TEXT = 1000L
 
         fun animatedColor(
             textView: TextView,
@@ -80,7 +80,7 @@ class CustomAnimated {
                 begin,
                 end
             ).apply {
-                duration = 1000
+                duration = TIME_DELAY_TEXT
                 interpolator = LinearInterpolator()
             }
             animator.start()
