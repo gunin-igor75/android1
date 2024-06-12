@@ -14,6 +14,7 @@ import ru.it_cron.intern1.presentation.contacts.ContactsViewModel
 import ru.it_cron.intern1.presentation.filter.FiltersViewModel
 import ru.it_cron.intern1.presentation.main.MainViewModel
 import ru.it_cron.intern1.presentation.onboarding.OnBoardingViewModel
+import ru.it_cron.intern1.presentation.reviews.ReviewsViewModel
 
 val appModule = module {
     viewModel<OnBoardingViewModel> {
@@ -79,5 +80,9 @@ val appModule = module {
         viewModel {
             ContactsViewModel(getDaySItemsUseCase = get())
         }
+    }
+
+    viewModel<ReviewsViewModel>(){ parameters ->
+        ReviewsViewModel(initialReviews = parameters.get())
     }
 }

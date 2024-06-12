@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="@dimen/_8sdp"
     app:contentPaddingBottom="@dimen/_20sdp"
@@ -29,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_16sdp"
-            android:text="@string/puchow"
+            tools:text="@string/puchow"
             android:textAlignment="center"
             android:textColor="@color/text_company" />
 
@@ -40,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
             android:lineSpacingMultiplier="1.2"
-            android:text="@string/puchow_job"
+            tools:text="@string/puchow_job"
             android:textAlignment="center"
             android:textColor="@color/text_company" />
 
@@ -53,7 +54,7 @@
             android:ellipsize="end"
             android:lineSpacingMultiplier="1.3"
             android:maxLines="5"
-            android:text="@string/puchow_job_paragraph1"
+            tools:text="@string/puchow_job_paragraph1"
             android:textColor="@color/text_company" />
 
         <androidx.appcompat.widget.AppCompatTextView

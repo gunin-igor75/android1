@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 import ru.it_cron.intern1.databinding.FragmentReviewsBinding
 import ru.it_cron.intern1.domain.model.company.Review
 import ru.it_cron.intern1.presentation.extension.getParcelableArrayListProvider
@@ -24,6 +26,12 @@ class ReviewsFragment : Fragment() {
         )
     }
 
+    private val reviewsAdapter by lazy {
+        ReviewAdapter()
+    }
+
+    private val viewModel: ReviewsViewModel by viewModel{ parametersOf(reviews) }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -34,8 +42,15 @@ class ReviewsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("ReviewsFragment", reviews.toString())
+        Log.d("ReviewsFragment", viewModel.initialReviews.toString())
+        setupRecyclerView()
     }
+
+    private fun setupRecyclerView() {
+        binding.rvReviews.adapter = reviewsAdapter
+
+    }
+
     companion object {
         private const val REVIEWS = "reviews"
 

@@ -7,6 +7,8 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
 import android.util.Log
+import android.view.View
+import android.view.ViewTreeObserver
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -155,4 +157,13 @@ inline fun <reified T : Parcelable> Bundle.getParcelableArrayListProvider(identi
     } else {
         this.getParcelableArrayList(identifierParameter)
     }
+}
+
+fun View.afterLayoutConfiguration(action: () -> Unit) {
+    viewTreeObserver?.addOnGlobalLayoutListener( object : ViewTreeObserver.OnGlobalLayoutListener{
+        override fun onGlobalLayout() {
+            viewTreeObserver?.removeOnGlobalLayoutListener(this)
+            action()
+        }
+    })
 }
