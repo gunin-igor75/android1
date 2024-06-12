@@ -12,6 +12,7 @@ import com.bumptech.glide.RequestManager
 import ru.it_cron.intern1.R
 import ru.it_cron.intern1.databinding.CardReviewBinding
 import ru.it_cron.intern1.domain.model.company.Review
+import ru.it_cron.intern1.presentation.animation.CustomAnimated
 
 class ReviewAdapter(
     private val context: Context,
@@ -42,12 +43,13 @@ class ReviewAdapter(
         }
     }
 
-
-    inner class ReviewViewHolder(val binding: CardReviewBinding) :
+    inner class ReviewViewHolder(private val binding: CardReviewBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(review: Review) {
             val hasVisibleButtonReadFull = binding.tvContent.ellipsize == TextUtils.TruncateAt.END
+            val maxLines = context.resources.getInteger(R.integer.maxLinesReview)
+            val maxLinesFull = context.resources.getInteger(R.integer.maxLinesReviewFull)
 
             with(binding){
                 tvAvatar.text = review.customerName
@@ -61,12 +63,17 @@ class ReviewAdapter(
                     if (hasVisibleButtonReadFull) View.VISIBLE else View.GONE
 
                 tvReadFull.setOnClickListener {
-                    if (tvContent.maxLines == Int.MAX_VALUE) {
-                        tvContent.maxLines = context.resources.getInteger(R.integer.maxLinesReview)
+                    if (tvContent.maxLines != maxLines) {
                         tvReadFull.text = context.resources.getString(R.string.read_full)
+                        tvContent.maxLines = maxLines
                     } else {
-                        tvContent.maxLines = Int.MAX_VALUE
                         tvReadFull.text = context.resources.getString(R.string.hide_text)
+                        CustomAnimated.animatedText(
+                            textView = tvContent,
+                            field = context.resources.getString(R.string.maxLines),
+                            begin = maxLines,
+                            end = maxLinesFull
+                        )
                     }
                 }
             }

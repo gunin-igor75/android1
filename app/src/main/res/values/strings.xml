@@ -194,4 +194,5 @@
     <string name="show_more"><u>Показать еще</u></string>
     <string name="read_full">Читать полностью</string>
     <string name="hide_text">Скрыть</string>
+    <string name="maxLines">"maxLines"</string>
 </resources>

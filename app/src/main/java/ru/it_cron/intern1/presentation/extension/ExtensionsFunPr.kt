@@ -158,12 +158,3 @@ inline fun <reified T : Parcelable> Bundle.getParcelableArrayListProvider(identi
         this.getParcelableArrayList(identifierParameter)
     }
 }
-
-fun View.afterLayoutConfiguration(action: () -> Unit) {
-    viewTreeObserver?.addOnGlobalLayoutListener( object : ViewTreeObserver.OnGlobalLayoutListener{
-        override fun onGlobalLayout() {
-            viewTreeObserver?.removeOnGlobalLayoutListener(this)
-            action()
-        }
-    })
-}

@@ -12,9 +12,15 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import ru.it_cron.intern1.R
+import ru.it_cron.intern1.constant.PN_TELEGRAM
+import ru.it_cron.intern1.constant.URL_EMAIL
+import ru.it_cron.intern1.constant.URL_TELEGRAM
 import ru.it_cron.intern1.databinding.FragmentReviewsBinding
 import ru.it_cron.intern1.domain.model.company.Review
+import ru.it_cron.intern1.navigation.Screens
 import ru.it_cron.intern1.presentation.extension.getParcelableArrayListProvider
+import ru.it_cron.intern1.presentation.extension.sendEmail
+import ru.it_cron.intern1.presentation.extension.sendRequest
 
 class ReviewsFragment : Fragment() {
     private var _binding: FragmentReviewsBinding? = null
@@ -56,6 +62,9 @@ class ReviewsFragment : Fragment() {
         setupButtonShowMore()
         setupIsHideFullPreviews()
         onClickBack()
+        onClickBlockClientCompany()
+        onClickBlockCommunicationAddress()
+        sendApplication()
     }
 
     private fun setupRecyclerView() {
@@ -97,6 +106,24 @@ class ReviewsFragment : Fragment() {
         val toolBar = binding.tbReviews
         toolBar.setNavigationOnClickListener {
             router.exit()
+        }
+    }
+
+    private fun sendApplication() {
+        binding.btSendApp.btSendApp.setOnClickListener {
+            router.navigateTo(Screens.openApplicationFragment())
+        }
+    }
+
+    private fun onClickBlockClientCompany() {
+        binding.inBlockClientCompany.tvContactsInfoEmail.setOnClickListener {
+            sendEmail(URL_EMAIL)
+        }
+    }
+
+    private fun onClickBlockCommunicationAddress() {
+        binding.inCommunicationsAddress.ivTelegram.setOnClickListener {
+            sendRequest(URL_TELEGRAM, PN_TELEGRAM)
         }
     }
     companion object {

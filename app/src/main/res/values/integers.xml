@@ -4,6 +4,7 @@
     <!--Corner radius card view-->
     <integer name="corner_radius">10</integer>
     <integer name="maxLinesReview">5</integer>
+    <integer name="maxLinesReviewFull">100</integer>
 
 
 </resources>
