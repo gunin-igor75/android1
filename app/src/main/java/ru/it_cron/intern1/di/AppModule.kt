@@ -14,6 +14,7 @@ import ru.it_cron.intern1.presentation.contacts.ContactsViewModel
 import ru.it_cron.intern1.presentation.filter.FiltersViewModel
 import ru.it_cron.intern1.presentation.main.MainViewModel
 import ru.it_cron.intern1.presentation.onboarding.OnBoardingViewModel
+import ru.it_cron.intern1.presentation.reviews.ReviewsFragment
 import ru.it_cron.intern1.presentation.reviews.ReviewsViewModel
 
 val appModule = module {
@@ -84,5 +85,10 @@ val appModule = module {
 
     viewModel<ReviewsViewModel>(){ parameters ->
         ReviewsViewModel(initialReviews = parameters.get())
+    }
+    scope<ReviewsFragment> {
+        viewModel { parameters ->
+            ReviewsViewModel(initialReviews = parameters.get())
+        }
     }
 }

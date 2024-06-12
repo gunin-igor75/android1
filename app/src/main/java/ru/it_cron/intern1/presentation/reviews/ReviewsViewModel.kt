@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import ru.it_cron.intern1.domain.model.company.Review
 
 class ReviewsViewModel(
-    val initialReviews: List<Review>,
+    private val initialReviews: List<Review>,
 ) : ViewModel() {
 
     private val _showMore: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -39,7 +39,7 @@ class ReviewsViewModel(
     }
 
     fun resetReviews() {
-        _reviews.value = initialReviews.toList()
+        setupReviews()
         updateIsHideFullReviews()
     }
 
