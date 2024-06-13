@@ -21,6 +21,8 @@ glide = "4.16.0"
 firebase-plugin = "4.4.2"
 firebase-bom = "33.1.0"
 crashlytics-plugin = "3.0.1"
+assertj = "3.26.0"
+arch-testing = "2.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -49,6 +51,10 @@ glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "gl
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase-bom" }
 analytics = { group = "com.google.firebase", name = "firebase-analytics" }
 crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics" }
+
+assertj-core = {group = "org.assertj", name = "assertj-core", version.ref = "assertj"}
+arch-core = {group = "androidx.arch.core", name = "core-testing", version.ref = "arch-testing"}
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

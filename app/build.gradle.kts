@@ -88,6 +88,9 @@ dependencies {
     implementation(libs.crashlytics)
 
     testImplementation(libs.junit)
+    testImplementation(libs.assertj.core)
+    testImplementation(libs.arch.core)
+
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }

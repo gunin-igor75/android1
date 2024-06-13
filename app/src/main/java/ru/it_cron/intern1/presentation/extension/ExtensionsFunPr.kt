@@ -3,7 +3,12 @@ package ru.it_cron.intern1.presentation.extension
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
+import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
+import android.view.View
+import android.view.ViewTreeObserver
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -130,5 +135,26 @@ fun String.getExtension(): String {
         ext
     } else {
         APP
+    }
+}
+
+@Suppress("DEPRECATION")
+inline fun <reified T : Parcelable> Bundle.getParcelableProvider(identifierParameter: String): T? {
+
+    return if (Build.VERSION.SDK_INT >= 33) {
+        this.getParcelable(identifierParameter, T::class.java)
+    } else {
+        this.getParcelable(identifierParameter)
+    }
+
+}
+
+@Suppress("DEPRECATION")
+inline fun <reified T : Parcelable> Bundle.getParcelableArrayListProvider(identifierParameter: String): java.util.ArrayList<T>? {
+
+    return if (Build.VERSION.SDK_INT >= 33) {
+        this.getParcelableArrayList(identifierParameter, T::class.java)
+    } else {
+        this.getParcelableArrayList(identifierParameter)
     }
 }

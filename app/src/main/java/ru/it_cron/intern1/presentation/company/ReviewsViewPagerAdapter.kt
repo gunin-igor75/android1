@@ -1,6 +1,5 @@
 package ru.it_cron.intern1.presentation.company
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -27,7 +26,6 @@ class ReviewsViewPagerAdapter(
 
     override fun onBindViewHolder(holder: PagerViewHolderReviews, position: Int) {
         val review = reviews[position]
-        Log.d("ReviewsViewPagerAdapter", review.toString())
         with(holder.binding) {
             tvReviewsContent.text = review.text
             tvReviewsJob.text = review.company

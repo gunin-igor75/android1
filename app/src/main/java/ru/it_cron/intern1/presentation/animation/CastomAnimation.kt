@@ -14,6 +14,8 @@ class CustomAnimated {
         private const val COLOR_BEGIN = "#FFFFFFFF"
         private const val COLOR_END = "#FF5A5959"
         private const val TIME_DELAY = 200L
+        private const val TIME_DELAY_TEXT = 500L
+
         fun animatedColor(
             textView: TextView,
             action: () -> Unit,
@@ -63,6 +65,24 @@ class CustomAnimated {
                 override fun onAnimationRepeat(animation: Animator) {}
             }
             animator.addListener(listener)
+            animator.start()
+        }
+
+        fun animatedText(
+            textView: TextView,
+            field: String,
+            begin: Int,
+            end: Int
+        ){
+            val animator = ObjectAnimator.ofInt(
+                textView,
+                field,
+                begin,
+                end
+            ).apply {
+                duration = TIME_DELAY_TEXT
+                interpolator = LinearInterpolator()
+            }
             animator.start()
         }
     }
