@@ -55,7 +55,6 @@
             android:layout_marginTop="@dimen/_16sdp"
             android:ellipsize="end"
             android:lineSpacingMultiplier="1.3"
-            android:maxLines="@integer/maxLinesReview"
             tools:text="@string/puchow_job_paragraph1"
             android:textColor="@color/text_company" />
 

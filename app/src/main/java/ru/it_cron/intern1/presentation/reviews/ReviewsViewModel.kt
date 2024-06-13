@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import ru.it_cron.intern1.domain.model.company.Review
 
 class ReviewsViewModel(
-    private val initialReviews: List<Review>,
+    private var initialReviews: List<Review>,
 ) : ViewModel() {
 
     private val _showMore: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -44,8 +44,7 @@ class ReviewsViewModel(
     }
 
     private fun showMoreIsVisible() {
-        val isVisible = initialReviews.size > SIZE || initialReviews.isEmpty()
-        _showMore.value = isVisible
+        _showMore.value = initialReviews.size > SIZE
     }
 
     private fun setupReviews() {

@@ -1,10 +1,10 @@
 package ru.it_cron.intern1.presentation.reviews
 
 import android.content.Context
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.doOnPreDraw
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -33,13 +33,13 @@ class ReviewAdapter(
         holder.bind(review)
     }
 
-    object ReviewItemDiffCallBack: DiffUtil.ItemCallback<Review>(){
+    object ReviewItemDiffCallBack : DiffUtil.ItemCallback<Review>() {
         override fun areItemsTheSame(oldItem: Review, newItem: Review): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Review, newItem: Review): Boolean {
-           return oldItem == newItem
+            return oldItem == newItem
         }
     }
 
@@ -47,11 +47,10 @@ class ReviewAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(review: Review) {
-            val hasVisibleButtonReadFull = binding.tvContent.ellipsize == TextUtils.TruncateAt.END
             val maxLines = context.resources.getInteger(R.integer.maxLinesReview)
-            val maxLinesFull = context.resources.getInteger(R.integer.maxLinesReviewFull)
+            var maxLinesFull = 0
 
-            with(binding){
+            with(binding) {
                 tvAvatar.text = review.customerName
                 tvAvatarJob.text = review.company
                 tvContent.text = review.text
@@ -59,8 +58,15 @@ class ReviewAdapter(
                     .circleCrop()
                     .into(ivIconOwnerReview)
 
-                binding.tvReadFull.visibility =
-                    if (hasVisibleButtonReadFull) View.VISIBLE else View.GONE
+                tvContent.doOnPreDraw {
+                    val hasVisibleButtonReadFull = tvContent.lineCount > maxLines
+                    maxLinesFull = tvContent.lineCount
+                    binding.tvReadFull.visibility =
+                        if (hasVisibleButtonReadFull) View.VISIBLE else View.GONE
+                    if (hasVisibleButtonReadFull) {
+                        tvContent.maxLines = maxLines
+                    }
+                }
 
                 tvReadFull.setOnClickListener {
                     if (tvContent.maxLines != maxLines) {
