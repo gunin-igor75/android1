@@ -12,7 +12,6 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.github.terrakok.cicerone.Router
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -83,11 +82,15 @@ class CaseFragment : Fragment() {
                     is StateScreen.Initial -> {}
 
                     is StateScreen.Loading -> {
+                        binding.cvCaseNotFound.visibility = View.GONE
+                        binding.svCase.visibility = View.GONE
                         binding.pbCase.visibility = View.VISIBLE
                     }
 
                     is StateScreen.Success -> {
+                        binding.cvCaseNotFound.visibility = View.GONE
                         binding.pbCase.visibility = View.GONE
+                        binding.svCase.visibility = View.VISIBLE
                         setupContent(state.value)
                         imageState.value = ContainerImage(
                             state.value.caseColorId, state.value.images
@@ -103,7 +106,8 @@ class CaseFragment : Fragment() {
             viewModel.error.flowWithLifecycle(viewLifecycleOwner.lifecycle).collect { state ->
                 when (state) {
                     is StateError.Error -> {
-                        Snackbar.make(binding.root, state.message, Snackbar.LENGTH_LONG).show()
+                        binding.svCase.visibility = View.GONE
+                        binding.cvCaseNotFound.visibility = View.VISIBLE
                     }
 
                     StateError.ErrorInternet -> {
