@@ -152,7 +152,7 @@ class CasesFragment : Fragment() {
                 if (isEnabled) {
                     viewModel.clearFilter()
                     isEnabled = false
-                    requireActivity().onBackPressedDispatcher.onBackPressed()
+                    router.exit()
                 }
             }
         })

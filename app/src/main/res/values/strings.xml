@@ -196,4 +196,10 @@
     <string name="hide_text">Скрыть</string>
     <string name="maxLines">"maxLines"</string>
     <string name="image_splash_screen">image splash screen</string>
+    <string name="dialog_title">Восстановить "Gmail" ?</string>
+    <string name="dialog_content">Вы перешли по ссылке, для которой требуется приложение "Gmail" отсутствующее на Вашем телефоне. Вы можете загрузить его из Google Play.</string>
+    <string name="dialog_content_show">Показать в</string>
+    <string name="dialog_content_google_play"><b>Google Play</b></string>
+    <string name="dialog_content_google_slash">/</string>
+    <string name="dialog_content_cancel"><b>Отменить</b> </string>
 </resources>
