@@ -51,9 +51,6 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.lifecycle.viewmodel)
 
-    //splash screen
-    implementation(libs.splash.screen)
-
     //data store
     implementation(libs.datastore.core)
 

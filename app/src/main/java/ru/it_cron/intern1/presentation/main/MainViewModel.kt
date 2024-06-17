@@ -22,9 +22,6 @@ class MainViewModel(
         readBoardingState()
     }
 
-    private var _isLoading: MutableLiveData<Boolean> = MutableLiveData()
-    val isLoading: LiveData<Boolean> = _isLoading
-
     private var _isCompleted = MutableLiveData<Boolean>()
     val isCompleted: LiveData<Boolean> = _isCompleted
 
@@ -53,7 +50,6 @@ class MainViewModel(
         viewModelScope.launch {
             readOnBoardingStateUseCase().collect { completed ->
                 _isCompleted.value = completed
-                _isLoading.value = false
             }
         }
     }

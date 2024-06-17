@@ -3,6 +3,6 @@
 
     <style name="Theme.Android1.Launcher">
         <item name="android:windowBackground">@color/black_light</item>
-        <item name="android:windowSplashScreenAnimatedIcon">@drawable/splash_screen_api_31</item>
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 </resources>
