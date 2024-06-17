@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/cases"
-        android:textSize="@dimen/_30ssp"
         app:layout_constraintBottom_toTopOf="@id/tvCompany"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,9 +20,8 @@
         style="@style/GothamProReg.32sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_14sdp"
         android:text="@string/company"
-        android:textSize="@dimen/_30ssp"
         app:layout_constraintBottom_toTopOf="@id/tvServices"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvCases" />
@@ -33,9 +31,8 @@
         style="@style/GothamProReg.32sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_14sdp"
         android:text="@string/services"
-        android:textSize="@dimen/_30ssp"
         app:layout_constraintBottom_toTopOf="@id/tvContacts"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvCompany" />
@@ -45,9 +42,8 @@
         style="@style/GothamProReg.32sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_14sdp"
         android:text="@string/contacts"
-        android:textSize="@dimen/_30ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvServices" />
 
