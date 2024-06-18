@@ -13,4 +13,5 @@ data class CaseDetails(
     val iOSUrl: String,
     val androidUrl: String,
     val webUrl: String,
+    val isColorWhite: Boolean = false
 )
