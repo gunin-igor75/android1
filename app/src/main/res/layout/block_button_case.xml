@@ -22,6 +22,13 @@
         app:layout_constraintStart_toEndOf="@id/btGooglePlay"
         app:layout_constraintTop_toBottomOf="@+id/cvTechnologyPlatform" />
 
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/bBlockButtonCase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="btGooglePlay, btAppStore" />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btWebsite"
         style="@style/Widget.MaterialComponents.Button.OutlinedButton"
@@ -38,6 +45,6 @@
         app:iconTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btGooglePlay"
+        app:layout_constraintTop_toBottomOf="@id/bBlockButtonCase"
         app:strokeColor="@color/orange" />
 </merge>
