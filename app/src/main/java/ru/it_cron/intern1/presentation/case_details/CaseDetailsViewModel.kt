@@ -13,9 +13,11 @@ import ru.it_cron.intern1.domain.model.StateError
 import ru.it_cron.intern1.domain.model.StateScreen
 import ru.it_cron.intern1.domain.model.cases.CaseDetails
 import ru.it_cron.intern1.domain.usecases.GetCaseDetailsUseCase
+import ru.it_cron.intern1.domain.usecases.GetCasesStorageUseCase
 
 class CaseDetailsViewModel(
     private val getCaseDetailsUseCase: GetCaseDetailsUseCase,
+    private val getCasesStorageUseCase: GetCasesStorageUseCase
 ) : ViewModel() {
 
     private var _caseDetails: MutableStateFlow<StateScreen<CaseDetails>> =
@@ -45,4 +47,6 @@ class CaseDetailsViewModel(
             }
         }
     }
+
+    fun getCases() = getCasesStorageUseCase()
 }

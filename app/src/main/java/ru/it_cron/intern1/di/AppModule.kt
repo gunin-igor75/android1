@@ -35,7 +35,10 @@ val appModule = module {
     }
 
     viewModel<CaseDetailsViewModel> {
-        CaseDetailsViewModel(getCaseDetailsUseCase = get())
+        CaseDetailsViewModel(
+            getCaseDetailsUseCase = get(),
+            getCasesStorageUseCase = get()
+        )
     }
 
     viewModel<FiltersViewModel> {

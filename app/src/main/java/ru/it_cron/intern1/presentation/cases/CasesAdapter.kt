@@ -35,9 +35,9 @@ class CasesAdapter(
                 .override(WIDTH, HEIGHT)
                 .into(ivCase)
             root.setOnClickListener {
-                val caseNext = if (position == itemCount - 1) null else getItem(position + 1)
-                val caseBox = CaseBox(case, caseNext)
-                caseOnClickListener?.onClickCase(caseBox)
+//                val caseNext = if (position == itemCount - 1) null else getItem(position + 1)
+//                val caseBox = CaseBox(case, caseNext)
+                caseOnClickListener?.onClickCase(case.id)
             }
         }
     }
@@ -55,7 +55,7 @@ class CasesAdapter(
     }
 
     interface CaseOnClickListener {
-        fun onClickCase(caseBox: CaseBox)
+        fun onClickCase(caseId: String)
     }
 
     companion object {

@@ -1,6 +1,7 @@
 package ru.it_cron.intern1.presentation.case_details
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,11 +27,10 @@ import ru.it_cron.intern1.databinding.BlockTechnologyPlatformCaseBinding
 import ru.it_cron.intern1.databinding.FragmentCaseBinding
 import ru.it_cron.intern1.domain.model.StateError
 import ru.it_cron.intern1.domain.model.StateScreen
-import ru.it_cron.intern1.domain.model.cases.CaseBox
+import ru.it_cron.intern1.domain.model.cases.Case
 import ru.it_cron.intern1.domain.model.cases.CaseDetails
 import ru.it_cron.intern1.domain.model.filter.ContainerImage
 import ru.it_cron.intern1.navigation.Screens
-import ru.it_cron.intern1.presentation.extension.getParcelableProvider
 import ru.it_cron.intern1.presentation.extension.openInternet
 import ru.it_cron.intern1.presentation.extension.roundCorners
 import ru.it_cron.intern1.presentation.extension.sendEmail
@@ -45,10 +45,10 @@ class CaseFragment : Fragment() {
         get() = _binding ?: throw IllegalStateException("FragmentCaseBinding is null")
 
 
-    private val caseBox: CaseBox by lazy {
-            arguments?.getParcelableProvider(CASE_BOX) ?: throw IllegalArgumentException(
-                "CaseBox s null"
-            )
+    private val caseId: String by lazy {
+        arguments?.getString(CASE_ID) ?: throw IllegalArgumentException(
+            "CaseId s null"
+        )
     }
     private val viewModel: CaseDetailsViewModel by viewModel()
 
@@ -72,10 +72,10 @@ class CaseFragment : Fragment() {
         onClockEmail()
         onClickHomeTitle()
         onClickSendApp()
+        onClickNextCase()
     }
 
     private fun observeViewModel() {
-        val caseId = caseBox.case.id
         viewModel.getCase(caseId)
         lifecycleScope.launch {
             viewModel.caseDetails.flowWithLifecycle(viewLifecycleOwner.lifecycle).collect { state ->
@@ -148,17 +148,18 @@ class CaseFragment : Fragment() {
     private fun setupBlockTitleTask(caseDetails: CaseDetails) {
         val currentBinding = BlockTaskCaseBinding.bind(binding.root)
         with(currentBinding) {
+            val case = getCurrentCase()
             if (!checkAndSetupGone(
-                    caseBox.case.title.isEmpty(), tvBlockCaseTitle
+                    case.title.isEmpty(), tvBlockCaseTitle
                 )
             ) {
-                tvBlockCaseTitle.text = caseBox.case.title
+                tvBlockCaseTitle.text = case.title
             }
             if (!checkAndSetupGone(
-                    caseBox.case.image.isEmpty(), ivBlockCase
+                    case.image.isEmpty(), ivBlockCase
                 )
             ) {
-                loadImage(ivBlockCase, caseBox.case.image)
+                loadImage(ivBlockCase, case.image)
             }
             if (!checkAndSetupGone(
                     caseDetails.task.isEmpty(), tvBlockTaskContent
@@ -228,19 +229,41 @@ class CaseFragment : Fragment() {
                 tvPlatformsContent.text = textPlatforms
             }
             if (caseDetails.isColorWhite) {
-                tvPlatformsTitle.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_company))
-                tvPlatformsContent.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_company))
-                tvTechnologyTitle.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_company))
-                tvTechnologyContent.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_company))
+                tvPlatformsTitle.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.text_company
+                    )
+                )
+                tvPlatformsContent.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.text_company
+                    )
+                )
+                tvTechnologyTitle.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.text_company
+                    )
+                )
+                tvTechnologyContent.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.text_company
+                    )
+                )
             }
         }
     }
 
     private fun setupBlockNextCase() {
         val currentBinding = BlockNextCaseBinding.bind(binding.root)
+
         with(currentBinding) {
-            val case = caseBox.caseNext
+            val case = getNextCase()
             if (case != null) {
+                Log.d("CaseFragment", case.toString())
                 loadImage(ivNextCase, case.image)
             } else {
                 tvNextCaseTitle.visibility = View.GONE
@@ -303,11 +326,38 @@ class CaseFragment : Fragment() {
         }
     }
 
+    private fun getCurrentCase(): Case {
+        val cases = viewModel.getCases()
+        return cases.first { it.id == caseId }
+    }
+
+    private fun getNextCase(): Case? {
+        var currentIndex = 0
+        val cases = viewModel.getCases()
+        for ((index, case) in cases.withIndex()) {
+            if (case.id == caseId) {
+                currentIndex = index
+                break
+            }
+        }
+        return if (currentIndex >= cases.size - 1) null else cases[currentIndex + 1]
+    }
+
+    private fun onClickNextCase() {
+        val currentBinding = BlockNextCaseBinding.bind(binding.root)
+        currentBinding.cvNextCase.setOnClickListener {
+            val case = getNextCase()
+            case?.let {
+                router.replaceScreen(Screens.openCaseFragment(it.id))
+            }
+        }
+    }
+
     companion object {
-        private const val CASE_BOX = "case_box"
+        private const val CASE_ID = "case_id"
         private const val URL_EMAIL = "hello@it-cron.ru"
-        fun newInstance(caseBox: CaseBox) = CaseFragment().apply {
-            arguments = bundleOf(CASE_BOX to caseBox)
+        fun newInstance(caseId: String) = CaseFragment().apply {
+            arguments = bundleOf(CASE_ID to caseId)
         }
     }
 }

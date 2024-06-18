@@ -55,7 +55,6 @@ class CasesViewModel(
             }
         }
     }
-
     private fun getCases() {
         viewModelScope.launch {
             _state.value = StateScreen.Loading()

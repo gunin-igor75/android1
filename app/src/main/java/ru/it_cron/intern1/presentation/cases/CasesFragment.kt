@@ -148,8 +148,8 @@ class CasesFragment : Fragment() {
 
     private fun onClickAdapter() {
         casesAdapter.caseOnClickListener = object : CaseOnClickListener {
-            override fun onClickCase(caseBox: CaseBox) {
-                router.navigateTo(Screens.openCaseFragment(caseBox))
+            override fun onClickCase(caseId: String) {
+                router.navigateTo(Screens.openCaseFragment(caseId))
             }
         }
     }

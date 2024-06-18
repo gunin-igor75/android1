@@ -13,6 +13,7 @@ import ru.it_cron.intern1.domain.interactors.application.FileItemsInteractor
 import ru.it_cron.intern1.domain.interactors.application.ServiceInteractor
 import ru.it_cron.intern1.domain.usecases.CheckAvailableUseCase
 import ru.it_cron.intern1.domain.usecases.GetCaseDetailsUseCase
+import ru.it_cron.intern1.domain.usecases.GetCasesStorageUseCase
 import ru.it_cron.intern1.domain.usecases.GetCasesUseCase
 import ru.it_cron.intern1.domain.usecases.GetFiltersUseCase
 import ru.it_cron.intern1.domain.usecases.GetReviewsUseCase
@@ -198,5 +199,8 @@ val domainModule = module {
             isCountFiles = get(),
             clearFileItem = get(),
         )
+    }
+    factory<GetCasesStorageUseCase> {
+        GetCasesStorageUseCase(repository = get())
     }
 }

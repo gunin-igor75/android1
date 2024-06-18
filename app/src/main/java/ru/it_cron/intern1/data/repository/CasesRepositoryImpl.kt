@@ -15,12 +15,14 @@ class CasesRepositoryImpl(
     private val apiService: ApiService,
 ) : CasesRepository<List<Case>> {
 
+    private var cases: List<Case> = listOf()
     override suspend fun getCases(): DataResult<List<Case>> {
         return withContext(Dispatchers.IO) {
             try {
                 val response = apiService.getCases()
                 val casesDto = response.dataCasesDto
                 val result = casesDto.dataDtoCasesToCases()
+                cases = result
                 DataResult.Success(
                     value = result
                 )
@@ -35,6 +37,8 @@ class CasesRepositoryImpl(
             }
         }
     }
+
+    override fun getCasesStorage() = cases.toList()
 
     private companion object {
         const val TAG = "CasesRepositoryImpl"

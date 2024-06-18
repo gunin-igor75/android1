@@ -55,8 +55,8 @@ object Screens {
         LoginFragment.newInstance()
     }
 
-    fun openCaseFragment(caseBox: CaseBox) = FragmentScreen {
-        CaseFragment.newInstance(caseBox)
+    fun openCaseFragment(caseId: String) = FragmentScreen {
+        CaseFragment.newInstance(caseId)
     }
 
     fun openImagesFragment(containerData: ContainerImage) = FragmentScreen {
