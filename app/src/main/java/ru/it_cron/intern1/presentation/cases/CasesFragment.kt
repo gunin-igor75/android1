@@ -22,6 +22,7 @@ import ru.it_cron.intern1.domain.model.StateScreen
 import ru.it_cron.intern1.domain.model.cases.CaseBox
 import ru.it_cron.intern1.navigation.Screens
 import ru.it_cron.intern1.presentation.cases.CasesAdapter.CaseOnClickListener
+import ru.it_cron.intern1.presentation.utils.NetworkChecker
 
 class CasesFragment : Fragment() {
     private var _binding: FragmentCasesBinding? = null
@@ -37,6 +38,8 @@ class CasesFragment : Fragment() {
     private val casesAdapter: CasesAdapter by lazy {
         CasesAdapter(glide)
     }
+
+    private val networkChecker: NetworkChecker by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,7 +74,12 @@ class CasesFragment : Fragment() {
 
     private fun onClickFilter() {
         binding.tvFilter.setOnClickListener {
-            router.navigateTo(Screens.openFiltersFragment())
+            val hasInternet = networkChecker.isInternetAvailable()
+            if (!hasInternet) {
+                router.navigateTo(Screens.openErrorFragment())
+            } else {
+                router.navigateTo(Screens.openFiltersFragment())
+            }
         }
     }
 
@@ -152,7 +160,7 @@ class CasesFragment : Fragment() {
                 if (isEnabled) {
                     viewModel.clearFilter()
                     isEnabled = false
-                    requireActivity().onBackPressedDispatcher.onBackPressed()
+                    router.exit()
                 }
             }
         })

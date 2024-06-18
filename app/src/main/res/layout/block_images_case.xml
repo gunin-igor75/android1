@@ -26,6 +26,7 @@
             android:id="@+id/ivCase1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scaleType="centerCrop"
             android:contentDescription="@string/image_case_description"
             tools:src="@drawable/case_image" />
 
@@ -43,6 +44,7 @@
             android:id="@+id/ivCase2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scaleType="centerCrop"
             android:contentDescription="@string/image_case_description"
             tools:src="@drawable/case_image" />
 

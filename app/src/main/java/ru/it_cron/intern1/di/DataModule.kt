@@ -36,6 +36,7 @@ import ru.it_cron.intern1.domain.repository.ReviewsRepository
 import ru.it_cron.intern1.domain.repository.application.AppRepository
 import ru.it_cron.intern1.domain.repository.application.ChoiceItemRepository
 import ru.it_cron.intern1.domain.repository.application.FileItemsRepository
+import ru.it_cron.intern1.presentation.utils.NetworkChecker
 
 
 val dataModule = module {
@@ -85,5 +86,9 @@ val dataModule = module {
     }
     single<ChoiceItemRepository>(qualifier = named(AppItemType.AREA_ACTIVITY)) {
         AreaActivityRepositoryImpl(context = androidContext())
+    }
+
+    single<NetworkChecker> {
+        NetworkChecker(context = get())
     }
 }

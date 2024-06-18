@@ -42,5 +42,23 @@
                 android:resource="@xml/file_paths" />
         </provider>
     </application>
+    <queries>
+        <package android:name="com.google.android.gm" />
+        <package android:name="com.facebook.katana" />
+        <package android:name="org.telegram.messenger" />
+        <package android:name="com.instagram.android" />
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+            <data android:scheme="tel" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.SEND" />
+            <data android:mimeType="*/*" />
+        </intent>
+    </queries>
 
 </manifest>

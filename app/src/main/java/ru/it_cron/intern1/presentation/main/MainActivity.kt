@@ -2,16 +2,13 @@ package ru.it_cron.intern1.presentation.main
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
 import com.github.terrakok.cicerone.androidx.AppNavigator
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -32,11 +29,7 @@ class MainActivity : AppCompatActivity() {
         setTheme(R.style.Theme_Android1)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        installSplashScreen().apply {
-            setKeepOnScreenCondition {
-                changeIsLoading()
-            }
-        }
+
         viewModel.checkAvailable()
         checkDataServer()
         setupScreen()
@@ -82,19 +75,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupScreen() {
         viewModel.isCompleted.observe(this) { completed ->
-            if (!completed) {
-                router.replaceScreen(Screens.openOnBoardingFragment())
-            } else {
-                router.replaceScreen(Screens.openHomeFragment())
+            lifecycleScope.launch {
+                delay(DELAY_SPLASH)
+                if (!completed) {
+                    router.replaceScreen(Screens.openOnBoardingFragment())
+                } else {
+                    router.replaceScreen(Screens.openHomeFragment())
+                }
             }
         }
     }
 
-    private fun changeIsLoading(): Boolean {
-        var isLoading = false
-        viewModel.isLoading.observe(this) {
-            isLoading = it
-        }
-        return isLoading
+    companion object{
+        private const val DELAY_SPLASH = 1000L
     }
 }

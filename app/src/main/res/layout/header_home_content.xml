@@ -16,7 +16,7 @@
     <ImageView
         android:id="@+id/ivLogo"
         android:layout_width="@dimen/_138sdp"
-        android:layout_height="@dimen/_188sdp"
+        android:layout_height="@dimen/_138sdp"
         android:contentDescription="@string/description_image_logo_cron"
         android:src="@drawable/im_logo_header"
         app:layout_constraintBottom_toTopOf="@id/guidelineHeader2"
@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.29" />
+        app:layout_constraintGuide_percent="0.31" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineContent1"
@@ -53,8 +53,8 @@
 
     <ImageView
         android:id="@+id/ivCronText"
-        android:layout_width="@dimen/_164sdp"
-        android:layout_height="@dimen/_28sdp"
+        android:layout_width="@dimen/_160sdp"
+        android:layout_height="@dimen/_27sdp"
         android:contentDescription="@string/description_image_it_cron_text"
         android:src="@drawable/im_logo_text_header"
         app:layout_constraintStart_toEndOf="@id/guidelineIContent2"
@@ -62,13 +62,15 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvHomeHeader"
-        style="@style/GeometriaMed.12sp"
+        style="@style/GeometriaMed.11sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="12dp"
+        android:letterSpacing="0.02"
         android:lineSpacingMultiplier="1.3"
+        android:maxLines="2"
         android:text="@string/home_header"
-        android:textSize="@dimen/_12ssp"
+
         app:layout_constraintStart_toEndOf="@id/guidelineIContent2"
         app:layout_constraintTop_toBottomOf="@id/ivCronText" />
 

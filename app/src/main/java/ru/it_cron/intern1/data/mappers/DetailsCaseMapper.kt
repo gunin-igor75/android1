@@ -21,7 +21,8 @@ fun DataDetailsCaseDto.dataDetailsCaseDtoToCaseDetails(): CaseDetails {
         caseColorId = caseColor.convertToColor(),
         iOSUrl = iOSUrl ?: EMPTY,
         androidUrl = androidUrl ?: EMPTY,
-        webUrl = webUrl ?: EMPTY
+        webUrl = webUrl ?: EMPTY,
+        isColorWhite = caseColor.isColorWhite()
     )
 }
 
@@ -31,4 +32,5 @@ fun List<PlatformsDto>.mapPlatformsToString() = map { it.name }
 
 fun String.convertToColor() = Color.parseColor("#FF$this")
 
+fun String.isColorWhite() = this[0].uppercaseChar() == 'F'
 fun String.transform() = replace("(", "\u2013 ").replace(")", "")

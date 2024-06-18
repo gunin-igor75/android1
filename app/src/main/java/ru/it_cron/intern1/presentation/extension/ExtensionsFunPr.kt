@@ -7,8 +7,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Parcelable
 import android.util.Log
-import android.view.View
-import android.view.ViewTreeObserver
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -25,6 +23,7 @@ import ru.it_cron.intern1.constant.TXT
 import ru.it_cron.intern1.constant.XLS
 import ru.it_cron.intern1.constant.XLSX
 import ru.it_cron.intern1.constant.ZIP
+import ru.it_cron.intern1.presentation.dialog.DialogFragmentEmail
 
 
 private const val PN_GMAIL = "com.google.android.gm"
@@ -46,13 +45,14 @@ fun Fragment.sendRequest(
     url: String,
     packageName: String,
 ) {
-    try {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        intent.setPackage(packageName)
+    var intent = requireActivity().packageManager.getLaunchIntentForPackage(packageName)
+    if (intent != null) {
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         startActivity(intent)
-    } catch (e: Exception) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+    } else {
+        intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
             addCategory(Intent.CATEGORY_BROWSABLE)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
         startActivity(intent)
     }
@@ -68,16 +68,12 @@ fun Fragment.sendEmail(
         }
         startActivity(intent)
     } catch (e: Exception) {
-        val uriBuilder = Uri.parse(URL_PLAY_MARKET)
-            .buildUpon()
-            .appendQueryParameter(KEY_ID, PN_GMAIL)
-            .appendQueryParameter(KEY_LAUNCH, VALUE_TRUE)
-
-        val intent = Intent(Intent.ACTION_VIEW).apply {
-            data = uriBuilder.build()
-            setPackage(PN_PLAY_MARKET)
-        }
-        startActivity(intent)
+        DialogFragmentEmail {
+            val intent = Intent(Intent.ACTION_VIEW);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setData(Uri.parse("market://details?id=$addresses"));
+            startActivity(intent);
+        }.show(requireActivity().supportFragmentManager, "custom")
     }
 }
 

@@ -3,6 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:viewBindingIgnore="true"
     tools:context=".presentation.onboarding.SplashFragment">
 
+    <ImageView
+        android:layout_width="@dimen/_217sdp"
+        android:layout_height="@dimen/_184sdp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/image_splash_screen"
+        android:src="@drawable/splash" />
 </FrameLayout>

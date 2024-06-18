@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/dialog_title" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/GothamProReg.12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:text="@string/dialog_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/GothamProReg.12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_content_show" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvGooglePlay"
+            style="@style/GothamProReg.12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/dialog_content_google_play" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/GothamProReg.12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/dialog_content_google_slash" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCancel"
+            style="@style/GothamProReg.12sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/dialog_content_cancel" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
