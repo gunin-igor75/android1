@@ -24,6 +24,7 @@ import ru.it_cron.intern1.constant.PN_INSTAGRAM
 import ru.it_cron.intern1.constant.PN_TELEGRAM
 import ru.it_cron.intern1.constant.URL_EMAIL
 import ru.it_cron.intern1.constant.URL_FACEBOOK
+import ru.it_cron.intern1.constant.URL_HR
 import ru.it_cron.intern1.constant.URL_INSTAGRAM
 import ru.it_cron.intern1.constant.URL_TELEGRAM
 import ru.it_cron.intern1.databinding.BlockCommunicationsCompanyBinding
@@ -142,7 +143,7 @@ class CompanyFragment : Fragment() {
     private fun createSpannableWord() {
         val view = binding.inJoinTeam.tvJoinTeamSlogan
         val listener = View.OnClickListener {
-            sendEmail(URL_EMAIL)
+            sendEmail(URL_HR)
         }
         val color = ContextCompat.getColor(
             binding.root.context,
