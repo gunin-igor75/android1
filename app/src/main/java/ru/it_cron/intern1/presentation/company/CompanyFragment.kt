@@ -32,6 +32,7 @@ import ru.it_cron.intern1.databinding.FragmentCompanyBinding
 import ru.it_cron.intern1.domain.model.StateError
 import ru.it_cron.intern1.domain.model.company.Review
 import ru.it_cron.intern1.navigation.Screens
+import ru.it_cron.intern1.presentation.extension.callPhone
 import ru.it_cron.intern1.presentation.extension.dpToPx
 import ru.it_cron.intern1.presentation.extension.sendEmail
 import ru.it_cron.intern1.presentation.extension.sendRequest
@@ -61,12 +62,12 @@ class CompanyFragment : Fragment() {
         setupMenu()
         onClickMenuListener()
         onClickBack()
-        createSpannableWord()
+        createSpannableWordEmailHr()
         onClickCommunicationsListener()
         observeViewModelError()
         observeViewModelReviews()
         sendApplication()
-
+        onClickButtonPhone()
     }
 
     private fun sendApplication() {
@@ -93,7 +94,6 @@ class CompanyFragment : Fragment() {
 
     }
 
-
     private fun settingViewPager() {
         binding.inReviews.vpReviews.registerOnPageChangeCallback(object : OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
@@ -101,6 +101,7 @@ class CompanyFragment : Fragment() {
             }
         })
     }
+
 
     private fun observeViewModelError() {
         lifecycleScope.launch {
@@ -140,7 +141,7 @@ class CompanyFragment : Fragment() {
         }
     }
 
-    private fun createSpannableWord() {
+    private fun createSpannableWordEmailHr() {
         val view = binding.inJoinTeam.tvJoinTeamSlogan
         val listener = View.OnClickListener {
             sendEmail(URL_HR)
@@ -166,7 +167,6 @@ class CompanyFragment : Fragment() {
     private fun setupMenu() {
         binding.tbCompany.inflateMenu(R.menu.fragment_company)
     }
-
 
     private fun onClickMenuListener() {
         binding.tbCompany.setOnMenuItemClickListener { menu ->
@@ -194,6 +194,7 @@ class CompanyFragment : Fragment() {
             }
         }
     }
+
 
     private fun onClickBack() {
         val toolBar = binding.tbCompany
@@ -248,6 +249,12 @@ class CompanyFragment : Fragment() {
     private fun onClickReviewsListener(reviews: List<Review>) {
         binding.inReviews.llSeeAll.setOnClickListener {
             router.navigateTo(Screens.openReviewsFragment(reviews))
+        }
+    }
+
+    private fun onClickButtonPhone() {
+        binding.inCommunicationsAddress.tvPhone.setOnClickListener {
+            callPhone(resources.getString(R.string.phone_number))
         }
     }
 
