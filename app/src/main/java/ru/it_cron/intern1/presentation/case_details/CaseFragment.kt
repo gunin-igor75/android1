@@ -31,6 +31,7 @@ import ru.it_cron.intern1.domain.model.cases.Case
 import ru.it_cron.intern1.domain.model.cases.CaseDetails
 import ru.it_cron.intern1.domain.model.filter.ContainerImage
 import ru.it_cron.intern1.navigation.Screens
+import ru.it_cron.intern1.presentation.animation.CustomAnimated
 import ru.it_cron.intern1.presentation.extension.openInternet
 import ru.it_cron.intern1.presentation.extension.roundCorners
 import ru.it_cron.intern1.presentation.extension.sendEmail
@@ -69,7 +70,7 @@ class CaseFragment : Fragment() {
         observeViewModel()
         observeViewModelError()
         onClickImages()
-        onClockEmail()
+        onClickEmail()
         onClickHomeTitle()
         onClickSendApp()
         onClickNextCase()
@@ -302,7 +303,7 @@ class CaseFragment : Fragment() {
         }
     }
 
-    private fun onClockEmail() {
+    private fun onClickEmail() {
         binding.btSendRequestCase.btSendApp.setOnClickListener {
             sendEmail(URL_EMAIL)
         }
@@ -316,13 +317,17 @@ class CaseFragment : Fragment() {
 
     private fun onClickImages() {
         binding.icBlockImages.llBlockImages.setOnClickListener {
-            router.navigateTo(Screens.openImagesFragment(imageState.value))
+            if (!imageState.value.images.isNullOrEmpty()) {
+                router.navigateTo(Screens.openImagesFragment(imageState.value))
+            }
         }
     }
 
     private fun onClickSendApp() {
         binding.btSendRequestCase.btSendApp.setOnClickListener {
-            router.navigateTo(Screens.openApplicationFragment())
+            CustomAnimated.animatedAlpha(binding.btSendRequestCase.btSendApp){
+                router.navigateTo(Screens.openApplicationFragment())
+            }
         }
     }
 
