@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.MaterialToolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tbCompany"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:navigationIcon="@drawable/ic_arrow_left">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivLogoCron"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/description_image_logo_cron"
+            android:src="@drawable/ic_cron_small" />
+
+        <ImageView
+            android:id="@+id/ivLogoInstagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/description_image_logo_cron"
+            android:src="@drawable/ic_instagram_small" />
+
+        <ImageView
+            android:id="@+id/ivLogoFacebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/description_image_logo_cron"
+            android:src="@drawable/ic_facebook_small" />
+
+        <ImageView
+            android:id="@+id/ivLogoTelegram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/description_image_logo_cron"
+            android:src="@drawable/ic_telegram_small" />
+
+    </LinearLayout>
+
+</com.google.android.material.appbar.MaterialToolbar>

@@ -352,6 +352,8 @@ class ApplicationFragment : Fragment() {
 
     private fun setupRecyclerViewApp() {
         binding.rvServices.isNestedScrollingEnabled = false
+        binding.rvBudgets.isNestedScrollingEnabled = false
+        binding.rvAreaActivity.isNestedScrollingEnabled = false
         binding.rvServices.adapter = serviceAdapter
         binding.rvBudgets.adapter = budgetAdapter
         binding.rvAreaActivity.adapter = areaActivityAdapter

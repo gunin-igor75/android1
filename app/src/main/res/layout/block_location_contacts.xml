@@ -28,11 +28,11 @@
         app:cardCornerRadius="@dimen/_10sdp">
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/_200sdp"
             android:contentDescription="@string/image_location_it_cron"
             android:scaleType="centerCrop"
-            android:src="@drawable/im_location_it_cron" />
+            android:src="@drawable/map_it" />
 
     </com.google.android.material.card.MaterialCardView>
 

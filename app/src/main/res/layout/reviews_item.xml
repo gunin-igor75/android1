@@ -30,7 +30,7 @@
             android:layout_width="@dimen/_64sdp"
             android:layout_height="@dimen/_64sdp"
             android:contentDescription="@string/image_avatar_company_description"
-            tools:src="@drawable/avatarka" />
+            tools:src="@drawable/avatarka_manager" />
 
         <LinearLayout
             android:layout_width="wrap_content"

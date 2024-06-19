@@ -59,8 +59,7 @@ class CompanyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupMenu()
-        onClickMenuListener()
+        onClickToolBarListener()
         onClickBack()
         createSpannableWordEmailHr()
         onClickCommunicationsListener()
@@ -164,40 +163,23 @@ class CompanyFragment : Fragment() {
         )
     }
 
-    private fun setupMenu() {
-        binding.tbCompany.inflateMenu(R.menu.fragment_company)
-    }
-
-    private fun onClickMenuListener() {
-        binding.tbCompany.setOnMenuItemClickListener { menu ->
-            when (menu.itemId) {
-                R.id.mItCron -> {
-                    true
-                }
-
-                R.id.mInstagram -> {
-                    sendRequest(URL_INSTAGRAM, PN_INSTAGRAM)
-                    true
-                }
-
-                R.id.mFacebook -> {
-                    sendRequest(URL_FACEBOOK, PN_FACEBOOK)
-                    true
-                }
-
-                R.id.mTelegram -> {
-                    sendRequest(URL_TELEGRAM, PN_TELEGRAM)
-                    true
-                }
-
-                else -> false
+    private fun onClickToolBarListener() {
+        with(binding.inMaterialToolBar) {
+            ivLogoInstagram.setOnClickListener {
+                sendRequest(URL_INSTAGRAM, PN_INSTAGRAM)
+            }
+            ivLogoFacebook.setOnClickListener {
+                sendRequest(URL_FACEBOOK, PN_FACEBOOK)
+            }
+            ivLogoTelegram.setOnClickListener {
+                sendRequest(URL_TELEGRAM, PN_TELEGRAM)
             }
         }
     }
 
 
     private fun onClickBack() {
-        val toolBar = binding.tbCompany
+        val toolBar = binding.inMaterialToolBar.tbCompany
         toolBar.setNavigationOnClickListener {
             router.exit()
         }
