@@ -9,4 +9,5 @@
     <dimen name="height_progress">@dimen/_4sdp</dimen>
     <dimen name="margin_progress">8dp</dimen>
 
+    <dimen name="circle">@dimen/_118sdp</dimen>
 </resources>

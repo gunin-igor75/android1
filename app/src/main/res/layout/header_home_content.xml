@@ -15,8 +15,8 @@
 
     <ImageView
         android:id="@+id/ivLogo"
-        android:layout_width="@dimen/_138sdp"
-        android:layout_height="@dimen/_138sdp"
+        android:layout_width="@dimen/circle"
+        android:layout_height="@dimen/circle"
         android:contentDescription="@string/description_image_logo_cron"
         android:src="@drawable/im_logo_header"
         app:layout_constraintBottom_toTopOf="@id/guidelineHeader2"
